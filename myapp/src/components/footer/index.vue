@@ -3,7 +3,7 @@
         <ul>
             <li>
                 <router-link :to="{name:word}">
-                	<div class="word"><img src="static/img/home/wdl_sj@2x.png" alt="" /></div>
+                	<div class="word"><img src="../../../static/img/home/wdl_sj@2x.png" alt="" /></div>
                     <span>世界</span>
                 </router-link>
             </li>
@@ -26,14 +26,14 @@
 export default {
     data(){
         return {
-            
+
         }
     }
 }
 </script>
 
 <style scoped lang="scss" >
-   
+
     #footer{
         width: 100%;
         height: .99rem;
@@ -41,7 +41,7 @@ export default {
         left: 0;
         bottom:0;
 		background:rgba(255,255,255,1);
-		border:1px solid rgba(225, 225, 225, 1);        
+		border:1px solid rgba(225, 225, 225, 1);
 		 ul{
 		    display: flex;
 		    justify-content: space-between;
@@ -56,9 +56,7 @@ export default {
 					justify-content: center;
 				}
 		    };
-		    .word{
-		    	
-		    }
+
 		};
     }
 </style>
