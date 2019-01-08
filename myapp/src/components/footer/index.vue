@@ -3,18 +3,18 @@
         <ul>
             <li>
                 <router-link :to='{name:"word"}'>
-                	<div class="word"><img src="static/img/home/wdl_sj@2x.png" alt="" /></div>
+                	<div class="word"><img src="static/img/word/wdl_sj@2x.png" alt="" /></div>
                     <span>世界</span>
                 </router-link>
             </li>
             <li>
                 <router-link :to='{name:"word"}'> 
-                    <div><img src="static/img/home/wdl_bj@2x.png" alt="" /></div>
+                    <div><img src="static/img/word/wdl_bj@2x.png" alt="" /></div>
                 </router-link>
             </li>
             <li>
                 <router-link :to='{name:"my"}'>
-                    <div class="my"><img src="static/img/home/wdl_wode@2x.png" alt="" /></div>
+                    <div class="my"><img src="static/img/word/wdl_wode@2x.png" alt="" /></div>
                     <span>我的</span>
                 </router-link>
             </li>
