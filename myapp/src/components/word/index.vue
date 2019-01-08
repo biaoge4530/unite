@@ -3,6 +3,7 @@
         <Tab-com></Tab-com>
 		<Banner-com></Banner-com>
 		<Dynamic-com></Dynamic-com>
+        <router-view></router-view>
     </div>
 </template>
 
@@ -32,5 +33,5 @@
 
 
 <style lang="">
-    
+
 </style>
