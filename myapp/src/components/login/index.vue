@@ -7,7 +7,7 @@
             <li>登录</li>
             <li><router-link class="router" to="/register">注册</router-link></li>
            </ul>
-          <div><router-link to=""><img src="../../../static/img/wychead.png"/></router-link></div>
+          <div><router-link to=""><img src="../../../static/img/wyc/head.png"/></router-link></div>
       </div>
     </div>
 
@@ -22,7 +22,7 @@
           <input type="text" placeholder="请输入手机号码" maxlength="11"/>
         </div>
         <div class="inputPassword" id="inputPassword">
-          <img src="../../../static/img/wycencrypt.png"/>
+          <img src="../../../static/img/wyc/encrypt.png"/>
           <input :type="pwdType" placeholder="请输入密码" /><!-- v-model="password" -->
 
           <div class="eye"><!-- 密码显示隐藏图标 -->
@@ -65,7 +65,7 @@ export default {
   data(){
     return{
       pwdType:"password",
-      openEye:require("../../common/img/show.png"),
+      openEye:require("../../../static/img/wyc/show.png"),
     }
 
   },
@@ -76,7 +76,7 @@ export default {
     handleEye(){  //密码显示隐藏
       this.pwdType = this.pwdType ===  "password" ? "text" :"password";
       /* this.pwdType = this.pwdType = "password" ? "password" : "text"; */
-      this.openEye = this.openEye === require("../../common/img/show.png") ? require("../../common/img/indication.png") : require("../../common/img/show.png")
+      this.openEye = this.openEye === require("../../../static/img/wyc/show.png") ? require("../../../static/img/wyc/indication.png") : require("../../../static/img/wyc/show.png")
     },
     headlePush(){
       alert()
@@ -96,7 +96,7 @@ export default {
 .banner_nav{
   width: 100%;
   height: 4rem;
-  background:url("../../common/img/banner_nav.png") no-repeat;
+  background:url("../../../static/img/wyc/banner_nav.png") no-repeat;
   background-size: 100%;
 }
 .nav{

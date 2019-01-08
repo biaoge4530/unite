@@ -16,12 +16,12 @@
         </div>
 
         <div>
-            <img src="../../../static/img/wycencrypt_2.png"/>
+            <img src="../../../static/img/wyc/encrypt_2.png"/>
             <input type="text" placeholder="请输入验证码"/>
         </div>
 
         <div>
-            <img src="../../../static/img/wycyz.png"/>
+            <img src="../../../static/img/wyc/yz.png"/>
             <input type="text" placeholder="请输入密码"/>
         </div>
 
