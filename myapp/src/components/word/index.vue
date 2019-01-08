@@ -14,7 +14,6 @@
 	import Vuex from "vuex";
 	export default {
 		created () {
-			console.log(this);
 			this.handleWordData();
 		},
 		components:{
@@ -33,5 +32,5 @@
 
 
 <style lang="">
-
+	
 </style>
