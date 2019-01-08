@@ -7,8 +7,7 @@ export default{
             url:""
         })
         .then((data)=>{
-            console.log(data); 
-            console.log("测试");
+            console.log(data);
         })
     }
 }
