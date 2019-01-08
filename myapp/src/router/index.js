@@ -7,6 +7,10 @@ import Edit_btn from '@/components/edit_btn'
 import Edit_home from '@/components/edit_home'
 import Register from '../components/register'
 import Login from '../components/login'
+
+import WordMdn from '@/components/word-mdn/headphoto'
+import Hot from '@/components/word-mdn/components-head/hot'
+import Notebook from '@/components/word-mdn/components-head/notebook'
 Vue.use(Router)
 
 const router =  new Router({
@@ -31,6 +35,23 @@ const router =  new Router({
       meta:{
       	showFooter: true
       }
+    },
+    {
+      path: '/word-mdn',
+      name: 'word-mdn',
+      component: WordMdn,
+       children:[
+         {
+           path:'/hot',
+           name:'hot',
+           component:Hot
+         },
+         {
+            path:'notebook',
+            name:'notebook',
+            component:Notebook
+         }
+       ]
     },
     {
       path: '/my',
