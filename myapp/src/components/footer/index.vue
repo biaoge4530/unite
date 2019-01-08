@@ -2,12 +2,26 @@
     <div id="footer">
         <ul>
             <li>
+<<<<<<< HEAD
+                <router-link :to='{name:"word"}'>
+                	<div class="word"><img src="static/img/word/wdl_sj@2x.png" alt="" /></div>
+=======
                 <router-link :to="{name:'word'}">
                 	<div class="word"><img src="static/img/home/wdl_sj@2x.png" alt="" /></div>
+>>>>>>> 1cf745f4fa5f8e1065e1965ed7dc3b0b6d0bde81
                     <span>世界</span>
                 </router-link>
             </li>
             <li>
+<<<<<<< HEAD
+                <router-link :to='{name:"word"}'> 
+                    <div><img src="static/img/word/wdl_bj@2x.png" alt="" /></div>
+                </router-link>
+            </li>
+            <li>
+                <router-link :to='{name:"my"}'>
+                    <div class="my"><img src="static/img/word/wdl_wode@2x.png" alt="" /></div>
+=======
                 <router-link :to="{name:'edit_btn'}">
                     <div><img src="static/img/home/wdl_bj@2x.png" alt="" /></div>
                 </router-link>
@@ -15,6 +29,7 @@
             <li>
                 <router-link :to="{name:'my'}">
                     <div class="my"><img src="static/img/home/wdl_wode@2x.png" alt="" /></div>
+>>>>>>> 1cf745f4fa5f8e1065e1965ed7dc3b0b6d0bde81
                     <span>我的</span>
                 </router-link>
             </li>

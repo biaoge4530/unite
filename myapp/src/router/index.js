@@ -15,17 +15,8 @@ Vue.use(Router)
 const router =  new Router({
   routes: [
     {
-      path: '/',
-      name: "home",
-      component: Home,
-      meta:{
-      	showFooter: true
-      }
-    },
-    {
-      path:'/home',
-      name:'home',
-      component:Home
+      path:"/",
+      redirect:"/word"
     },
     {
       path: '/word',
