@@ -3,7 +3,7 @@
         <div class="register">
         <div>
           <ul>
-            <li>后退</li>
+            <li @click="handleGet()">后退</li>
             <li>注册</li>
           </ul>
         </div>
@@ -16,12 +16,16 @@
         </div>
 
         <div>
-            <img src="../../../static/img/wycencrypt_2.png"/>
-            <input type="text" placeholder="请输入验证码"/>
+            <img src="../../../static/img/wyc/encrypt_2.png"/>
+            <input type="text" placeholder="请输入验证码" maxlength="6"/>
+            <div class="obtainCode">
+              <span v-show="show" @click="handleCode()">获取验证码</span>
+              <span v-show="!show" class="count">{{count}}s 后重新获取</span>
+            </div>
         </div>
 
         <div>
-            <img src="../../../static/img/wycyz.png"/>
+            <img src="../../../static/img/wyc/yz.png"/>
             <input type="text" placeholder="请输入密码"/>
         </div>
 
@@ -37,7 +41,35 @@
 
 <script>
 export default {
-
+  data(){
+    return{
+      show:true,
+      count:"",
+      time:null,
+    }
+  },
+  methods:{
+    handleCode(){
+      const timeCount = 60;
+      if(!this.timer){
+        this.count = timeCount;
+        this.show = false;
+        this.timer = setInterval(()=>{
+          if(this.count > 0 && this.count <= timeCount ){
+            this.count--;
+          }else{
+            this.show = true;
+            clearInterval(this.timer);
+            this.timer = null;
+             alert()
+          }
+        },1000)
+      }
+    },
+    handleGet(){
+      this.$router.back();
+    }
+  }
 }
 </script>
 
@@ -67,6 +99,7 @@ export default {
   color: #5D5D5D;
 
 }
+
 .registerPhone{
   width: 100%;
   height: 100%;
@@ -92,6 +125,16 @@ export default {
   height: .40rem;
   border: none;
   outline: medium;
+}
+.obtainCode>span:nth-child(1){
+  color: #3FB59D;
+  font-size: .24rem;
+  margin-left:1.1rem;
+}
+.obtainCode>span:nth-child(2){
+  font-size: .24rem;
+  margin-left: .71rem;
+  color: #3FB59D;
 }
 .bottom{
   width: 100%;

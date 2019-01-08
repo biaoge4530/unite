@@ -3,11 +3,10 @@ import Router from 'vue-router'
 import Home from '@/components/home'
 import Word from '@/components/word'
 import My from '@/components/my'
+import Login from '@/components/login'
 import Edit_btn from '@/components/edit_btn'
+import Register from '@/components/register'
 import Edit_home from '@/components/edit_home'
-import Register from '../components/register'
-import Login from '../components/login'
-
 import WordMdn from '@/components/word-mdn/headphoto'
 import Hot from '@/components/word-mdn/components-head/hot'
 import Notebook from '@/components/word-mdn/components-head/notebook'
@@ -83,7 +82,7 @@ const router =  new Router({
       component: Register,
       meta:{
         //tab栏隐藏
-        flag:false,
+        showFooter: false,
         //路由守卫
         requireAuth:true
       }
@@ -94,7 +93,7 @@ const router =  new Router({
       component: Login,
       meta:{
         //tab栏隐藏
-        flag:false,
+        showFooter: false,
         //路由守卫
         requireAuth:true
       }
