@@ -2,7 +2,7 @@
     <div id="footer">
         <ul>
             <li>
-                <router-link :to="{name:word}">
+                <router-link :to="{name:'word'}">
                 	<div class="word"><img src="static/img/home/wdl_sj@2x.png" alt="" /></div>
                     <span>世界</span>
                 </router-link>

@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <router-view/>
+
     <Footer-com v-show="$route.meta.showFooter"/>
+
   </div>
 </template>
 
@@ -14,6 +16,7 @@ export default {
   }
 }
 </script>
+
 
 <style scoped>
 	#app{
