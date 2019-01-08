@@ -21,6 +21,6 @@ export default new Router({
       path: '/my',
       name: 'my',
       component: My
-    },
+    }
   ]
 })

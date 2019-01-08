@@ -8,7 +8,6 @@ export default{
         })
         .then((data)=>{
             console.log(data);
-            console.log("重新测试");
         })
     }
 }

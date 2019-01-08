@@ -88,6 +88,24 @@
 				align-items: center;
 				font-family: PingFang-SC-Regular;
 				color: #5D5D5D;
+				.router-link-active{
+					position: relative;
+					display: block;
+					width: 100%;
+					height: 100%;
+					text-align: center;
+					line-height: .92rem;
+					color: #40B59E;
+					&::after{
+						content:"";
+						display: inline-block;
+						position: absolute;
+						height: .05rem;
+						background: #40B59E;
+						left: 0;
+						bottom: 0;
+					}
+				}
 			}
 		}
 	}

@@ -22,5 +22,6 @@
 	.banner{
 		width: 100%;
 		height: 3rem;
+		background: #ff0;
 	}
 </style>
