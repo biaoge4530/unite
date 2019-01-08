@@ -2,6 +2,7 @@
 	<div class="edit_home">
 		<Head-com></Head-com>
 		<Canvas-com></Canvas-com>
+		<div class="mask" v-show="footerIndex==(-1)?false:true"></div>
 		<router-view/>
 		<keep-alive>
 			<component :is="footerNavs[footerIndex]"></component>
@@ -49,5 +50,14 @@
  	.edit_home{
  		height: 100%;
  		width: 100%;
+ 	}
+ 	.mask{
+ 		width: 100%;
+ 		height: 100%;
+ 		background: yellow;
+ 		opacity: 0.1;
+ 		position: absolute;
+ 		top: 0;
+ 		left: 0;
  	}
 </style>

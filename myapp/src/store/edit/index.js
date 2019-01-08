@@ -4,7 +4,11 @@ let state = {
 }
 let mutations = {
 	editOption(state,params){
-		state.footerIndex = params
+		if(state.footerIndex==params){
+			state.footerIndex= -1
+		}else{			
+			state.footerIndex = params
+		}
 	}
 }
 let actions = {
