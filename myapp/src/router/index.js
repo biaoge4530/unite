@@ -10,6 +10,9 @@ import Edit_home from '@/components/edit_home'
 import WordMdn from '@/components/word-mdn/headphoto'
 import Hot from '@/components/word-mdn/components-head/hot'
 import Notebook from '@/components/word-mdn/components-head/notebook'
+import Release_dynamics from '@/components/release_dynamics'
+import Select_place from '@/components/select_place'
+import Select_public from '@/components/select_public'
 Vue.use(Router)
 
 const router =  new Router({
@@ -67,6 +70,30 @@ const router =  new Router({
       	showFooter: false
       }
     },
+		{
+			path: "/release_dynamics",
+			name:"release_dynamics",
+			component: Release_dynamics,
+			meta:{
+				showFooter:false
+			}
+		},
+		{
+			path: "/select_place",
+			name:"select_place",
+			component: Select_place,
+			meta:{
+				showFooter:false
+			}
+		},
+		{
+			path:"/select_public",
+			name:"select_public",
+			component:Select_public,
+			meta:{
+				showFooter:false
+			}
+		},
     {
       path: '/register',
       name: 'register',

@@ -13,7 +13,7 @@
 		<div class="notice">
 			<img src="../../../../static/img/word/icon_sy_tz@2x.png"/>
 		</div>
-		<router-view></router-view>
+		<router-view />
 	</div>
 </template>
 
@@ -38,9 +38,7 @@
 			}
 		},
 		methods:{
-			handleTabs(){
-
-			}
+			
 		}
 	}
 </script>
