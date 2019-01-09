@@ -13,18 +13,12 @@
 	import Dynamic from "./components/dynamic.vue";
 	import Vuex from "vuex";
 	export default {
-		created () {
-			this.handleWordData();
-		},
 		components:{
 			"Tab-com":Tab,
 			"Banner-com":Banner,
 			"Dynamic-com":Dynamic
 		},
 		methods:{
-			...Vuex.mapActions({
-				handleWordData:"handleWordData"
-			})
 		}
 	    
 	}

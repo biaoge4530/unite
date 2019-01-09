@@ -8,7 +8,7 @@
                 </router-link>
             </li>
             <li>
-                <router-link :to='{name:"word"}'> 
+                <router-link :to='{name:"edit_btn"}'> 
                     <div><img src="static/img/word/wdl_bj@2x.png" alt="" /></div>
                 </router-link>
             </li>
