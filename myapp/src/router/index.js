@@ -3,14 +3,16 @@ import Router from 'vue-router'
 import Home from '@/components/home'
 import Word from '@/components/word'
 import My from '@/components/my'
+import Login from '@/components/login'
 import Edit_btn from '@/components/edit_btn'
+import Register from '@/components/register'
 import Edit_home from '@/components/edit_home'
-import Register from '../components/register'
-import Login from '../components/login'
-
 import WordMdn from '@/components/word-mdn/headphoto'
 import Hot from '@/components/word-mdn/components-head/hot'
 import Notebook from '@/components/word-mdn/components-head/notebook'
+import Verify from "@/components/register/components/verify"
+import RestPassword from "@/components/register/components/restPassword"
+import BandPhone from "@/components/register/components/bandPhone"
 Vue.use(Router)
 
 const router =  new Router({
@@ -83,7 +85,7 @@ const router =  new Router({
       component: Register,
       meta:{
         //tab栏隐藏
-        flag:false,
+        showFooter: false,
         //路由守卫
         requireAuth:true
       }
@@ -93,9 +95,34 @@ const router =  new Router({
       name: 'login',
       component: Login,
       meta:{
-        //tab栏隐藏
-        flag:false,
-        //路由守卫
+        showFooter: false,
+        requireAuth:true
+      }
+    },
+    {
+      path: '/verify',
+      name: 'verify',
+      component: Verify,
+      meta:{
+        showFooter: false,
+        requireAuth:true
+      }
+    },
+    {
+      path: '/restPassword',
+      name: 'restPassword',
+      component: RestPassword,
+      meta:{
+        showFooter: false,
+        requireAuth:true
+      }
+    },
+    {
+      path: '/bandPhone',
+      name: 'bandPhone',
+      component: BandPhone,
+      meta:{
+        showFooter: false,
         requireAuth:true
       }
     },

@@ -4,7 +4,7 @@ import edit from "./edit";
 Vue.use(Vuex);
 
 const store = new Vuex.Store({
-    modules:{
+    modules:{ 
         edit
     }
 })
