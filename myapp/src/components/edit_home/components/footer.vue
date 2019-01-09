@@ -41,15 +41,20 @@
 ul{
   	width: 100%;
   	height: .98rem;
-  	background:rgba(63,181,157,0);
+  	background: #ffffff;
 	box-shadow:0px -2px 2px 0px rgba(204,204,204,1);
 	position: fixed;
 	bottom: 0;left: 0;
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
+	z-index: 10;
 	div{
 		margin-bottom: .1rem;
+		img{
+			width: .4rem;
+			height: .4rem;
+		}		
 	}
 }
 </style>

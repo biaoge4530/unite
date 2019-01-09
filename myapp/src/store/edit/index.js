@@ -1,6 +1,9 @@
 import axios from "axios";
 let state = {
-	footerIndex : -1 
+	footerIndex : -1 ,
+	imgIndex:-1,
+	pList:[],
+	bgImg:"",
 }
 let mutations = {
 	editOption(state,params){
@@ -9,6 +12,10 @@ let mutations = {
 		}else{			
 			state.footerIndex = params
 		}
+	},
+	addbgImg(state,params){
+		state.footerIndex= -1;
+		state.imgIndex = params
 	}
 }
 let actions = {
