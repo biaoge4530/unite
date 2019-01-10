@@ -3,20 +3,20 @@
         <div class="register">
         <div>
           <ul>
-            <li @click="handleGet()"><img src="../../../static/img/wyc/lt.png"/></li>
-            <li @click="handRegister()">注册</li>
+            <li @click="handleGet()"><img src="../../../../static/img/wyc/lt.png"/></li>
+            <li @click="handRegister()">重置密码</li>
           </ul>
         </div>
       </div>
 
       <div class="registerPhone">
         <div>
-            <img src="../../../static/img/wyc/phone_2.png"/>
+            <img src="../../../../static/img/wyc/phone_2.png"/>
             <input type="text" name="phoneNumber" v-model="phoneNumber" maxlength="11" :placeholder="phoneNum"/>
         </div>
 
         <div>
-            <img src="../../../static/img/wyc/encrypt_2.png"/>
+            <img src="../../../../static/img/wyc/encrypt_2.png"/>
             <input type="text" name="phoneyzm" placeholder="请输入验证码"  maxlength="6"/>
             <div class="obtainCode">
               <span v-show="show" @click="handleCode()">获取验证码</span>
@@ -25,7 +25,7 @@
         </div>
 
         <div>
-            <img src="../../../static/img/wyc/yz.png"/>
+            <img src="../../../../static/img/wyc/yz.png"/>
             <!-- <input type="text" placeholder="请输入密码" v-model="phonePassword"/> -->
             <input type="text" :placeholder="phonePass" v-model="phonePassword" />
         </div>
@@ -34,7 +34,7 @@
 
 
       <div class="bottom">
-        <mt-button @click.native="handRegister()">注册</mt-button>
+        <mt-button @click.native="handRegister()">重置密码</mt-button>
       </div>
 
   </div>
@@ -46,20 +46,6 @@ import axios from 'axios';
 import "mint-ui/lib/style.css";
 export default {
   name:"reight",
-  created(){
-      axios({
-        method:"post",
-        url:"http://localhost:3000/data",
-        data:{
-          phoneNumber:"wangas",
-          password:"11111"
-        }
-      })
-      .then((data)=>{
-       console.log(data);
-
-      })
-  },
   data(){
     return{
       show:true,
@@ -71,7 +57,7 @@ export default {
       phoneyzm:"",
       phoneNum:"请输入手机号",
       phonePass:"请输入密码"
-    }
+}
   },
   methods:{
     handleCode(){//获取验证码
@@ -129,32 +115,14 @@ export default {
         //提交
         if(flag && flagPwd === true){
           Toast({
-                message:"注册成功",
-                position:"middle"
+                mseeage:"同时",
+                position:"bottom"
               })
           //jsonserover
-         /*  axios({
-            method:"get",
-            url:"http://localhost:3000/data?phoneNumber="+this.phoneNumber
-          }).then(data=>{
-              if(data.length == 0){
-                alert(1);
-                axios({
-                  methods:"get",
-                  url:"http://localhost:3000/data",
-                  data:{
-                    phoneNumber:this.phoneNumber,
-                    phoneNumber:this.phoneNumber
-                  }
-                })
-                .then(data=>{
-                    console.log(data)
-                })
-              }
-          }) */
+
         }else{
           Toast({
-                message:"注册失败",
+                message:"重置失败",
                 duration: 2000,
                 position:"middle"
               })
