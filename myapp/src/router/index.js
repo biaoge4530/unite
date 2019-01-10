@@ -13,6 +13,8 @@ import Notebook from '@/components/word-mdn/components-head/notebook'
 import Release_dynamics from '@/components/release_dynamics'
 import Select_place from '@/components/select_place'
 import Select_public from '@/components/select_public'
+import Word_search from '@/components/word_search'
+import Word_notice from '@/components/word_notice'
 Vue.use(Router)
 
 const router =  new Router({
@@ -30,21 +32,45 @@ const router =  new Router({
       }
     },
     {
+      path:"/word/word_search",
+      name:"word_search",
+      component:Word_search,
+      meta:{
+        showFooter:false,
+      }
+    },
+    {
+      path:"/word/word_notice",
+      name:"word_notice",
+      component:Word_notice,
+      meta:{
+        showFooter:false,
+      }
+    },
+    {
+      path:"/word/word_search",
+      name:"word_search",
+      component:Word_search,
+      meta:{
+        showFooter:false,
+      }
+    },
+    {
       path: '/word-mdn',
       name: 'word-mdn',
       component: WordMdn,
-       children:[
-         {
-           path:'/hot',
-           name:'hot',
-           component:Hot
-         },
-         {
-            path:'notebook',
-            name:'notebook',
-            component:Notebook
-         }
-       ]
+      children:[
+        {
+          path:'/hot',
+          name:'hot',
+          component:Hot
+        },
+        {
+          path:'notebook',
+          name:'notebook',
+          component:Notebook
+        }
+      ]
     },
     {
       path: '/my',

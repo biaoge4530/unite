@@ -32,6 +32,7 @@
 		.cancel{
 			position: absolute;
 			left: .25rem;
+			top:.3rem;
 			color: #989999;
 		}
 	}
