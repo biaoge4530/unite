@@ -3,7 +3,6 @@
         <Top-com/>
         <Nav-com/>
         <Main-com/>
-       
     </div>
 </template>
 
