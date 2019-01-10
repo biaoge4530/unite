@@ -11,9 +11,10 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "better-scroll": "^1.13.4",
     "mint-ui": "^2.2.13",
+    "qs": "^6.6.0",
     "swiper": "^4.4.6",
-    "mint-ui": "^2.2.13",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1"

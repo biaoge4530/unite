@@ -1,0 +1,19 @@
+{
+  "name": "lkp",
+  "version": "1.0.0",
+  "description": "联合项目",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/biaoge4530/unite.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/biaoge4530/unite/issues"
+  },
+  "homepage": "https://github.com/biaoge4530/unite#readme"
+}
