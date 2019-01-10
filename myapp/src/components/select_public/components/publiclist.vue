@@ -63,6 +63,7 @@
 					width: .4rem;
 					height: .28rem;
 					background: url(../../../../static/img/word/icon_DH.png) no-repeat center;
+					background-size: 100%;
 				}
 			}
 		}
