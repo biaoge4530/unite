@@ -13,22 +13,16 @@ import Notebook from '@/components/word-mdn/components-head/notebook'
 import Verify from "@/components/register/components/verify"
 import RestPassword from "@/components/register/components/restPassword"
 import BandPhone from "@/components/register/components/bandPhone"
+import Release_dynamics from '@/components/release_dynamics'
+import Select_place from '@/components/select_place'
+import Select_public from '@/components/select_public'
 Vue.use(Router)
 
 const router =  new Router({
   routes: [
     {
-      path: '/',
-      name: "home",
-      component: Home,
-      meta:{
-      	showFooter: true
-      }
-    },
-    {
-      path:'/home',
-      name:'home',
-      component:Home
+      path:"/",
+      redirect:"/word"
     },
     {
       path: '/word',
@@ -42,18 +36,6 @@ const router =  new Router({
       path: '/word-mdn',
       name: 'word-mdn',
       component: WordMdn,
-       children:[
-         {
-           path:'/hot',
-           name:'hot',
-           component:Hot
-         },
-         {
-            path:'notebook',
-            name:'notebook',
-            component:Notebook
-         }
-       ]
     },
     {
       path: '/my',
@@ -79,6 +61,30 @@ const router =  new Router({
       	showFooter: false
       }
     },
+		{
+			path: "/release_dynamics",
+			name:"release_dynamics",
+			component: Release_dynamics,
+			meta:{
+				showFooter:false
+			}
+		},
+		{
+			path: "/select_place",
+			name:"select_place",
+			component: Select_place,
+			meta:{
+				showFooter:false
+			}
+		},
+		{
+			path:"/select_public",
+			name:"select_public",
+			component:Select_public,
+			meta:{
+				showFooter:false
+			}
+		},
     {
       path: '/register',
       name: 'register',

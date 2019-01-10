@@ -2,6 +2,8 @@
 	<div class="edit_home">
 		<Head-com></Head-com>
 		<Canvas-com></Canvas-com>
+		<Pages-com/>	
+		<div class="mask" v-show="footerIndex==(-1)?false:true" ></div>
 		<router-view/>
 		<keep-alive>
 			<component :is="footerNavs[footerIndex]"></component>
@@ -20,7 +22,8 @@
 	import Simg from './components/simg'
 	import Head from './components/head'
 	import Canvas from './components/canvas'
-	export default {
+	import Pages from './components/pages'
+ 	export default {
 		data(){
 			return{
 				footerNavs : ["Background","ImgCom","Simg","Font","Broush"]							
@@ -39,7 +42,13 @@
 			"ImgCom" : ImgCom,
 			"Simg" : Simg,
 			"Head-com" : Head,
-			"Canvas-com" :Canvas
+			"Canvas-com" :Canvas,
+			"Pages-com" :Pages,
+		},
+		methods:{
+			...Vuex.mapMutations({
+				editOption:"edit/editOption"
+			})
 		},
 		
 	}
@@ -49,5 +58,14 @@
  	.edit_home{
  		height: 100%;
  		width: 100%;
+ 	}
+ 	.mask{
+ 		width: 100%;
+ 		height: 100%;
+ 		background: yellow;
+ 		opacity: 0.1;
+ 		position: absolute;
+ 		top: 0;
+ 		left: 0;
  	}
 </style>
