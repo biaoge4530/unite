@@ -3,11 +3,11 @@
     <div class="banner_nav" slot="name1">
       <div class="nav">
            <ul>
-            <li @click="handleback()"><img src="../../../static/img/wyc/lt.png"/></li>
+            <li @click="handleback()"><img src="../../../../static/img/wyc/lt.png"/></li>
             <li>登录</li>
             <li><router-link class="router" to="/register">注册</router-link></li>
            </ul>
-          <div><router-link to=""><img src="../../../static/img/wyc/head.png"/></router-link></div>
+          <div><router-link to=""><img src="../../../../static/img/wyc/head.png"/></router-link></div>
       </div>
     </div>
 
@@ -18,24 +18,23 @@
       <!-- 表单验证 -->
     <div class="inputNumber" slot="name3">
         <div>
-          <img src="../../../static/img/wyc/phone.png"/>
+          <img src="../../../../static/img/wyc/phone.png"/>
           <input type="text" placeholder="请输入手机号码" maxlength="11"/>
         </div>
         <div class="inputPassword" id="inputPassword">
-          <img src="../../../static/img/wyc/encrypt.png"/>
-          <input :type="pwdType" placeholder="请输入密码" /><!-- v-model="password" -->
-
-          <div class="eye"><!-- 密码显示隐藏图标 -->
-            <img :src="openEye" @click="handleEye()"/>
-
-          </div>
+          <img src="../../../../static/img/wyc/encrypt.png"/>
+          <input :type="pwdType" placeholder="请输入验证码" />
+             <div id="verifyed">
+                <span v-show="show" @click="handleCode()">获取验证码</span>
+                <span v-show="!show" class="count">{{count}}s 后重新获取</span>
+             </div>
         </div>
              <div id="btn">
-                <button @click="headlePush()">登录</button>
+                <button>登录</button>
               </div>
         <div id="Authentication">
-          <li><router-link to="/verify">验证码登录</router-link></li>
-          <li><router-link to="/home">忘记密码</router-link></li>
+          <li><router-link to="/login">密码登录</router-link></li>
+          <li><router-link to="/">忘记密码</router-link></li>
         </div>
 
       <!-- 第三方账号登录 -->
@@ -46,45 +45,49 @@
       </div>
       <div id="ountNumber">
         <ul>
-          <li><router-link to=""><img src="../../../static/img/wyc/wx.png"/></router-link></li>
-          <li><router-link to=""><img src="../../../static/img/wyc/qq.png"/></router-link></li>
-          <li><router-link to=""><img src="../../../static/img/wyc/xl.png"/></router-link></li>
+          <li><router-link to=""><img src="../../../../static/img/wyc/wx.png"/></router-link></li>
+          <li><router-link to=""><img src="../../../../static/img/wyc/qq.png"/></router-link></li>
+          <li><router-link to=""><img src="../../../../static/img/wyc/xl.png"/></router-link></li>
         </ul>
       </div>
     </div>
+
+
 
   </div>
 </template>
 <script>
 import axios from 'axios';
 export default {
-  created(){
 
-      /* this.headlePush(); */
-  },
   data(){
     return{
+      show:true,
+      count:"",
       pwdType:"password",
-      openEye:require("../../../static/img/wyc/show.png"),
     }
 
   },
   methods:{
-/*     headlePush(){
-      axios({
-        url:"/api/mock/5c35a554a7a7577b357b45a8/example/query"
-      })
-      .then((data)=>{
-        console.log(data)
-      })
-    }, */
     handleback(){
       this.$router.back();
     },
-    handleEye(){  //密码显示隐藏
-      this.pwdType = this.pwdType ===  "password" ? "text" :"password";
-      /* this.pwdType = this.pwdType = "password" ? "password" : "text"; */
-      this.openEye = this.openEye === require("../../../static/img/wyc/show.png") ? require("../../../static/img/wyc/indication.png") : require("../../../static/img/wyc/show.png")
+    handleCode(){//获取验证码
+      const timeCount = 10;  //倒计时
+      if(!this.timer){
+        this.count = timeCount;
+        this.show = false;
+        this.timer = setInterval(()=>{
+          if(this.count > 0 && this.count <= timeCount ){
+            this.count--;
+          }else{
+            this.show = true;
+            clearInterval(this.timer);
+            this.timer = null;
+             alert("5d5gg5");
+          }
+        },1000)
+      }
     },
 
 
@@ -101,7 +104,7 @@ export default {
 .banner_nav{
   width: 100%;
   height: 4rem;
-  background:url("../../../static/img/wyc/banner_nav.png") no-repeat;
+  background:url("../../../../static/img/wyc/banner_nav.png") no-repeat;
   background-size: 100%;
 }
 .nav{
@@ -230,4 +233,9 @@ export default {
   justify-content:space-around;
   align-items: center;
 }
+#verifyed>span{
+  color: #3FB59D;
+  margin-left: .80rem;
+}
 </style>
+
