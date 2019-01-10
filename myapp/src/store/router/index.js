@@ -10,15 +10,12 @@ import Edit_home from '@/components/edit_home'
 import WordMdn from '@/components/word-mdn/headphoto'
 import Hot from '@/components/word-mdn/components-head/hot'
 import Notebook from '@/components/word-mdn/components-head/notebook'
-<<<<<<< HEAD
 import Release_dynamics from '@/components/release_dynamics'
 import Select_place from '@/components/select_place'
 import Select_public from '@/components/select_public'
-=======
 import Verify from "@/components/register/components/verify"
 import RestPassword from "@/components/register/components/restPassword"
 import BandPhone from "@/components/register/components/bandPhone"
->>>>>>> wangyancong
 Vue.use(Router)
 
 const router =  new Router({
