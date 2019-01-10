@@ -17,7 +17,7 @@
 
         <div>
             <img src="../../../../static/img/wyc/encrypt_2.png"/>
-            <input type="text" name="phoneyzm" placeholder="请输入验证码"  maxlength="6"/>
+            <input type="text" name="phoneyzm" placeholder="请输入验证码" :value="val" maxlength="6"/>
             <div class="obtainCode">
               <span v-show="show" @click="handleCode()">获取验证码</span>
               <span v-show="!show" class="count">{{count}}s 后重新获取</span>
@@ -46,12 +46,27 @@ import axios from 'axios';
 import "mint-ui/lib/style.css";
 export default {
   name:"reight",
+  created(){
+      /* axios({
+        method:"forget", //修改
+        url:"http://localhost:3000/data",
+        data:{
+          phoneNumber:"15535264455",
+          password:"11111"
+        }
+      })
+      .then((data)=>{
+       console.log(data);
+
+      }) */
+  },
   data(){
     return{
       show:true,
       isReturn:true,
       count:"",
       time:null,
+      val:"",
       phoneNumber:"",
       phonePassword:"",
       phoneyzm:"",
@@ -112,17 +127,56 @@ export default {
         }else{
           flagPwd = true;
         }
-        //提交
-        if(flag && flagPwd === true){
-          Toast({
-                mseeage:"同时",
-                position:"bottom"
-              })
-          //jsonserover
 
+
+       //提交
+        if(flag && flagPwd === true){
+          //jsonserover测试
+          axios({     //查询
+          method:"get",
+          url:"http://localhost:3000/data?phoneNumber="+this.phoneNumber,
+            data:{
+              phoneNumber:this.phoneNumber,
+              phonePassword:this.phonePassword
+            }
+        }).then(data=>{
+          /* console.log(data.data[0].id);
+          console.log(data); */
+          if(data.data.length == 0){
+                Toast({
+                  message:"用户名不存在",
+                  duration: 800,
+              })
+            }else{
+              axios({
+                method:"delete",
+                url:"http://localhost:3000/data/"+data.data[0].id,
+                data:{
+                   phonePassword:this.phonePassword
+                }
+              }).then(data=>{
+                console.log(data)
+                  axios({
+                  method:"post",
+                  url:"http://localhost:3000/data?phoneNumber="+this.phoneNumber,
+                    data:{
+                      phoneNumber:this.phoneNumber,
+                      phonePassword:this.phonePassword
+                    }
+                }).then(data=>{
+                  Toast({
+                    message:"修改成功",
+                    duration: 800,
+                    })
+                    this.$router.push("/login")
+                })
+              })
+            }
+
+        })
         }else{
           Toast({
-                message:"重置失败",
+                message:"重置密码失败",
                 duration: 2000,
                 position:"middle"
               })
@@ -131,7 +185,13 @@ export default {
   }
 }
 </script>
-
+ /* console.log(data.data[0].phoneNumber) */
+          /* if( data.data[0].phoneNumber == this.phoneNumber ){
+                Toast({
+                  message:"用户名存在",
+                  duration: 800,
+            })
+          } */
 <style>
 .register{
   width: 100%;

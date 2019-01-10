@@ -12,7 +12,7 @@
       <div class="registerPhone">
         <div>
             <img src="../../../static/img/wyc/phone_2.png"/>
-            <input type="text" name="phoneNumber" v-model="phoneNumber" maxlength="11" :placeholder="phoneNum"/>
+            <input type="text" name="phoneNumber" v-model="phoneNumber" maxlength="11" :placeholder="phoneNum" @blur="phoneBlur"/>
         </div>
 
         <div>
@@ -27,7 +27,7 @@
         <div>
             <img src="../../../static/img/wyc/yz.png"/>
             <!-- <input type="text" placeholder="请输入密码" v-model="phonePassword"/> -->
-            <input type="text" :placeholder="phonePass" v-model="phonePassword" />
+            <input type="text" :placeholder="phonePass" v-model="phonePassword" minlength="8" maxlength="16" />
         </div>
 
       </div>
@@ -47,18 +47,18 @@ import "mint-ui/lib/style.css";
 export default {
   name:"reight",
   created(){
-      axios({
+       /* axios({
         method:"post",
         url:"http://localhost:3000/data",
         data:{
-          phoneNumber:"wangas",
+          phoneNumber:"15535264455",
           password:"11111"
         }
       })
       .then((data)=>{
        console.log(data);
 
-      })
+      }) */
   },
   data(){
     return{
@@ -70,11 +70,11 @@ export default {
       phonePassword:"",
       phoneyzm:"",
       phoneNum:"请输入手机号",
-      phonePass:"请输入密码"
+      phonePass:"请输入密码",
     }
   },
   methods:{
-    handleCode(){//获取验证码
+    handleCode(){      //获取验证码
       const timeCount = 10;  //倒计时
       if(!this.timer){
         this.count = timeCount;
@@ -91,19 +91,42 @@ export default {
         },1000)
       }
     },
-    //点击判断表单验证
+
     handleGet(){
       this.$router.back();
     },
+    phoneBlur(){  //手机号失去焦点事件
+        let  flag =  null;
+       let reg = /^1(3|5|8|6|7|4)\d{9}$/;
+        if(this.phoneNumber === ""){
+          Toast({
+            message:"手机号不能为空",
+            duration: 800,
+          })
+          this.isReturn=true,
+          flag = false;
+        }else if(!reg.test(this.phoneNumber)){
+          Toast({
+            message:"请输入正确的手机号",
+            duration: 800,
+          })
+        }else{
+          flag = true;
+        }
+    },
+
+    //点击判断表单验证
     handRegister(){
        let  flag =  null;
        let reg = /^1(3|5|8|6|7|4)\d{9}$/;
         if(this.phoneNumber === ""){
-          this.phoneNum = "手机号不能为空";
+          Toast({
+            message:"手机号不能为空",
+            duration: 800,
+          })
           this.isReturn=true,
           flag = false;
         }else if(!reg.test(this.phoneNumber)){
-            this.phoneNum = "手机号输入有误";
              this. isReturn=true;
              this.phoneNumber="";
              flag = false;
@@ -115,47 +138,62 @@ export default {
         let flagPwd = null;
         let regPwd = /^\w{6,}$/;
         if(this.phonePassword === ""){
-          this.phonePass="密码不能为空";
+          Toast({
+            message:"密码不能为空",
+            duration: 800,
+          })
            this.isReturn=true;
            flagPwd = false;
         }else if(!regPwd.test(this.phonePassword)){
-          this.phonePass = "密码错误";
+          Toast({
+            message:"密码错误",
+            duration: 800,
+          })
           this. isReturn=true;
           this.phonePassword = "";
           flagPwd = false;
         }else{
           flagPwd = true;
         }
-        //提交
+
+         //提交
         if(flag && flagPwd === true){
-          Toast({
-                message:"注册成功",
-                position:"middle"
-              })
-          //jsonserover
-         /*  axios({
-            method:"get",
-            url:"http://localhost:3000/data?phoneNumber="+this.phoneNumber
-          }).then(data=>{
-              if(data.length == 0){
-                alert(1);
-                axios({
-                  methods:"get",
-                  url:"http://localhost:3000/data",
-                  data:{
-                    phoneNumber:this.phoneNumber,
-                    phoneNumber:this.phoneNumber
+          //jsonserover测试
+              axios({     //查询
+                  method:"get",
+                  url:"http://localhost:3000/data?phoneNumber="+this.phoneNumber,
+                    data:{
+                      phoneNumber:this.phoneNumber,
+                      phonePassword:this.phonePassword
+                    }
+                }).then(data=>{
+                  console.log(data.data.length)
+                    if( data.data.length == 0 ){
+                      axios({
+                      method:"post",
+                      url:"http://localhost:3000/data?phoneNumber="+this.phoneNumber,
+                        data:{
+                          phoneNumber:this.phoneNumber,
+                          phonePassword:this.phonePassword
+                        }
+                    }).then( data=>{
+                          Toast({
+                            message:"注册成功",
+                            duration: 800,
+                          })
+                          this.$router.push("/login")
+                    })
+                  }else{
+                    Toast({
+                            message:"用户名已存在",
+                          })
+
                   }
                 })
-                .then(data=>{
-                    console.log(data)
-                })
-              }
-          }) */
         }else{
           Toast({
                 message:"注册失败",
-                duration: 2000,
+                duration: 1000,
                 position:"middle"
               })
         }
@@ -163,7 +201,20 @@ export default {
   }
 }
 </script>
-
+/* if(data.value == ""){
+                alert();
+                axios({
+                  methods:"post",
+                  url:"http://localhost:3000/data",
+                  data:{
+                    phoneNumber:this.phoneNumber,
+                    phonePassword:this.phonePassword
+                  }
+                })
+                .then(data=>{
+                    console.log(data)
+                })
+              } */
 <style>
 .register{
   width: 100%;
@@ -242,5 +293,8 @@ export default {
 }
 .mint-toast-text{
   font-size: .32rem;
+}
+.registerPhone>div:nth-child(3) input{
+  width: 100%;
 }
 </style>
