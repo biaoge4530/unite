@@ -1,6 +1,6 @@
 <template>
     <div class="like">
-        
+        like
     </div>
 </template>
 <script>
