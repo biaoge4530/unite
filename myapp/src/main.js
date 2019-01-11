@@ -19,8 +19,6 @@ Vue.use(MintUI);
 // import oBserver from ".././observer";
 // Vue.prototype.Observer = oBserver;
 
-
-Vue.use(Mint);
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

@@ -18,6 +18,12 @@ import RestPassword from "@/components/register/components/restPassword"
 import BandPhone from "@/components/register/components/bandPhone"
 import Word_search from '@/components/word_search'
 import Word_notice from '@/components/word_notice'
+import Verify from "@/components/register/components/verify"
+import RestPassword from "@/components/register/components/restPassword"
+import BandPhone from "@/components/register/components/bandPhone"
+import Release_dynamics from '@/components/release_dynamics'
+import Select_place from '@/components/select_place'
+import Select_public from '@/components/select_public'
 Vue.use(Router)
 
 const router =  new Router({

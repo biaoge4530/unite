@@ -19,11 +19,11 @@
     <div class="inputNumber" slot="name3">
         <div>
           <img src="../../../static/img/wyc/phone.png"/>
-          <input type="text" placeholder="请输入手机号码" maxlength="11"/>
+          <input type="text" placeholder="请输入手机号码" v-model="phoneNumber" maxlength="11"/>
         </div>
         <div class="inputPassword" id="inputPassword">
           <img src="../../../static/img/wyc/encrypt.png"/>
-          <input :type="pwdType" placeholder="请输入密码" /><!-- v-model="password" -->
+          <input :type="pwdType" placeholder="请输入密码" v-model="phonePassword" /><!-- v-model="password" -->
 
           <div class="eye"><!-- 密码显示隐藏图标 -->
             <img :src="openEye" @click="handleEye()"/>
@@ -35,7 +35,7 @@
               </div>
         <div id="Authentication">
           <li><router-link to="/verify">验证码登录</router-link></li>
-          <li><router-link to="/home">忘记密码</router-link></li>
+          <li><router-link to="/restPassword">忘记密码</router-link></li>
         </div>
 
       <!-- 第三方账号登录 -->
@@ -56,28 +56,70 @@
   </div>
 </template>
 <script>
+import Vue from "vue";
+import {Toast} from "mint-ui";
 import axios from 'axios';
+import "mint-ui/lib/style.css";
+
 export default {
   created(){
+    /* axios({
+        method:"get", //查询
+        url:"http://localhost:3000/data",
+        data:{
+          phoneNumber:"15535264455",
+          password:"11111"
+        }
+      })
+      .then((data)=>{
+       console.log(data);
 
-      /* this.headlePush(); */
+      }) */
+
+      /*  this.headlePush(); */
   },
   data(){
     return{
+      phoneNumber:"",
+      phonePassword:"",
       pwdType:"password",
       openEye:require("../../../static/img/wyc/show.png"),
     }
 
   },
   methods:{
-/*     headlePush(){
-      axios({
-        url:"/api/mock/5c35a554a7a7577b357b45a8/example/query"
-      })
-      .then((data)=>{
-        console.log(data)
-      })
-    }, */
+      headlePush(){
+        axios({     //查询
+          method:"get",
+          url:"http://localhost:3000/data?phoneNumber="+this.phoneNumber,
+            data:{
+              phoneNumber:this.phoneNumber,
+              phonePassword:this.phonePassword
+            }
+        }).then(data=>{
+          /* console.log(data.data[0].phoneNumber) */
+            if(data.data.length == 0){
+                Toast({
+                  message:"用户名不存在",
+                  duration: 800,
+              })
+            }else if(this.phonePassword !== data.data[0].phonePassword){
+              Toast({
+                message:"密码错误",
+                duration: 800,
+              })
+            }else{
+                Toast({
+                  message:"登录成功",
+                  duration: 800,
+
+              })
+              this.phonePassword=""
+            }
+        })
+      },
+
+
     handleback(){
       this.$router.back();
     },

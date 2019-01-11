@@ -11,7 +11,7 @@
       </ul>
       <div class="wrapper" ref="homeWrapper">
         <ul class="bgs content">
-          <li @click="addbgImg(index)" v-for="(item,index) in bgList">
+          <li @click="addbgImg(index)" v-for="(item,index) in bgList" :key="index">
             <img :src="item | srcs" alt>
           </li>
         </ul>
