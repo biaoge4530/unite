@@ -13,7 +13,6 @@ import "../node_modules/swiper/dist/css/swiper.min.css";
 import "./common/js/flexble";
 
 
-Vue.use(Mint);
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
@@ -21,7 +20,6 @@ new Vue({
   el: '#app',
   router,
   store,
-  BScroll,
   components: { App },
   template: '<App/>'
 })

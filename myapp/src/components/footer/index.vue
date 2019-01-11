@@ -2,19 +2,19 @@
     <div id="footer">
         <ul>
             <li>
-                <router-link :to="{name:word}">
-                	<div class="word"><img src="static/img/home/wdl_sj@2x.png" alt="" /></div>
+                <router-link :to='{name:"word"}'>
+                	<div class="word"><img src="static/img/word/wdl_sj@2x.png" alt="" /></div>
                     <span>世界</span>
                 </router-link>
             </li>
             <li>
-                <router-link :to="{name:home}">
-                    <div><img src="../../../static/img/home/wdl_bj@2x.png" alt="" /></div>
+                <router-link :to='{name:"edit_btn"}'> 
+                    <div><img src="static/img/word/wdl_bj@2x.png" alt="" /></div>
                 </router-link>
             </li>
             <li>
-                <router-link :to="{name:my}">
-                    <div class="my"><img src="../../../static/img/home/wdl_wode@2x.png" alt="" /></div>
+                <router-link :to='{name:"my"}'>
+                    <div class="my"><img src="static/img/word/wdl_wode@2x.png" alt="" /></div>
                     <span>我的</span>
                 </router-link>
             </li>
@@ -26,14 +26,14 @@
 export default {
     data(){
         return {
-            
+
         }
     }
 }
 </script>
 
 <style scoped lang="scss" >
-   
+
     #footer{
         width: 100%;
         height: .99rem;
@@ -41,7 +41,7 @@ export default {
         left: 0;
         bottom:0;
 		background:rgba(255,255,255,1);
-		border:1px solid rgba(225, 225, 225, 1);        
+		border:1px solid rgba(225, 225, 225, 1);
 		 ul{
 		    display: flex;
 		    justify-content: space-between;
@@ -56,9 +56,7 @@ export default {
 					justify-content: center;
 				}
 		    };
-		    .word{
-		    	
-		    }
+
 		};
     }
 </style>
