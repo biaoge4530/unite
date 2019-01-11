@@ -48,25 +48,26 @@ export default {
 // 详情内容
 .top-nav {
   width: 100%;
-  height: 0.76rem;
+  height: 0.68rem;
+  margin:.25rem 0 .6rem 0;
   display: flex;
-  font-size: 0.27rem;
+  font-size: 0.28rem ;
   font-weight: bold;
   color: #3eb59f;
   .top-nav-hot {
     width: 50%;
-    height: 0.76rem;
-    line-height:.76rem; 
+    height: 0.68rem;
+    line-height:.66rem; 
     text-align:center; 
   }
   .top-nav-notebook {
     width: 50%;
-    height: 0.76rem;
-    line-height:.76rem; 
+    height: 0.68rem;
+    line-height:.66rem; 
     text-align:center; 
   }
   .active{
-    background: url('../../../../static/img/word-mdn/sznr_xjx@3x.png') no-repeat bottom;                 
+    background: url('../../../../static/img/word-mdn/sznr_xjx.png') no-repeat bottom;                 
   }
 }
 </style>

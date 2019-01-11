@@ -1,5 +1,5 @@
 <template>
-    <div class="main">
+    <div class="like">
         
     </div>
 </template>
@@ -8,6 +8,6 @@ export default {
     
 }
 </script>
-<style lang="" scoped>
-
+<style lang="scss" scoped>
+    
 </style>
