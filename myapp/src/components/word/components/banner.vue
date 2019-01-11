@@ -3,7 +3,7 @@
 		<div class="swiper-container banner-container" ref="banner">
 			<div class="swiper-wrapper">
 				<!-- <div class="swiper-slide" > -->
-				<div class="swiper-slide" v-for="(item,index) in banners" >
+				<div class="swiper-slide" v-for="(item,index) in banners" :key="index">
 					<img :src="item.url" alt="">
 					<img src="http://h.hiphotos.baidu.com/image/h%3D300/sign=f2db86688ccb39dbdec06156e01709a7/2f738bd4b31c87018e9450642a7f9e2f0708ff16.jpg">
 				</div>
