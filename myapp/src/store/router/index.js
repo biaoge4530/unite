@@ -13,6 +13,17 @@ import Notebook from '@/components/word-mdn/components-head/notebook'
 import Release_dynamics from '@/components/release_dynamics'
 import Select_place from '@/components/select_place'
 import Select_public from '@/components/select_public'
+import Verify from "@/components/register/components/verify"
+import RestPassword from "@/components/register/components/restPassword"
+import BandPhone from "@/components/register/components/bandPhone"
+import Word_search from '@/components/word_search'
+import Word_notice from '@/components/word_notice'
+import Verify from "@/components/register/components/verify"
+import RestPassword from "@/components/register/components/restPassword"
+import BandPhone from "@/components/register/components/bandPhone"
+import Release_dynamics from '@/components/release_dynamics'
+import Select_place from '@/components/select_place'
+import Select_public from '@/components/select_public'
 Vue.use(Router)
 
 const router =  new Router({
@@ -30,9 +41,45 @@ const router =  new Router({
       }
     },
     {
+      path:"/word/word_search",
+      name:"word_search",
+      component:Word_search,
+      meta:{
+        showFooter:false,
+      }
+    },
+    {
+      path:"/word/word_notice",
+      name:"word_notice",
+      component:Word_notice,
+      meta:{
+        showFooter:false,
+      }
+    },
+    {
+      path:"/word/word_search",
+      name:"word_search",
+      component:Word_search,
+      meta:{
+        showFooter:false,
+      }
+    },
+    {
       path: '/word-mdn',
       name: 'word-mdn',
       component: WordMdn,
+      children:[
+        {
+          path:'/hot',
+          name:'hot',
+          component:Hot
+        },
+        {
+          path:'notebook',
+          name:'notebook',
+          component:Notebook
+        }
+      ]
     },
     {
       path: '/my',
@@ -98,9 +145,34 @@ const router =  new Router({
       name: 'login',
       component: Login,
       meta:{
-        //tab栏隐藏
         showFooter: false,
-        //路由守卫
+        requireAuth:true
+      }
+    },
+    {
+      path: '/verify',
+      name: 'verify',
+      component: Verify,
+      meta:{
+        showFooter: false,
+        requireAuth:true
+      }
+    },
+    {
+      path: '/restPassword',
+      name: 'restPassword',
+      component: RestPassword,
+      meta:{
+        showFooter: false,
+        requireAuth:true
+      }
+    },
+    {
+      path: '/bandPhone',
+      name: 'bandPhone',
+      component: BandPhone,
+      meta:{
+        showFooter: false,
         requireAuth:true
       }
     },
