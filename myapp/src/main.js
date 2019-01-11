@@ -12,15 +12,12 @@ import "./common/css/icon-mdn/iconfont.css";
 import "../node_modules/swiper/dist/css/swiper.min.css";
 import "./common/js/flexble";
 
-<<<<<<< HEAD
-=======
 import MintUI from "mint-ui";
 import "../node_modules/mint-ui/lib/style.css";
 Vue.use(MintUI);
 
 // import oBserver from ".././observer";
 // Vue.prototype.Observer = oBserver;
->>>>>>> 7c8a58656673d8401d45f5b713e1ca48e70b726e
 
 Vue.config.productionTip = false
 
