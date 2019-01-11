@@ -1,8 +1,11 @@
 <template>
 	<div class="tab">
-		<div class="search">
-			<img src="../../../../static/img/word/icon_sy_ss@2x.png"/>
-		</div>
+		<router-link to="/word/word_search">
+			<div class="search">
+				<img src="../../../../static/img/word/icon_sy_ss@2x.png"/>
+			</div>
+		</router-link>
+		
 		<ul class="tabs">
 			<li v-for="(item,index) in tabs">
 				<router-link :to="{name:item.name}">
@@ -10,10 +13,13 @@
 				</router-link>
 			</li>
 		</ul>
-		<div class="notice">
-			<img src="../../../../static/img/word/icon_sy_tz@2x.png"/>
-		</div>
-		<router-view></router-view>
+		<router-link to="/word/word_notice">
+			<div class="notice">
+				<img src="../../../../static/img/word/icon_sy_tz@2x.png"/>
+			</div>
+		</router-link>
+		
+		<router-view />
 	</div>
 </template>
 
@@ -38,9 +44,7 @@
 			}
 		},
 		methods:{
-			handleTabs(){
-
-			}
+			
 		}
 	}
 </script>
