@@ -4,6 +4,8 @@ import Home from '@/components/home'
 import Word from '@/components/word'
 import My from '@/components/my'
 import WordMdn from '@/components/word-mdn/headphoto'
+import Fans from '@/components/word-mdn/components-head/fans'
+import Like from '@/components/word-mdn/components-head/like'
 Vue.use(Router)
 
 export default new Router({
@@ -22,6 +24,19 @@ export default new Router({
       path: '/word-mdn',
       name: 'word-mdn',
       component: WordMdn,
+      children:
+        [
+          {
+            path: '/like',
+            name: 'like',
+            component: Like
+          },
+          {
+            path: '/fans',
+            name: 'fans',
+            component: Fans
+          }
+        ]
     },
     {
       path: '/my',

@@ -21,6 +21,7 @@ new Vue({
   el: '#app',
   router,
   store,
+  BScroll,
   components: { App },
   template: '<App/>'
 })
