@@ -8,6 +8,8 @@ import Edit_btn from '@/components/edit_btn'
 import Register from '@/components/register'
 import Edit_home from '@/components/edit_home'
 import WordMdn from '@/components/word-mdn/headphoto'
+import Fans from '@/components/word-mdn/components-head/fans'
+import Like from '@/components/word-mdn/components-head/like'
 import Hot from '@/components/word-mdn/components-head/hot'
 import Notebook from '@/components/word-mdn/components-head/notebook'
 import Release_dynamics from '@/components/release_dynamics'
@@ -64,18 +66,19 @@ const router =  new Router({
       path: '/word-mdn',
       name: 'word-mdn',
       component: WordMdn,
-      children:[
-        {
-          path:'/hot',
-          name:'hot',
-          component:Hot
-        },
-        {
-          path:'notebook',
-          name:'notebook',
-          component:Notebook
-        }
-      ]
+      children:
+        [
+          {
+            path: '/like',
+            name: 'like',
+            component: Like
+          },
+          {
+            path: '/fans',
+            name: 'fans',
+            component: Fans
+          }
+        ]
     },
     {
       path: '/my',
