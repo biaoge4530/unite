@@ -7,7 +7,7 @@
             <li>登录</li>
             <li><router-link class="router" to="/register">注册</router-link></li>
            </ul>
-          <div><router-link to=""><img src="../../../static/img/wyc/head.png"/></router-link></div>
+          <div id="headPhoto"><router-link to=""><img src="../../../static/img/wyc/head.png"/></router-link></div>
       </div>
     </div>
 
@@ -26,7 +26,7 @@
           <input :type="pwdType" placeholder="请输入密码" v-model="phonePassword" /><!-- v-model="password" -->
 
           <div class="eye"><!-- 密码显示隐藏图标 -->
-            <img :src="openEye" @click="handleEye()"/>
+            <img :src="openEye" @click="handleEye()" class="openEye"/>
 
           </div>
         </div>
@@ -101,7 +101,7 @@ export default {
             if(data.data.length == 0){
                 Toast({
                   message:"用户名不存在",
-                  duration: 800,
+                  duration: 800000,
               })
             }else if(this.phonePassword !== data.data[0].phonePassword){
               Toast({
@@ -159,10 +159,17 @@ export default {
   align-items: center;
   padding: 0 .23rem;
 }
+.nav>ul>li>img:nth-child(1){
+  width: .19rem;
+  height: .30rem;
+}
 .nav>ul>li{
-  font-size:34px;
+  font-size:.34rem;
   font-family:PingFang-SC-Regular;
   color:#5D5D5D;
+}
+.nav>ul>li:nth-child(2){
+  margin-left: .30rem
 }
 .router{
   font-size: .32rem;
@@ -176,7 +183,11 @@ export default {
   width: 100%;
   height: 100%;
   margin-left: 37%;
-  margin-top: 25%;
+  margin-top: 28%;
+}
+#headPhoto img{
+  width: 1.8rem;
+  height: 1.8rem;
 }
 .slogan{
   margin-top: .94rem;
@@ -211,6 +222,10 @@ export default {
   height: .40rem;
   border: none;
   outline: medium;
+}
+.openEye{
+  width: .3rem;
+  height: .2rem;
 }
 #inputPassword{
     width: 100%;
