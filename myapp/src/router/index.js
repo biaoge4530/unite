@@ -4,18 +4,13 @@ import Home from '@/components/home'
 import Word from '@/components/word'
 import My from '@/components/my'
 import Login from '@/components/login'
+/* import NotLogin from '../components/notLogin' */
 import Edit_btn from '@/components/edit_btn'
 import Register from '@/components/register'
 import Edit_home from '@/components/edit_home'
 import WordMdn from '@/components/word-mdn/headphoto'
 import Hot from '@/components/word-mdn/components-head/hot'
 import Notebook from '@/components/word-mdn/components-head/notebook'
-import Release_dynamics from '@/components/release_dynamics'
-import Select_place from '@/components/select_place'
-import Select_public from '@/components/select_public'
-import Verify from "@/components/register/components/verify"
-import RestPassword from "@/components/register/components/restPassword"
-import BandPhone from "@/components/register/components/bandPhone"
 import Word_search from '@/components/word_search'
 import Word_notice from '@/components/word_notice'
 import Verify from "@/components/register/components/verify"
@@ -149,6 +144,15 @@ const router =  new Router({
         requireAuth:true
       }
     },
+    /* {
+      path: '/notLogin',
+      name: 'notLogin',
+      component: NotLogin,
+      meta:{
+        showFooter: true,
+        requireAuth:true
+      }
+    }, */
     {
       path: '/verify',
       name: 'verify',
@@ -178,6 +182,27 @@ const router =  new Router({
     },
   ]
 })
+
+//注册全局钩子函数用来拦截导航
+/* router.beforeEach( (to,from,next)=>{
+  const token = store.state.token
+  if(to.meta.requireAuth){   //判断该路由是否需要登录权限
+    if(token){ //通过vuex state获取当前的token是否存在
+      next()
+    }else{
+      //该页面需要登录
+      next({
+        path:'/login'
+        //query:{redirect:to.fullPath} //将跳转的路由path作为参数，登录成功后跳转到该路由
+      })
+    }
+  }else{
+    next()
+  }
+} ) */
+
+
+
 
 
 export default router;

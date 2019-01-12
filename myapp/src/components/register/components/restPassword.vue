@@ -12,12 +12,12 @@
       <div class="registerPhone">
         <div>
             <img src="../../../../static/img/wyc/phone_2.png"/>
-            <input type="text" name="phoneNumber" v-model="phoneNumber" maxlength="11" :placeholder="phoneNum"/>
+            <input type="text" @blur="phoneBlur" v-model="phoneNumber" maxlength="11" placeholder="请输入手机号"/>
         </div>
 
         <div>
             <img src="../../../../static/img/wyc/encrypt_2.png"/>
-            <input type="text" name="phoneyzm" placeholder="请输入验证码" :value="val" maxlength="6"/>
+            <input type="text"  placeholder="请输入验证码" :value="val" maxlength="6"/>
             <div class="obtainCode">
               <span v-show="show" @click="handleCode()">获取验证码</span>
               <span v-show="!show" class="count">{{count}}s 后重新获取</span>
@@ -27,7 +27,7 @@
         <div>
             <img src="../../../../static/img/wyc/yz.png"/>
             <!-- <input type="text" placeholder="请输入密码" v-model="phonePassword"/> -->
-            <input type="text" :placeholder="phonePass" v-model="phonePassword" />
+            <input type="text" @blur="passwordeBlur" placeholder="请输入密码" v-model="phonePassword" />
         </div>
 
       </div>
@@ -70,11 +70,10 @@ export default {
       phoneNumber:"",
       phonePassword:"",
       phoneyzm:"",
-      phoneNum:"请输入手机号",
-      phonePass:"请输入密码"
 }
   },
   methods:{
+
     handleCode(){//获取验证码
       const timeCount = 10;  //倒计时
       if(!this.timer){
@@ -92,35 +91,48 @@ export default {
         },1000)
       }
     },
+
     //点击判断表单验证
     handleGet(){
       this.$router.back();
     },
-    handRegister(){
-       let  flag =  null;
+    phoneBlur(){
+        let  flag =  null;
        let reg = /^1(3|5|8|6|7|4)\d{9}$/;
         if(this.phoneNumber === ""){
-          this.phoneNum = "手机号不能为空";
+          Toast({
+              message:"手机号不能为空",
+              duration: 800,
+            })
           this.isReturn=true,
           flag = false;
         }else if(!reg.test(this.phoneNumber)){
-            this.phoneNum = "手机号输入有误";
+          Toast({
+              message:"手机号输入有误",
+              duration: 800,
+            })
              this. isReturn=true;
-             this.phoneNumber="";
              flag = false;
         }else{
           flag = true;
         }
-
+    },
+    passwordeBlur(){
         //验证密码
         let flagPwd = null;
         let regPwd = /^\w{6,}$/;
         if(this.phonePassword === ""){
-          this.phonePass="密码不能为空";
+          Toast({
+              message:"密码不能为空",
+              duration: 800,
+            })
            this.isReturn=true;
            flagPwd = false;
         }else if(!regPwd.test(this.phonePassword)){
-          this.phonePass = "密码错误";
+          Toast({
+              message:"密码错误",
+              duration: 800,
+            })
           this. isReturn=true;
           this.phonePassword = "";
           flagPwd = false;
@@ -128,9 +140,12 @@ export default {
           flagPwd = true;
         }
 
+    },
 
+    handRegister(){
        //提交
-        if(flag && flagPwd === true){
+       let flag = null;
+        if(flag === true){
           //jsonserover测试
           axios({     //查询
           method:"get",
@@ -149,7 +164,7 @@ export default {
               })
             }else{
               axios({
-                method:"delete",
+                method:"delete", 
                 url:"http://localhost:3000/data/"+data.data[0].id,
                 data:{
                    phonePassword:this.phonePassword
@@ -172,7 +187,6 @@ export default {
                 })
               })
             }
-
         })
         }else{
           Toast({
@@ -185,13 +199,6 @@ export default {
   }
 }
 </script>
- /* console.log(data.data[0].phoneNumber) */
-          /* if( data.data[0].phoneNumber == this.phoneNumber ){
-                Toast({
-                  message:"用户名存在",
-                  duration: 800,
-            })
-          } */
 <style>
 .register{
   width: 100%;

@@ -13,8 +13,8 @@
 </template>
 
 <script>
-	import Swiper from "swiper";
-	import Vuex from "vuex";
+import Swiper from "swiper";
+import Vuex from "vuex";
 	export default{
 		computed:{
 			...Vuex.mapState({
