@@ -18,6 +18,8 @@ import RestPassword from "@/components/register/components/restPassword"
 import BandPhone from "@/components/register/components/bandPhone"
 import Word_search from '@/components/word_search'
 import Word_notice from '@/components/word_notice'
+import Collect from '@/components/collect'
+import New from '@/components/collect/new'
 Vue.use(Router)
 
 const router =  new Router({
@@ -165,6 +167,24 @@ const router =  new Router({
       path: '/bandPhone',
       name: 'bandPhone',
       component: BandPhone,
+      meta:{
+        showFooter: false,
+        requireAuth:true
+      }
+    },
+    {
+      path: '/collect',
+      name: 'collect',
+      component: Collect,
+      meta:{
+        showFooter: false,
+        requireAuth:true
+      }
+    },
+    {
+      path: '/new',
+      name: 'new',
+      component: New,
       meta:{
         showFooter: false,
         requireAuth:true
