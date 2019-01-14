@@ -8,15 +8,20 @@ import Edit_btn from '@/components/edit_btn'
 import Register from '@/components/register'
 import Edit_home from '@/components/edit_home'
 import WordMdn from '@/components/word-mdn/headphoto'
-<<<<<<< HEAD
+import Fans from '@/components/word-mdn/components-head/mdn-fans'
+import Like from '@/components/word-mdn/components-head/like'
 import Hot from '@/components/word-mdn/components-head/hot'
 import Notebook from '@/components/word-mdn/components-head/notebook'
-=======
-import Fans from '@/components/word-mdn/components-head/mdn-fans'
+import Verify from "@/components/register/components/verify"
+import RestPassword from "@/components/register/components/restPassword"
+import BandPhone from "@/components/register/components/bandPhone"
+import Word_search from '@/components/word_search'
+import Word_notice from '@/components/word_notice'
+import Collect from '@/components/collect'
+import New from '@/components/collect/new'
 import Attention from '@/components/word-mdn/components-head/mdn-attention'
 import shared from '@/components/word-mdn/components-head/shared'
 import mdn_notebookdown from '@/components/word-mdn/components-head/notebookdown'
->>>>>>> mdn
 import Release_dynamics from '@/components/release_dynamics'
 import Select_place from '@/components/select_place'
 import Select_public from '@/components/select_public'
@@ -26,6 +31,8 @@ import ClearCache from "../components/my/settings/clearCache"
 import MaterialSubmitted from "../components/my/settings/materialSubmitted"
 import AboutUs from "../components/my/settings/aboutUs"
 import Settings from "../components/my/settings"
+
+
 Vue.use(Router)
 
 const router = new Router({
@@ -42,19 +49,7 @@ const router = new Router({
         showFooter: true
       }
     },
-    {
-<<<<<<< HEAD
-      path: '/word-mdn',
-      name: 'word-mdn',
-      component: WordMdn,
-=======
-      path: "/word/word_search",
-      name: "word_search",
-      component: Word_search,
-      meta: {
-        showFooter: false,
-      }
-    },
+    
     {
       path: "/word/word_notice",
       name: "word_notice",
@@ -95,7 +90,6 @@ const router = new Router({
       path: '/shared',
       name: 'shared',
       component: shared
->>>>>>> mdn
     },
     {
       path: '/my',
@@ -160,13 +154,6 @@ const router = new Router({
       path: '/login',
       name: 'login',
       component: Login,
-<<<<<<< HEAD
-      meta:{
-        //tab栏隐藏
-        showFooter: false,
-        //路由守卫
-        requireAuth:true
-=======
       meta: {
         showFooter: false,
         requireAuth: true
@@ -197,7 +184,6 @@ const router = new Router({
       meta: {
         showFooter: false,
         requireAuth: true
->>>>>>> mdn
       }
     },
     {
