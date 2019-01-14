@@ -7,10 +7,10 @@
 		</router-link>
 		
 		<ul class="tabs">
-			<li v-for="(item,index) in tabs">
-				<router-link :to="{name:item.name}">
-					{{item.title}}
-				</router-link>
+			<li v-for="(item,index) in tabs"
+				@click="handleToggle(index)"
+				:class="activeIndex == index?'active':''">
+					<span>{{item}}</span>
 			</li>
 		</ul>
 		<router-link to="/word/word_notice">
@@ -18,7 +18,6 @@
 				<img src="../../../../static/img/word/icon_sy_tz@2x.png"/>
 			</div>
 		</router-link>
-		
 		<router-view />
 	</div>
 </template>
@@ -27,24 +26,15 @@
 	export default{
 		data(){
 			return {
-				tabs:[
-					{
-						name:"community",
-						title:"社区"
-					},
-					{
-						name:"handAccount",
-						title:"手账"
-					},
-					{
-						name:"follow",
-						title:"关注"
-					}
-				]
+				tabs:["社区","关注"],
+				activeIndex:0
 			}
 		},
 		methods:{
-			
+			handleToggle(index){
+				this.activeIndex=index;
+				this.$emit("handle",index);
+			}
 		}
 	}
 </script>
@@ -81,9 +71,8 @@
 			display: flex;
 			justify-content: space-around;
 			align-items: center;
-			width: 100%;
+			width: 40%;
 			height: 100%;
-			flex:1;
 			li{
 				width: 100%;
 				height: 100%;
@@ -93,23 +82,19 @@
 				align-items: center;
 				font-family: PingFang-SC-Regular;
 				color: #5D5D5D;
-				.router-link-active{
-					position: relative;
-					display: block;
-					width: 100%;
-					height: 100%;
-					text-align: center;
-					line-height: .92rem;
-					color: #40B59E;
-					&::after{
-						content:"";
-						display: inline-block;
-						position: absolute;
-						height: .05rem;
-						background: #40B59E;
-						left: 0;
-						bottom: 0;
-					}
+				position: relative;
+			}
+			.active{
+				color: #40B59E;
+				&::after{
+					content: "";
+					position: absolute;
+					width: .8rem;
+					height: .05rem;
+					background: #40B59E;
+					bottom: 0;
+					left: 50%;
+					margin-left: -0.4rem;
 				}
 			}
 		}
