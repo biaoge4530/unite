@@ -4,15 +4,14 @@
     <mt-header class="top-top" fixed>
       <!-- 返回 -->
         <router-link to="/" slot="left">
-          <mt-button icon="back" class="iconfont">返回</mt-button>
+          <mt-button class="iconfont"><img src="static/img/word-mdn/fanhui.png"></mt-button>
           <!-- <mt-button >返回</mt-button> -->
         </router-link>       
-       <mt-button slot="right" class="follow" @click="">关注</mt-button>
+       <mt-button slot="right" class="follow" @click="handleAtte()">{{nav}}</mt-button>
          <!-- 举报 -->
          <mt-img slot="right" class="ReportSize" @click="handleReport()" >
            <i class="iconfont">&#xe612;</i>
          </mt-img>
-
       </mt-header>
     </mt-header>
     <!-- 头部的左半部分 -->
@@ -25,12 +24,11 @@
       <p class="top-right-personalized_signature">逮到一只佛系无签名手账</p>
       <ul class="top-right-popularity">
         <li>
-           <router-link :to="'word-mdn/fans'">粉丝
+           <router-link :to="'/mdn-fans'">粉丝
            <span class="top-right-fans">111</span></router-link>
         </li>
-        <li>
-          <router-link :to="'word-mdn/like'">喜欢
-          <span class="top-right-like">111</span></router-link>
+        <li @click="handleLike()">喜欢         
+          <span class="top-right-like">111</span>
         </li>
       </ul>
     </div>
@@ -46,21 +44,23 @@
   
 </template>
 <script>
-import { Header , Actionsheet,MessageBox  } from "mint-ui";
+import { Header , Actionsheet,MessageBox ,Popup  } from "mint-ui";
 export default {
   data(){
     return{
       sheetVisible:false,
-      popupVisible:false
+      flag:true,
+      nav:"关注"
     }
   },
   components: {
     "header-com": Header,
     "Actionsheet-com":Actionsheet,
-    "MessageBox-com":MessageBox
+    "MessageBox-com":MessageBox,
+    "Popup-com":Popup
   },
   methods:{
-    handleReport(name){
+    handleReport(){
       this.sheetVisible = true;
     },
      handleFollow(){
@@ -69,9 +69,19 @@ export default {
         message: '<input type="radio" name="jb"/>广告垃圾<input type="radio" name="jb"/>广告垃圾<br><input type="radio" name="jb"/>广告垃圾<input type="radio" name="jb"/>广告垃圾<br><input type="radio" name="jb"/>广告垃圾',
         showCancelButton: true
        });
-     }
-  }
+     },
+     handleLike(){
+      MessageBox({
+        title: 'hellow',
+        message: '有<span>1232</span>个人喜欢你',
+        showCancelButton: false
+      });
+    },
+    handleAtte(){
+      this.nav=="关注"?this.nav="已关注":this.nav="关注"
+    },
  
+  }
 }
 </script>
 <style lang="scss" scoped>
@@ -83,19 +93,23 @@ export default {
 .top {
   width: 100%;
   height: 4.16rem;
-  background: url('../../../../static/img/word-mdn/beijing.png');
+  background: url('../../../../static/img/word-mdn/beijing.png') no-repeat;
 // 头部
   .top-top {
     width: 90%;
     margin: 0 auto;
-    height: .88rem;
-    margin-top: 0.4rem;
+    height: 1rem;
     background:#d2f5ee;
-    font-size: .25rem;
+    padding-top:.55rem;
+    font-size: .30rem;
     color: #000;
     //更多 三个点
   .iconfont{
       font-size: .25rem;
+      &>img{
+        width: .28rem;
+        height: .17rem;
+      }
     }
   .follow{
       color: #3eb69d;
@@ -105,7 +119,7 @@ export default {
   }
 //  左边头像
   .top-left {
-    height: 3.71rem;
+    height:4.16rem;
     width: 2.6rem;
     float: left;
     position: relative;
@@ -115,8 +129,9 @@ export default {
       background: #ddd;
       border-radius: 50%;
       position: absolute;
+      top:1.89rem;
       left: 0.46rem;
-      bottom: 0.1rem;
+     
     }
   }
   //
@@ -129,39 +144,48 @@ export default {
   .top-right-scree_name{
       font-size: .34rem;
       position: absolute;
-      top: 2rem;
-      left: 3rem;
+      top: 2.06rem;
+      left: 2.63rem;
       font-weight: bold
   }
     //个签
     .top-right-personalized_signature {
       position: absolute;
-      top: 2.7rem;
-      left: 3rem;
+      top: 2.81rem;
+      left: 2.63rem;
       color: #948b8c;
       font-size: 0.24rem;
     }
     //ul
     .top-right-popularity {
       position: absolute;
-      top: 3.2rem;
-      left: 3rem;
+      top: 3.22rem;
+      left: 2.63rem;
       width: 2.8rem;
       display: flex;
       justify-content: space-between;
       font-size: 0.24rem;
-      color: #5bc1ac;
       li:nth-child(1) {
         border-right: 1px solid #989a99;
         width: 1.4rem;
+        color:#3FB59D;
       }
+      li{
+         color: #3FB59D;
+         &>a{
+        color: #3FB59D;
+       }
+      }
+    
       //粉丝
       .top-right-fans {
         margin-left: 0.15rem;
+       
       }
       //喜欢
       .top-right-like {
         margin-left: 0.15rem;
+       
       }
     }
   }
@@ -170,22 +194,8 @@ export default {
    background: palegoldenrod;
    width: 5.06rem;
    height: 4.2rem;
-   border: 1px solid #ffffff;
-   
-   
+   border: 1px solid #ffffff; 
  }
-//  .mint-actionsheet{
-//    .mint-actionsheet-list{
-//      .mint-actionsheet-listitem{
-//     height: 4rem;
-//  }
-//    }
-   
-//  }
- 
-//  .ReportSize{
-//    
-//  }
 }
 </style>
 

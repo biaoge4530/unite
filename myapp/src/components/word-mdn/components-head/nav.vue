@@ -11,6 +11,7 @@
       </div>
     </div>
     <keep-alive>
+      <!-- 动态组件 -->
       <component :is="conName"></component>
     </keep-alive>
     <!-- <router-view></router-view> -->
@@ -48,8 +49,8 @@ export default {
 // 详情内容
 .top-nav {
   width: 100%;
-  height: 0.68rem;
-  margin:.25rem 0 .6rem 0;
+  height: 0.7rem;
+  margin-bottom:.25rem ;
   display: flex;
   font-size: 0.28rem ;
   font-weight: bold;
