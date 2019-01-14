@@ -144,15 +144,6 @@ const router =  new Router({
         requireAuth:true
       }
     },
-    /* {
-      path: '/notLogin',
-      name: 'notLogin',
-      component: NotLogin,
-      meta:{
-        showFooter: true,
-        requireAuth:true
-      }
-    }, */
     {
       path: '/verify',
       name: 'verify',
