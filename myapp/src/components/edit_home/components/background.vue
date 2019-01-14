@@ -11,7 +11,7 @@
       </ul>
       <div class="wrapper" ref="homeWrapper">
         <ul class="bgs content">
-          <li @click="addbgImg(index)" v-for="(item,index) in bgList">
+          <li @click="addbgImg(index)" v-for="(item,index) in bgList" :key="index">
             <img :src="item | srcs" alt>
           </li>
         </ul>
@@ -106,7 +106,7 @@ export default {
       flex-wrap: wrap;
       margin-top: 0.37rem;
       padding: 0 0.24rem;
-      li {
+      li img{
         width: 2.18rem;
         height: 3.84rem;
         margin-bottom: 0.24rem;

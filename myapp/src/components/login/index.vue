@@ -3,11 +3,11 @@
     <div class="banner_nav" slot="name1">
       <div class="nav">
            <ul>
-            <li @click="handleback()">后退</li>
+            <li @click="handleback()"><img src="../../../static/img/wyc/lt.png"/></li>
             <li>登录</li>
             <li><router-link class="router" to="/register">注册</router-link></li>
            </ul>
-          <div><router-link to=""><img src="../../../static/img/wyc/head.png"/></router-link></div>
+          <div id="headPhoto"><router-link to=""><img src="../../../static/img/wyc/head.png"/></router-link></div>
       </div>
     </div>
 
@@ -19,14 +19,14 @@
     <div class="inputNumber" slot="name3">
         <div>
           <img src="../../../static/img/wyc/phone.png"/>
-          <input type="text" placeholder="请输入手机号码" maxlength="11"/>
+          <input type="text" placeholder="请输入手机号码" v-model="phoneNumber" maxlength="11"/>
         </div>
         <div class="inputPassword" id="inputPassword">
           <img src="../../../static/img/wyc/encrypt.png"/>
-          <input :type="pwdType" placeholder="请输入密码" /><!-- v-model="password" -->
+          <input :type="pwdType" placeholder="请输入密码" v-model="phonePassword" /><!-- v-model="password" -->
 
           <div class="eye"><!-- 密码显示隐藏图标 -->
-            <img :src="openEye" @click="handleEye()"/>
+            <img :src="openEye" @click="handleEye()" class="openEye"/>
 
           </div>
         </div>
@@ -34,8 +34,8 @@
                 <button @click="headlePush()">登录</button>
               </div>
         <div id="Authentication">
-          <li><router-link to="/code">验证码登录</router-link></li>
-          <li><router-link to="/home">忘记密码</router-link></li>
+          <li><router-link to="/verify">验证码登录</router-link></li>
+          <li><router-link to="/restPassword">忘记密码</router-link></li>
         </div>
 
       <!-- 第三方账号登录 -->
@@ -53,23 +53,73 @@
       </div>
     </div>
 
-
-
   </div>
 </template>
 <script>
-export default {
-  components:{
+import Vue from "vue";
+import {Toast} from "mint-ui";
+import axios from 'axios';
+import "mint-ui/lib/style.css";
 
+export default {
+  created(){
+    /* axios({
+        method:"get", //查询
+        url:"http://localhost:3000/data",
+        data:{
+          phoneNumber:"15535264455",
+          password:"11111"
+        }
+      })
+      .then((data)=>{
+       console.log(data);
+
+      }) */
+
+      /*  this.headlePush(); */
   },
   data(){
     return{
+      phoneNumber:"",
+      phonePassword:"",
       pwdType:"password",
       openEye:require("../../../static/img/wyc/show.png"),
     }
 
   },
   methods:{
+      headlePush(){
+        axios({     //查询
+          method:"get",
+          url:"http://localhost:3000/data?phoneNumber="+this.phoneNumber,
+            data:{
+              phoneNumber:this.phoneNumber,
+              phonePassword:this.phonePassword
+            }
+        }).then(data=>{
+          /* console.log(data.data[0].phoneNumber) */
+            if(data.data.length == 0){
+                Toast({
+                  message:"用户名不存在",
+                  duration: 800000,
+              })
+            }else if(this.phonePassword !== data.data[0].phonePassword){
+              Toast({
+                message:"密码错误",
+                duration: 800,
+              })
+            }else{
+                Toast({
+                  message:"登录成功",
+                  duration: 800,
+
+              })
+              this.phonePassword=""
+            }
+        })
+      },
+
+
     handleback(){
       this.$router.back();
     },
@@ -78,10 +128,7 @@ export default {
       /* this.pwdType = this.pwdType = "password" ? "password" : "text"; */
       this.openEye = this.openEye === require("../../../static/img/wyc/show.png") ? require("../../../static/img/wyc/indication.png") : require("../../../static/img/wyc/show.png")
     },
-    headlePush(){
-      alert()
 
-    }
 
   }
 }
@@ -112,10 +159,17 @@ export default {
   align-items: center;
   padding: 0 .23rem;
 }
+.nav>ul>li>img:nth-child(1){
+  width: .19rem;
+  height: .30rem;
+}
 .nav>ul>li{
-  font-size:34px;
+  font-size:.34rem;
   font-family:PingFang-SC-Regular;
   color:#5D5D5D;
+}
+.nav>ul>li:nth-child(2){
+  margin-left: .30rem
 }
 .router{
   font-size: .32rem;
@@ -129,7 +183,11 @@ export default {
   width: 100%;
   height: 100%;
   margin-left: 37%;
-  margin-top: 25%;
+  margin-top: 28%;
+}
+#headPhoto img{
+  width: 1.8rem;
+  height: 1.8rem;
 }
 .slogan{
   margin-top: .94rem;
@@ -164,6 +222,10 @@ export default {
   height: .40rem;
   border: none;
   outline: medium;
+}
+.openEye{
+  width: .3rem;
+  height: .2rem;
 }
 #inputPassword{
     width: 100%;
