@@ -4,7 +4,7 @@
       <div class="top">
           <ul>
             <li><router-link to=""><img src="../../../../static/img/wyc/wdl_sz@2x.png"></router-link></li>
-            <li><router-link to=""><img id="iten" src="../../../../static/img/wyc/wdl_sezhida@2x.png"></router-link></li>
+            <li><router-link to="/settings"><img id="iten" src="../../../../static/img/wyc/wdl_sezhida@2x.png"></router-link></li>
           </ul>
       </div>
         <div class="hande">

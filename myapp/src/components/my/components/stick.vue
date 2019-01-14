@@ -44,17 +44,15 @@ export default {
   },
   mounted() {
     new Swiper(this.$refs.banner, {
-      loop:true,
+      loop:true,   //无缝轮播
       slidesPerView: "auto",
       loopedSlides: 3,
       centeredSlides:true,
       spaceBetween: 160,
-      tdFlow: {
-          stretch :40,
-      },
-      pagination: {
+      preventClicks : false,  //防止触摸的时候跳转
+     /*  pagination: {
         el: "banner-pagination"
-      }
+      } */
     });
   }
 };
