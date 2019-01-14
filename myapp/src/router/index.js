@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Home from '@/components/home'
 import Word from '@/components/word'
 import My from '@/components/my'
+import Settings from "../components/my/settings"
 import Login from '@/components/login'
 /* import NotLogin from '../components/notLogin' */
 import Edit_btn from '@/components/edit_btn'
@@ -17,6 +18,14 @@ import Word_search from '@/components/word_search'
 import Word_notice from '@/components/word_notice'
 import Collect from '@/components/collect'
 import New from '@/components/collect/new'
+import Release_dynamics from '@/components/release_dynamics'
+import Select_place from '@/components/select_place'
+import Select_public from '@/components/select_public'
+import Notify from "../components/my/settings/notify"
+import AccountManagement from "../components/my/settings/accountManagement"
+import ClearCache from "../components/my/settings/clearCache"
+import MaterialSubmitted from "../components/my/settings/materialSubmitted"
+import AboutUs from "../components/my/settings/aboutUs"
 Vue.use(Router)
 
 const router =  new Router({
@@ -194,6 +203,72 @@ const router =  new Router({
       component: New,
       meta:{
         showFooter: false,
+        requireAuth:true
+      }
+    },
+    {
+      path: '/accountManagement',
+      name: 'accountManagement',
+      component: AccountManagement,
+      meta:{
+        //tab栏隐藏
+        showFooter: false,
+        //路由守卫
+        requireAuth:true
+      }
+    },
+    {
+      path: '/notify',
+      name: 'notify',
+      component: Notify,
+      meta:{
+        //tab栏隐藏
+        showFooter: false,
+        //路由守卫
+        requireAuth:true
+      }
+    },
+    {
+      path: '/clearCache',
+      name: 'clearCache',
+      component: ClearCache,
+      meta:{
+        //tab栏隐藏
+        showFooter: false,
+        //路由守卫
+        requireAuth:true
+      }
+    },
+    {
+      path: '/materialSubmitted',
+      name: 'materialSubmitted',
+      component: MaterialSubmitted,
+      meta:{
+        //tab栏隐藏
+        showFooter: false,
+        //路由守卫
+        requireAuth:true
+      }
+    },
+    {
+      path: '/aboutUs',
+      name: 'aboutUs',
+      component: AboutUs,
+      meta:{
+        //tab栏隐藏
+        showFooter: false,
+        //路由守卫
+        requireAuth:true
+      }
+    },
+    {
+      path: '/settings',
+      name: 'settings',
+      component: Settings,
+      meta:{
+        //tab栏隐藏
+        showFooter: false,
+        //路由守卫
         requireAuth:true
       }
     },
