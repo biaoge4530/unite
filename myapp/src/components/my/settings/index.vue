@@ -55,23 +55,22 @@
     </ul>
     <button>退出登录</button>
     <router-view></router-view>
+    <mt-actionsheet :actions="actions" v-model="sheetVisible"></mt-actionsheet>
   </div>
 </template>
-
+看，
 <script>
 import Vue from "vue";
 import { Actionsheet } from "mint-ui";
 
 Vue.component(Actionsheet.name, Actionsheet);
 export default {
-  date(){
-    return{
-  sheetVisible:show
-}
+  date() {
+    return {
+      sheetVisible: show
+    };
   },
-  methods: {
-    
-  },
+  methods: {}
 };
 </script>
 

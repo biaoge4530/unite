@@ -20,6 +20,12 @@ import mdn_notebookdown from '@/components/word-mdn/components-head/notebookdown
 import Release_dynamics from '@/components/release_dynamics'
 import Select_place from '@/components/select_place'
 import Select_public from '@/components/select_public'
+import Notify from "../components/my/settings/notify"
+import AccountManagement from "../components/my/settings/accountManagement"
+import ClearCache from "../components/my/settings/clearCache"
+import MaterialSubmitted from "../components/my/settings/materialSubmitted"
+import AboutUs from "../components/my/settings/aboutUs"
+import Settings from "../components/my/settings"
 Vue.use(Router)
 
 const router = new Router({
@@ -192,6 +198,72 @@ const router = new Router({
         showFooter: false,
         requireAuth: true
 >>>>>>> mdn
+      }
+    },
+    {
+      path: '/accountManagement',
+      name: 'accountManagement',
+      component: AccountManagement,
+      meta:{
+        //tab栏隐藏
+        showFooter: false,
+        //路由守卫
+        requireAuth:true
+      }
+    },
+    {
+      path: '/notify',
+      name: 'notify',
+      component: Notify,
+      meta:{
+        //tab栏隐藏
+        showFooter: false,
+        //路由守卫
+        requireAuth:true
+      }
+    },
+    {
+      path: '/clearCache',
+      name: 'clearCache',
+      component: ClearCache,
+      meta:{
+        //tab栏隐藏
+        showFooter: false,
+        //路由守卫
+        requireAuth:true
+      }
+    },
+    {
+      path: '/materialSubmitted',
+      name: 'materialSubmitted',
+      component: MaterialSubmitted,
+      meta:{
+        //tab栏隐藏
+        showFooter: false,
+        //路由守卫
+        requireAuth:true
+      }
+    },
+    {
+      path: '/aboutUs',
+      name: 'aboutUs',
+      component: AboutUs,
+      meta:{
+        //tab栏隐藏
+        showFooter: false,
+        //路由守卫
+        requireAuth:true
+      }
+    },
+    {
+      path: '/settings',
+      name: 'settings',
+      component: Settings,
+      meta:{
+        //tab栏隐藏
+        showFooter: false,
+        //路由守卫
+        requireAuth:true
       }
     },
   ]
