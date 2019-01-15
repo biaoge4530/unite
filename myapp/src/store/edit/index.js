@@ -4,6 +4,7 @@ let state = {
 	imgIndex:-1,
 	pList:[],
 	addSimgbig:[],
+	style: [],
 	simgList:[
         "big1.png",
         "big2.png",
@@ -25,9 +26,10 @@ let state = {
 		"bgImg7.png",
 		"bgImg8.png",
 		"bgImg9.png"
-	]
+	] 
 }
 let mutations = {
+	//选择操作
 	editOption(state,params){
 		if(state.footerIndex==params){
 			state.footerIndex= -1
@@ -35,12 +37,18 @@ let mutations = {
 			state.footerIndex = params
 		}
 	},
+	//添加背景
 	addbgImg(state,params){
 		state.footerIndex= -1;
 		state.imgIndex = params
 	},
+	//添加贴图
 	addSimg(state,params){
 		state.addSimgbig.push(state.simgList[params])
+	},
+	//保存样式
+	setStyle(state,params){
+		state.style = params
 	},
 }
 let actions = {
