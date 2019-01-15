@@ -2,29 +2,35 @@
 	<div class="whereList">
 		<div class="input">
 			<span class="search"></span>
-			<input type="search" placeholder="搜索附近的位置">
+			<input type="search" v-model="val" placeholder="搜索附近的位置">
 		</div>
 		
 		<ul>
-			<li>不显示位置
-				<span></span>
-			</li>
-			<li>北京市昌平区
-				<span></span>
-			</li>
-			<li>北京市昌平区
-				<span></span>
-			</li>
-			<li>北京市昌平区
-				<span></span>
-			</li>
+			<li v-for="(item,index) in local"
+				@click="handleSel(index)"
+				:class="activeIndex == index?'active':''">{{item}}<span></span></li>
 		</ul>
 	</div>
 </template>
 
 <script>
 	export default{
-		
+		data(){
+			return{
+				local:["不显示位置","北京市昌平区","北京市朝阳区","北京市东城区"],
+				activeIndex:0,
+				val:""
+			}
+		},
+		methods:{
+			handleSel(index){
+				this.activeIndex = index;
+				this.val = this.local[index]
+				if(index==0){
+					this.val="";
+				}
+			}
+		}
 	}
 </script>
 
@@ -67,6 +73,10 @@
 				border-bottom: .01rem #E5E5E5 solid;
 				color: #989999;
 				font-size: .26rem;
+				
+			}
+			.active{
+				color: #53E0C5;
 				span{
 					display: inline-block;
 					width: .24rem;

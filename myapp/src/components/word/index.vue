@@ -39,5 +39,9 @@
 
 
 <style lang="">
-	
+	.word{
+		width: 100%;
+		height: 100%;
+		overflow-x: hidden; 
+	}
 </style>

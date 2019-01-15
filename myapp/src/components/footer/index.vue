@@ -9,7 +9,7 @@
             </li>
             <li>
                 <router-link :to='{name:"edit_btn"}'> 
-                    <div><img src="static/img/word/wdl_bj@2x.png" alt="" /></div>
+                    <div class="edit_btn"><img src="static/img/word/wdl_bj@2x.png" alt="" /></div>
                 </router-link>
             </li>
             <li>
@@ -47,14 +47,32 @@ export default {
 		    justify-content: space-between;
 		    height: .99rem;
 		    li{
-		    	width: 100%;height: 100%;
-				a{
-					height: 100%;
-					display: flex;
-					flex-direction: column;
-					align-items: center;
-					justify-content: center;
-				}
+		    	width: 100%;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                .word{
+                    img{
+                        width: .45rem;
+                        height: .36rem;
+                    }
+                }
+                .edit_btn{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    img{
+                        width: .98rem;
+                        height: .98rem;
+                    }
+                }
+                .my{
+                    img{
+                        width: .45rem;
+                        height: .45rem;
+                    }
+                }
 		    };
 
 		};
