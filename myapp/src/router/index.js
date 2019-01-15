@@ -23,6 +23,11 @@ import ClearCache from "../components/my/settings/clearCache"
 import MaterialSubmitted from "../components/my/settings/materialSubmitted"
 import AboutUs from "../components/my/settings/aboutUs"
 import Settings from "../components/my/settings"
+import Word_search from "../components/word_search"
+import Word_notice from "../components/word_notice"
+import Verify from "../components/register/components/verify.vue"
+import RestPassword from "../components/register/components/restPassword"
+import BandPhone from '@/components/register/components/bandPhone'
 Vue.use(Router)
 
 const router = new Router({
