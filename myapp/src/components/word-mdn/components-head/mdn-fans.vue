@@ -4,7 +4,7 @@
     <div class="fans-nav-father">
       <mt-header fixed title="111个粉丝" class="fans-nav">
         <router-link to="word-mdn" slot="left">
-          <mt-button class="back"><img src="static/img/word-mdn/fanhui.png"></mt-button>
+          <mt-button><p class="tu"><img src="static/img/word-mdn/fanhui.png"></p></mt-button>
         </router-link>
       </mt-header>
     </div>
@@ -82,6 +82,15 @@ li {
   .fans-nav-father {
     height: 1.23rem;
     background: #f3f3f3;
+     .tu {
+          width: .21rem;
+          height: .35rem;
+          margin-left: .24rem;
+          & > img {
+           width: .17rem;
+          height: .28rem;
+          }
+        }
     .fans-nav {
       padding-top: 0.6rem;
       // width: 95%;
