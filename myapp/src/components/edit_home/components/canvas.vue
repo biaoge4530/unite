@@ -7,10 +7,14 @@
       <li v-for="(item,index) in addSimgbig">
         <img
           :src="item | srcSimg"
-          	@mousedown="down(index)" @touchstart="down(index)"
-			@mousemove="move(index)" @touchmove="move(index)"
-			@mouseup="end" @touchend="end"
-          	ref="moves" :style="style[index]"
+          @mousedown="down(index)"
+          @touchstart="down(index)"
+          @mousemove="move(index)"
+          @touchmove="move(index)"
+          @mouseup="end"
+          @touchend="end"
+          ref="moves"
+          :style="style[index]"
         >
       </li>
     </ul>
@@ -22,10 +26,15 @@ import Vuex from "vuex";
 export default {
   data() {
     return {
-     	flags: false,
-		position: { x: 0, y: 0 },
-		nx: '', ny: '', dx: '', dy: '', xPum: '', yPum: '',
-		style:[]
+      flags: false,
+      position: { x: 0, y: 0 },
+      nx: "",
+      ny: "",
+      dx: "",
+      dy: "",
+      xPum: "",
+      yPum: "",
+      style: []
     };
   },
   computed: {
@@ -44,40 +53,43 @@ export default {
     }
   },
   methods: {
-    down(index){
-    this.flags = true;
-    var touch;
-    if(event.touches){
+    ...Vuex.mapMutations({
+				setStyle:"edit/setStyle"
+			}),
+    down(index) {
+      this.flags = true;
+      var touch;
+      if (event.touches) {
         touch = event.touches[0];
-    }else {
+      } else {
         touch = event;
-    }
-    this.position.x = touch.clientX;
-    this.position.y = touch.clientY;
-    this.dx = this.$refs.moves[index].offsetLeft;
-    this.dy = this.$refs.moves[index].offsetTop;
-  },
-  move(index){
-    if(this.flags){
-      var touch ;
-      if(event.touches){
-          touch = event.touches[0];
-      }else {
-          touch = event;
       }
-      this.nx = touch.clientX - this.position.x;
-      this.ny = touch.clientY - this.position.y;
-      this.xPum = this.dx+this.nx;
-	  this.yPum = this.dy+this.ny;
-		this.style[index]=`left:${this.xPum}px;top:${this.yPum}px`;
-		this.$forceUpdate()
-		console.log(this.style,index)
+      this.position.x = touch.clientX;
+      this.position.y = touch.clientY;
+      this.dx = this.$refs.moves[index].offsetLeft;
+      this.dy = this.$refs.moves[index].offsetTop;
+    },
+    move(index) {
+      if (this.flags) {
+        var touch;
+        if (event.touches) {
+          touch = event.touches[0];
+        } else {
+          touch = event;
+        }
+        this.nx = touch.clientX - this.position.x;
+        this.ny = touch.clientY - this.position.y;
+        this.xPum = this.dx + this.nx;
+        this.yPum = this.dy + this.ny;
+        this.style[index] = `left:${this.xPum}px;top:${this.yPum}px`;
+        this.$forceUpdate();
+      }
+    },
+    //鼠标释放时候的函数
+    end() {
+      this.flags = false;
+      this.setStyle(this.style)
     }
-  },
-//鼠标释放时候的函数
-  end(){
-    this.flags = false;
-  },
   }
 };
 </script>
