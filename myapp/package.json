@@ -16,7 +16,8 @@
     "swiper": "^4.4.6",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
-    "vuex": "^3.0.1"
+    "vuex": "^3.0.1",
+    "wangeditor": "^3.1.1"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
@@ -70,5 +71,7 @@
     "> 1%",
     "last 2 versions",
     "not ie <= 8"
-  ]
+  ],
+  "main": ".postcssrc.js",
+  "license": "ISC"
 }
