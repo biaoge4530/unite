@@ -7,7 +7,10 @@
             <li>登录</li>
             <li><router-link class="router" to="/register">注册</router-link></li>
            </ul>
-          <div id="headPhoto"><router-link to=""><img src="../../../static/img/wyc/head.png"/></router-link></div>
+           <!-- 头像 -->
+          <div id="headPhoto"><router-link to="">
+            <img src="../../../static/img/wyc/head.png"/>
+          </router-link></div>
       </div>
     </div>
 
@@ -60,7 +63,7 @@ import Vue from "vue";
 import {Toast} from "mint-ui";
 import axios from 'axios';
 import "mint-ui/lib/style.css";
-
+import Vuex from "vuex";
 export default {
   created(){
     /* axios({
@@ -87,7 +90,15 @@ export default {
     }
 
   },
+  computed:{
+    ...Vuex.mapState({
+      token:state=>state.token
+    })
+  },
   methods:{
+    ...Vuex.mapActions({
+        headlePush:"headlePush"
+    }),
       headlePush(){
         axios({     //查询
           method:"get",
@@ -248,6 +259,7 @@ export default {
   background: #3fb59d;
   color: #fff;
   font-size: .32rem;
+  border-radius: .15rem;
 }
 #Authentication{
   border: none;

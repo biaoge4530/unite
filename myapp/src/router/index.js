@@ -49,7 +49,14 @@ const router = new Router({
         showFooter: true
       }
     },
-    
+    {
+      path: "/word/word_search",
+      name: "word_search",
+      component: Word_search,
+      meta: {
+        showFooter: false,
+      }
+    },
     {
       path: "/word/word_notice",
       name: "word_notice",
