@@ -1,12 +1,12 @@
 <template>
   <div class="fllower">
     <div class="notlogin">
-        <li><span>未登录</span></li>
+        <li><span>{{notlogin}}</span></li>
     </div>
       <div class="lists">
         <ul>
-          <li><router-link to="">粉丝&nbsp; -- |</router-link></li>
-          <li><router-link to="">喜欢 --</router-link></li>
+          <li><router-link to="">粉丝&nbsp; {{loves}} |</router-link></li>
+          <li><router-link to="">喜欢 {{likes}}</router-link></li>
         </ul>
       </div>
   </div>
@@ -14,6 +14,13 @@
 
 <script>
 export default {
+  data(){
+    return{
+      notlogin:"未登录",
+      likes:"--",
+      loves:"--"
+    }
+  }
 
 }
 </script>
@@ -40,11 +47,11 @@ export default {
   li:nth-child(1){
   margin-right: .15rem;
   height: .46rem;
-  font-size: .2rem;
+  font-size: .22rem;
   }
   li:nth-child(2){
     height: .46rem;
-    font-size: .2rem;
+    font-size: .22rem;
     }
   }
 }
