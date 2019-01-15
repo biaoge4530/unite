@@ -2,17 +2,30 @@
     <div class="notice_top">
         <div class="back" @click="handleBack()"></div>
         <ul class="notice_title">
-            <li>通知</li>
-            <li>评论</li>
+            <li
+                v-for="(item,index) in navs"
+                @click="handleToggle(index)"
+                :class="activeIndex == index?'active':''"
+            >{{item}}</li>
         </ul>
     </div>
 </template>
 
 <script>
 export default {
+    data(){
+        return {
+            navs:["通知","评论"],
+            activeIndex:0
+        }
+    },
     methods: {
         handleBack(){
             this.$router.back();
+        },
+        handleToggle(index){
+            this.activeIndex=index;
+            this.$emit("handle",index);
         }
     },
 }
@@ -47,6 +60,7 @@ export default {
                 border-bottom: .04rem solid #fff;
             }
             .active{
+                color: #40B59E;
                 border-bottom: .04rem solid #40B59E;
             }
         }

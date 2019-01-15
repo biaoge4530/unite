@@ -12,7 +12,7 @@
       <div class="registerPhone">
         <div>
             <img src="../../../static/img/wyc/phone_2.png"/>
-            <input type="text" name="phoneNumber" v-model="phoneNumber" maxlength="11" :placeholder="phoneNum" @blur="phoneBlur"/>
+            <input type="text" name="phoneNumber" v-model="phoneNumber" maxlength="11" placeholder="请输入手机号" @blur="phoneBlur"/>
         </div>
 
         <div>
@@ -27,7 +27,7 @@
         <div>
             <img src="../../../static/img/wyc/yz.png"/>
             <!-- <input type="text" placeholder="请输入密码" v-model="phonePassword"/> -->
-            <input type="text" :placeholder="phonePass" v-model="phonePassword" minlength="8" maxlength="16" />
+            <input type="text" placeholder="请输入密码" v-model="phonePassword" minlength="8" maxlength="16" />
         </div>
 
       </div>
@@ -69,8 +69,7 @@ export default {
       phoneNumber:"",
       phonePassword:"",
       phoneyzm:"",
-      phoneNum:"请输入手机号",
-      phonePass:"请输入密码",
+
     }
   },
   methods:{
@@ -201,20 +200,7 @@ export default {
   }
 }
 </script>
-/* if(data.value == ""){
-                alert();
-                axios({
-                  methods:"post",
-                  url:"http://localhost:3000/data",
-                  data:{
-                    phoneNumber:this.phoneNumber,
-                    phonePassword:this.phonePassword
-                  }
-                })
-                .then(data=>{
-                    console.log(data)
-                })
-              } */
+
 <style>
 .register{
   width: 100%;
@@ -239,6 +225,10 @@ export default {
   font-family: PingFang-SC-Regular;
   color: #5D5D5D;
 
+}
+.register>div>ul>li>img:nth-child(1){
+  width: .19rem;
+  height: .32rem;
 }
 
 .registerPhone{

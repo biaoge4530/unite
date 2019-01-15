@@ -7,7 +7,7 @@
             <li>登录</li>
             <li><router-link class="router" to="/register">注册</router-link></li>
            </ul>
-          <div><router-link to=""><img src="../../../../static/img/wyc/head.png"/></router-link></div>
+          <div class="handphoto"><router-link to=""><img src="../../../../static/img/wyc/head.png"/></router-link></div>
       </div>
     </div>
 
@@ -34,7 +34,7 @@
               </div>
         <div id="Authentication">
           <li><router-link to="/login">密码登录</router-link></li>
-          <li><router-link to="/">忘记密码</router-link></li>
+          <li><router-link to="/restPassword">忘记密码</router-link></li>
         </div>
 
       <!-- 第三方账号登录 -->
@@ -121,9 +121,16 @@ export default {
   padding: 0 .23rem;
 }
 .nav>ul>li{
-  font-size:34px;
+  font-size:.34rem;
   font-family:PingFang-SC-Regular;
   color:#5D5D5D;
+}
+.nav>ul>li:nth-child(2){
+  margin-left: .30rem
+}
+.nav>ul>li>img:nth-child(1){
+  width: .19rem;
+  height: .32rem;
 }
 .router{
   font-size: .32rem;
@@ -137,7 +144,11 @@ export default {
   width: 100%;
   height: 100%;
   margin-left: 37%;
-  margin-top: 25%;
+  margin-top: 28%;
+}
+.handphoto img{
+  width: 1.8rem;
+  height: 1.8rem;
 }
 .slogan{
   margin-top: .94rem;
