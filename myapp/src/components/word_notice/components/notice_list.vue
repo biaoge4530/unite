@@ -4,6 +4,8 @@
             <img src="../../../../static/img/search&notice/notice@2x.png" alt="">
             <p>你还没有通知哦...</p>
         </div>
+
+        <div class="notice"></div>
     </div>
 </template>
 
