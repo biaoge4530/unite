@@ -1,6 +1,7 @@
 <template>
   <div class="nav">
     <!-- 头像的 内容区域 -->
+    
     <div class="top-nav">
       <div :class="flag == 1 ? 'top-nav-hot active' : 'top-nav-hot'" @click="handleTo(1)" >动态
         <i class="iconfont" style="color:#000">&#xe502;</i>

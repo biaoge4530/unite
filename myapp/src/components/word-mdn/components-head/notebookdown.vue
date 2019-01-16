@@ -45,6 +45,9 @@
         <li>
           <i class="iconfont">&#xe61e;</i>
         </li>
+         <li>
+          <router-link to='/shared'><img src="static/img/word-mdn/图层 5.png"></router-link>
+        </li>
       </ul>
       <!-- 查看 -->
       <div class="look">查看</div>
@@ -103,11 +106,14 @@ export default {
         margin-left: 0.24rem;
         width: 0.17rem;
         height: 0.28rem;
-        &>img{
+        a{
+          &>img{
           width: 0.17rem;
         height: 0.28rem;
         
       }
+        }
+        
     }
   }
 
@@ -212,17 +218,25 @@ export default {
     position: fixed;
     top: 12.34rem;
     .more{
-      width: 1.8rem;
+      width: 2.55rem;
       height: .98rem;
       display: flex;
-     // background: red;
+      //background: red;
       justify-content: space-around;
       &>li{
+        text-align: center;
         height: .98rem;       
         line-height: .98rem;
         .iconfont{
           font-size: .36rem;
         }
+        a{
+          margin-top: .44rem;
+          &>img{
+          margin-top: .44rem;
+        } 
+        }
+        
       }
     }
     // 查看
