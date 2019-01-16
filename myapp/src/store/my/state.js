@@ -1,5 +1,5 @@
 export default{
-  notBanner:[
+  data:[
       {
 
           url:"/login",

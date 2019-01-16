@@ -12,6 +12,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "better-scroll": "^1.13.4",
+    "element-ui": "^2.4.11",
     "mint-ui": "^2.2.13",
     "qs": "^6.6.0",
     "swiper": "^4.4.6",

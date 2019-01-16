@@ -3,7 +3,7 @@
     <div class="staff">
       <div class="swiper-container" ref="banner">
         <div class="swiper-wrapper">
-          <div class="swiper-slide" v-for="(item,index) in notBanner" :key="index">
+          <div class="swiper-slide" v-for="(item,index) in data" :key="index">
           <router-link :to="item.url" ><!-- 账本跳转路径 -->
             <div class="barImg">
               <img :src="item.src">
@@ -39,7 +39,7 @@ import Vuex from "vuex";
 export default {
   computed: {
     ...Vuex.mapState({
-      notBanner: state => state.My.notBanner
+      data: state => state.My.data
     })
   },
   mounted() {
@@ -50,9 +50,6 @@ export default {
       centeredSlides:true,
       spaceBetween: 160,
       preventClicks : false,  //防止触摸的时候跳转
-     /*  pagination: {
-        el: "banner-pagination"
-      } */
     });
   }
 };
