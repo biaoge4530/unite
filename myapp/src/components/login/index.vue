@@ -9,7 +9,7 @@
            </ul>
            <!-- 头像 -->
           <div id="headPhoto"><router-link to="">
-            <img src="../../../static/img/wyc/head.png"/>
+            <img :src="headPhoto"/>
           </router-link></div>
       </div>
     </div>
@@ -22,7 +22,11 @@
     <div class="inputNumber" slot="name3">
         <div>
           <img src="../../../static/img/wyc/phone.png"/>
-          <input type="text" placeholder="请输入手机号码" v-model="phoneNumber" maxlength="11"/>
+
+
+
+
+        <input type="text" placeholder="请输入手机号码" v-model="phoneNumber" maxlength="11"/>
         </div>
         <div class="inputPassword" id="inputPassword">
           <img src="../../../static/img/wyc/encrypt.png"/>
@@ -65,13 +69,21 @@ import axios from 'axios';
 import "mint-ui/lib/style.css";
 import Vuex from "vuex";
 export default {
+  state:{
+    //
+    phoneNumber:localStorage
+  },
   created(){
     /* axios({
         method:"get", //查询
         url:"http://localhost:3000/data",
         data:{
           phoneNumber:"15535264455",
-          password:"11111"
+          password:"11111",
+          headphoto:"https://img.alicdn.com/tfs/TB1gXwUlwHqK1RjSZFkXXX.WFXa-210-260.jpg",
+          uNickname:"一只小蜜蜂",
+          likes:"400w",
+          loves:"756"
         }
       })
       .then((data)=>{
@@ -86,6 +98,8 @@ export default {
       phoneNumber:"",
       phonePassword:"",
       pwdType:"password",
+      uNickname:"",
+      headPhoto:"../../../static/img/wyc/head.png",
       openEye:require("../../../static/img/wyc/show.png"),
     }
 
@@ -96,8 +110,8 @@ export default {
     })
   },
   methods:{
-    ...Vuex.mapActions({
-        headlePush:"headlePush"
+    ...Vuex.mapActions({   /* 1.15 */
+        headleUserPush:"headleUserPush"
     }),
       headlePush(){
         axios({     //查询
@@ -105,14 +119,15 @@ export default {
           url:"http://localhost:3000/data?phoneNumber="+this.phoneNumber,
             data:{
               phoneNumber:this.phoneNumber,
-              phonePassword:this.phonePassword
+              phonePassword:this.phonePassword,
+              headPhoto:this.headPhoto
             }
         }).then(data=>{
-          /* console.log(data.data[0].phoneNumber) */
+         /*  console.log(data.data[0].phoneNumber) */
             if(data.data.length == 0){
                 Toast({
                   message:"用户名不存在",
-                  duration: 800000,
+                  duration: 800,
               })
             }else if(this.phonePassword !== data.data[0].phonePassword){
               Toast({
@@ -123,15 +138,15 @@ export default {
                 Toast({
                   message:"登录成功",
                   duration: 800,
-
               })
-              this.phonePassword=""
+              this.phonePassword="";
+              //将存入localStorage中
+              localStorage.phoneData=JSON.stringify(data.data[0]);
+              this.$router.push("/my")
             }
         })
       },
-
-
-    handleback(){
+    handleback(){ //点击回退
       this.$router.back();
     },
     handleEye(){  //密码显示隐藏
@@ -139,8 +154,6 @@ export default {
       /* this.pwdType = this.pwdType = "password" ? "password" : "text"; */
       this.openEye = this.openEye === require("../../../static/img/wyc/show.png") ? require("../../../static/img/wyc/indication.png") : require("../../../static/img/wyc/show.png")
     },
-
-
   }
 }
 </script>
