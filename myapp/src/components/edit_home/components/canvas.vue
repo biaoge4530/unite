@@ -1,12 +1,12 @@
 <template>
   <div class="canvas">
     <div class="bgImg">
-      <img :src="bgList[imgIndex] | srcs" alt>
+      <img :src="bgList[imgIndex].imgUrl" alt>
     </div>
     <ul class="bigImgBox">
       <li v-for="(item,index) in addSimgbig">
         <img
-          :src="item | srcSimg"
+          :src="item.imgUrl"
           @mousedown="down(index)"
           @touchstart="down(index)"
           @mousemove="move(index)"
@@ -43,14 +43,6 @@ export default {
       imgIndex: state => state.edit.imgIndex,
       addSimgbig: state => state.edit.addSimgbig
     })
-  },
-  filters: {
-    srcs(val) {
-      return "static/img/edit/bgImgs/" + val;
-    },
-    srcSimg(val) {
-      return "static/img/edit/simg/" + val;
-    }
   },
   methods: {
     ...Vuex.mapMutations({

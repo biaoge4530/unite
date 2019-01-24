@@ -6,10 +6,12 @@
       </router-link>
     </div>
     <div class="release">
-      <img src="static/img/edit/bj_fabu.png" alt>
+      <router-link :to="{name:'release_dynamics'}">
+        <img src="static/img/edit/bj_fabu.png" alt>
+      </router-link>
     </div>
     <div class="back">
-      <router-link :to="{name:'home'}">
+      <router-link :to="{name:'word'}">
         <img src="static/img/edit/bj_quxiao.png" alt>
       </router-link>
     </div>
@@ -30,7 +32,7 @@
     width: 1.2rem;
     height: 1.2rem;
     img {
-      width: 1.2rem; 
+      width: 1.2rem;
       height: 1.2rem;
     }
   }
