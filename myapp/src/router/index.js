@@ -236,7 +236,13 @@ const router = new Router({
       path: '/basics',
       name: 'basics',
       component: Basics,
-    },
+      meta:{
+        //tab栏隐藏
+        showFooter: false,
+        //路由守卫
+        requireAuth:true
+    }
+  },
     {
       path: '/new',
       name: 'new',
@@ -261,6 +267,3 @@ const router = new Router({
     },
   ]
 })
-
-
-export default router;
