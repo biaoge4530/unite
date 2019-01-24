@@ -17,6 +17,13 @@ module.exports = {
           "^/api":""
         }
       }
+      // "/api":{
+      //   target:"http://39.96.74.48:8080",
+      //   changeOrigin:true,
+      //   pathRewrite:{
+      //     "^/api":""
+      //   }
+      // }
     },
 
     // Various Dev Server settings
