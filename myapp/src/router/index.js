@@ -29,7 +29,7 @@ import AccountManagement from "../components/my/settings/accountManagement"
 import MaterialSubmitted from "../components/my/settings/materialSubmitted"
 import AboutUs from "../components/my/settings/aboutUs"
 import Settings from "../components/my/settings"
-import Basics from "../components/my/basics"
+// import Basics from "../components/my/basics"
 
 Vue.use(Router)
 
@@ -235,17 +235,17 @@ const router = new Router({
         requireAuth:true
       }
     },
-    {
-      path: '/basics',
-      name: 'basics',
-      component: Basics,
-      meta:{
-        //tab栏隐藏
-        showFooter: false,
-        //路由守卫
-        requireAuth:true
-      }
-    },
+    // {
+    //   path: '/basics',
+    //   name: 'basics',
+    //   component: Basics,
+    //   meta:{
+    //     //tab栏隐藏
+    //     showFooter: false,
+    //     //路由守卫
+    //     requireAuth:true
+    //   }
+    // },
   ]
 })
 
