@@ -43,15 +43,37 @@
       </div>
     </div>
     <div class="newPermission">
+      <Authority-com v-show="listFlag"/>
       <div class="Permission">
         <span>权限设置</span>
+        <div class="authority" @click="showList()">
+          <span>公开</span>
+          <img src="static/img/collect/pull.png" >
+        </div>
       </div>
     </div>
   </div>
 </template>
+
 <script>
-export default {};
+import Authority from "./authority.vue";
+export default {
+  components: {
+    "Authority-com": Authority
+  },
+  data() {
+    return {
+      listFlag: false
+    };
+  },
+  methods: {
+    showList() {
+      this.listFlag = true;
+    }
+  }
+};
 </script>
+
 <style lang="scss" scoped>
 .new {
   width: 100%;
@@ -118,8 +140,21 @@ export default {};
       height: 0.8rem;
       border: 0.01rem dashed #000;
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
+      .authority {
+        width: 0.7rem;
+        height: 0.33rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        span {
+          font-size: 0.26;
+          font-family: PingFang-SC-Regular;
+          font-weight: bold;
+          color: rgba(134, 134, 134, 1);
+        }
+      }
     }
   }
 }
