@@ -4,16 +4,16 @@
     <mt-header class="top-top" fixed>
       <!-- 返回 -->
         <router-link to="/" slot="left">
-          <mt-button class="iconfont"><img src="static/img/word-mdn/fanhui.png"></mt-button>
+          <mt-button><p class="tu"><img src="static/img/word-mdn/fanhui.png"></p></mt-button>
           <!-- <mt-button >返回</mt-button> -->
         </router-link>       
        <mt-button slot="right" class="follow" @click="handleAtte()">{{nav}}</mt-button>
          <!-- 举报 -->
-         <mt-img slot="right" class="ReportSize" @click="handleReport()" >
+         <mt-button slot="right" class="ReportSize" @click="handleReport()" >
            <i class="iconfont">&#xe612;</i>
-         </mt-img>
+         </mt-button>
       </mt-header>
-    </mt-header>
+
     <!-- 头部的左半部分 -->
     <div class="top-left">
       <div class="top-left-head" id="head"></div>
@@ -45,6 +45,7 @@
 </template>
 <script>
 import { Header , Actionsheet,MessageBox ,Popup  } from "mint-ui";
+import axios from "axios"
 export default {
   data(){
     return{
@@ -59,6 +60,21 @@ export default {
     "MessageBox-com":MessageBox,
     "Popup-com":Popup
   },
+  // created() {
+  //    axios({
+  //        method:"post",
+  //        url:"api/lha1/world/getDongtai",
+  //        headers:{"Content-type":"application/json"},
+  //        data:{
+           
+  //        } 
+  //   })
+  //       .then((data)=>{
+  //         this
+  //         console.log(data.data.DongtaiPic)
+  //   })
+  //          timeout:3000
+  // },
   methods:{
     handleReport(){
       this.sheetVisible = true;
@@ -94,6 +110,7 @@ export default {
   width: 100%;
   height: 4.16rem;
   background: url('../../../../static/img/word-mdn/beijing.png') no-repeat;
+  background-size:cover;
 // 头部
   .top-top {
     width: 90%;
@@ -105,17 +122,22 @@ export default {
     color: #000;
     //更多 三个点
   .iconfont{
-      font-size: .25rem;
-      &>img{
-        width: .28rem;
-        height: .17rem;
-      }
+      font-size: .3rem;
     }
+    .tu{
+        width: .17rem;
+        height: .28rem;
+        &>img{
+           width: .17rem;
+           height: .28rem;
+        }
+      }
   .follow{
       color: #3eb69d;
       margin-right: .2rem;
       font-size: .30rem;
     }
+    
   }
 //  左边头像
   .top-left {
@@ -130,7 +152,7 @@ export default {
       border-radius: 50%;
       position: absolute;
       top:1.89rem;
-      left: 0.46rem;
+      left: 0.62rem;
      
     }
   }
@@ -196,6 +218,10 @@ export default {
    height: 4.2rem;
    border: 1px solid #ffffff; 
  }
+ .a{
+        width: .6rem;
+        height: .5rem;
+      }
 }
 </style>
 

@@ -17,6 +17,57 @@
 			<div class="person">
 				<div class="headPart">
 					<div class="headPic">
+						<router-link to="/word-mdn">
+							<img src="../../../../static/img/word/touxiang_sy@2x.png">
+						</router-link>
+						<p>昵称</p>
+					</div>
+				</div>
+				
+				<div class="infos">
+					<div class="content">
+						<p class="contentText">
+							内容：我是谁？我在哪？我是谁？我在哪？我是谁？我在哪？我是谁？我在哪？
+						</p>
+						<div class="contentPic">
+							<img src="../../../../static/img/word/tp_sy@2x.png" alt="">
+						</div>
+					</div>
+					<div class="readOpr">
+						<div class="readTime">
+							<div class="read">阅读量：<span>999+</span></div>
+							<div class="time">
+								<span>2018</span>年
+								<span>1</span>月
+								<span>1</span>日
+							</div>
+						</div>
+						<div class="opr">
+							<i class="heart">
+								<span>99+</span>
+							</i>
+							<i class="reply">
+								<span>999+</span>
+							</i>
+						</div>
+					</div>
+					<div class="comment">
+						<ul>
+							<li><a href="#">昵称:</a>今天天气好晴朗，处处好风光</li>
+							<li><a href="#">昵称:</a>怎么做的呀？</li>
+						</ul>
+						<router-link to="/word/word_notice">
+							<p class="totalComment">共<span>10</span>条评论&gt;</p>
+						</router-link>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="dynamic">
+			<div class="person">
+				<div class="headPart">
+					<div class="headPic">
 						<img src="../../../../static/img/word/touxiang_sy@2x.png">
 						<p>昵称</p>
 					</div>
@@ -41,9 +92,6 @@
 							</div>
 						</div>
 						<div class="opr">
-							<i class="star">
-								<span>99+</span>
-							</i>
 							<i class="heart">
 								<span>99+</span>
 							</i>
@@ -94,6 +142,9 @@
 
 <style scoped lang="scss">
 	.main{
+		height: 100%;
+		overflow:auto;
+		padding-bottom: 1rem;
 		.banner{
 			width: 100%;
 			height: 3rem;

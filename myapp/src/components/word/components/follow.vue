@@ -27,9 +27,94 @@
                         </div>
                     </div>
                     <div class="opr">
-                        <i class="star">
+                        <i class="heart">
                             <span>99+</span>
                         </i>
+                        <i class="reply">
+                            <span>999+</span>
+                        </i>
+                    </div>
+                </div>
+                <div class="comment">
+                    <ul>
+                        <li><a href="#">昵称:</a>今天天气好晴朗，处处好风光</li>
+                        <li><a href="#">昵称:</a>怎么做的呀？</li>
+                    </ul>
+                    <p class="totalComment">共<span>10</span>条评论&gt;</p>
+                </div>
+            </div>
+        </div>
+        <div class="person">
+            <div class="headPart">
+                <div class="headPic">
+                    <img src="../../../../static/img/word/touxiang_sy@2x.png">
+                    <p>昵称</p>
+                </div>
+            </div>
+            
+            <div class="infos">
+                <div class="content">
+                    <p class="contentText">
+                        内容：我是谁？我在哪？我是谁？我在哪？我是谁？我在哪？我是谁？我在哪？
+                    </p>
+                    <div class="contentPic">
+                        <img src="../../../../static/img/word/tp_sy@2x.png" alt="">
+                    </div>
+                </div>
+                <div class="readOpr">
+                    <div class="readTime">
+                        <div class="read">阅读量：<span>999+</span></div>
+                        <div class="time">
+                            <span>2018</span>年
+                            <span>1</span>月
+                            <span>1</span>日
+                        </div>
+                    </div>
+                    <div class="opr">
+                        <i class="heart">
+                            <span>99+</span>
+                        </i>
+                        <i class="reply">
+                            <span>999+</span>
+                        </i>
+                    </div>
+                </div>
+                <div class="comment">
+                    <ul>
+                        <li><a href="#">昵称:</a>今天天气好晴朗，处处好风光</li>
+                        <li><a href="#">昵称:</a>怎么做的呀？</li>
+                    </ul>
+                    <p class="totalComment">共<span>10</span>条评论&gt;</p>
+                </div>
+            </div>
+        </div>
+        <div class="person">
+            <div class="headPart">
+                <div class="headPic">
+                    <img src="../../../../static/img/word/touxiang_sy@2x.png">
+                    <p>昵称</p>
+                </div>
+            </div>
+            
+            <div class="infos">
+                <div class="content">
+                    <p class="contentText">
+                        内容：我是谁？我在哪？我是谁？我在哪？我是谁？我在哪？我是谁？我在哪？
+                    </p>
+                    <div class="contentPic">
+                        <img src="../../../../static/img/word/tp_sy@2x.png" alt="">
+                    </div>
+                </div>
+                <div class="readOpr">
+                    <div class="readTime">
+                        <div class="read">阅读量：<span>999+</span></div>
+                        <div class="time">
+                            <span>2018</span>年
+                            <span>1</span>月
+                            <span>1</span>日
+                        </div>
+                    </div>
+                    <div class="opr">
                         <i class="heart">
                             <span>99+</span>
                         </i>
@@ -59,7 +144,9 @@ export default {
 <style scoped lang="scss">
     .follow{
         width: 100%;
-        margin-bottom: .4rem;
+        height: 100%;
+        overflow: auto;
+        padding-bottom: 1rem;
         .person{
             padding: .3rem .24rem 0;
             background: #fff;

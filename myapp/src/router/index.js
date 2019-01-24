@@ -9,14 +9,13 @@ import Register from '@/components/register'
 import Edit_home from '@/components/edit_home'
 import WordMdn from '@/components/word-mdn/headphoto'
 import Fans from '@/components/word-mdn/components-head/mdn-fans'
-import Like from '@/components/word-mdn/components-head/like'
-import Hot from '@/components/word-mdn/components-head/hot'
-import Notebook from '@/components/word-mdn/components-head/notebook'
 import Verify from "@/components/register/components/verify"
 import RestPassword from "@/components/register/components/restPassword"
 import BandPhone from "@/components/register/components/bandPhone"
 import Word_search from '@/components/word_search'
 import Word_notice from '@/components/word_notice'
+import word_comments from "@/components/word-mdn/components-head/word_comments"
+import word_commentsOn from "@/components/word-mdn/components-head/word_commentsOn"
 import Collect from '@/components/collect'
 import New from '@/components/collect/new'
 import Attention from '@/components/word-mdn/components-head/mdn-attention'
@@ -29,7 +28,7 @@ import AccountManagement from "../components/my/settings/accountManagement"
 import MaterialSubmitted from "../components/my/settings/materialSubmitted"
 import AboutUs from "../components/my/settings/aboutUs"
 import Settings from "../components/my/settings"
-// import Basics from "../components/my/basics"
+import Basics from "../components/my/basics/basics.vue"
 
 Vue.use(Router)
 
@@ -70,6 +69,16 @@ const router = new Router({
       meta: {
         showFooter: false,
       }
+    },
+    {
+      path: "/word_comments",
+      name: "word_comments",
+      component: word_comments,
+    },
+    {
+      path: "/word_commentsOn",
+      name: "word_commentsOn",
+      component: word_commentsOn,
     },
     {
       path: '/word-mdn',
@@ -235,17 +244,39 @@ const router = new Router({
         requireAuth:true
       }
     },
-    // {
-    //   path: '/basics',
-    //   name: 'basics',
-    //   component: Basics,
-    //   meta:{
-    //     //tab栏隐藏
-    //     showFooter: false,
-    //     //路由守卫
-    //     requireAuth:true
-    //   }
-    // },
+    {
+      path: '/basics',
+      name: 'basics',
+      component: Basics,
+      meta:{
+        //tab栏隐藏
+        showFooter: false,
+        //路由守卫
+        requireAuth:true
+      }
+    },
+    {
+      path: '/new',
+      name: 'new',
+      component: New,
+      meta:{
+        //tab栏隐藏
+        showFooter: false,
+        //路由守卫
+        requireAuth:true
+      }
+    },
+    {
+      path: '/collect',
+      name: 'collect',
+      component: Collect,
+      meta:{
+        //tab栏隐藏
+        showFooter: false,
+        //路由守卫
+        requireAuth:true
+      }
+    },
   ]
 })
 

@@ -11,7 +11,6 @@ import "./common/css/iconfont/iconfont.css";
 import "./common/css/icon-mdn/iconfont.css";
 import "../node_modules/swiper/dist/css/swiper.min.css";
 import "./common/js/flexble";
-
 import MintUI from "mint-ui";
 import "../node_modules/mint-ui/lib/style.css";
 Vue.use(MintUI);

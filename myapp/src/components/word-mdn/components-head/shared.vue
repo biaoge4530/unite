@@ -14,7 +14,7 @@
                  <img src="static/img/word-mdn/fx_hengang.png">
             </div>
         </div>
-        <div class="footer">取消</div>
+        <div class="footer"><router-link to="/mdn-notebookdown">取消</router-link></div>
     </div>
 </template>
 <script>
