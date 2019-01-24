@@ -1,21 +1,25 @@
 <template>
-<!-- 导航 -->
+  <!-- 导航 -->
   <div class="fans-body">
     <div class="fans-nav-father">
       <mt-header fixed title="111个粉丝" class="fans-nav">
         <router-link to="word-mdn" slot="left">
-          <mt-button><p class="tu"><img src="static/img/word-mdn/fanhui.png"></p></mt-button>
+          <mt-button>
+            <p class="tu">
+              <img src="static/img/word-mdn/fanhui.png">
+            </p>
+          </mt-button>
         </router-link>
       </mt-header>
     </div>
     <!-- 内容 -->
     <div class="wrapper" ref="homeWrapper">
       <ul class="content">
-        <li class="list" v-for="(item,index) in nav" :key="index">
+        <li class="list" v-for="(item,index) in users" :key="index">
           <div class="list-head">
-            <img :src="item.url" alt>
-            <p class="list-name" :name="item.name">{{item.name}}</p>
-            <p class="atte">+  关注</p>
+            <img :src="item.image" alt />
+            <p class="list-name">{{item.name}}</p>
+            <p class="atte">{{item.attr==0 ? "已关注":"+关注"}}</p>
           </div>
         </li>
       </ul>
@@ -25,32 +29,28 @@
 <script>
 import { Header } from "mint-ui";
 import BScroll from "better-scroll";
+import axios from "axios";
 export default {
   data() {
     return {
-      nav:[
-        {url:'../../../../static/img/word-mdn/touxiang_sy@3x.png',name:'昵称'},
-        {url:'../../../../static/img/word-mdn/touxiang_sy@3x.png',name:'昵称'},
-        {url:'../../../../static/img/word-mdn/touxiang_sy@3x.png',name:'昵称'},
-        {url:'../../../../static/img/word-mdn/touxiang_sy@3x.png',name:'昵称'},
-        {url:'../../../../static/img/word-mdn/touxiang_sy@3x.png',name:'昵称'},
-        {url:'../../../../static/img/word-mdn/touxiang_sy@3x.png',name:'昵称'},
-        {url:'../../../../static/img/word-mdn/touxiang_sy@3x.png',name:'昵称'},
-        {url:'../../../../static/img/word-mdn/touxiang_sy@3x.png',name:'昵称'},
-        {url:'../../../../static/img/word-mdn/touxiang_sy@3x.png',name:'昵称'},
-        {url:'../../../../static/img/word-mdn/touxiang_sy@3x.png',name:'昵称'},
-        {url:'../../../../static/img/word-mdn/touxiang_sy@3x.png',name:'昵称'},
-        {url:'../../../../static/img/word-mdn/touxiang_sy@3x.png',name:'昵称'},
-       
-      ]
-      
+        users: [] 
     };
   },
   components: {
     "Header-com": Header
   },
-  methods: {
-
+  created() {
+    //粉丝接口
+    axios({
+      method:"post",
+      url:"https://www.easy-mock.com/mock/5c370dd7f93efc493ce9c7a5/example/fans",
+      headers:{"Content-type":"application/json"},
+    })
+    .then((data)=>{
+      //console.log(data);
+       this.users=data.data.imglist;
+    })
+     timeout:3000
   },
   mounted() {
     let wrapper = document.querySelector(".wrapper");
@@ -60,7 +60,7 @@ export default {
       click:true
     });
     //console.log(this.scroll);   
-  }
+  },
 };
 
 </script>
@@ -82,15 +82,15 @@ li {
   .fans-nav-father {
     height: 1.23rem;
     background: #f3f3f3;
-     .tu {
-          width: .21rem;
-          height: .35rem;
-          margin-left: .24rem;
-          & > img {
-           width: .17rem;
-          height: .28rem;
-          }
-        }
+    .tu {
+      width: 0.21rem;
+      height: 0.35rem;
+      margin-left: 0.24rem;
+      & > img {
+        width: 0.17rem;
+        height: 0.28rem;
+      }
+    }
     .fans-nav {
       padding-top: 0.6rem;
       // width: 95%;
@@ -100,10 +100,10 @@ li {
       background: #ffffff;
       color: #787878;
       .back {
-        margin-left: .24rem;
-        &>img{
-          width: .21rem;
-          height: .35rem;
+        margin-left: 0.24rem;
+        & > img {
+          width: 0.21rem;
+          height: 0.35rem;
         }
       }
     }
@@ -120,31 +120,31 @@ li {
       background: #ffffff;
       width: 100%;
       position: relative;
-      .list-head{
+      .list-head {
         width: 1.16rem;
         height: 1.16rem;
         position: absolute;
-        left:.25rem;
-        top:.15rem;
-        &>img{
+        left: 0.25rem;
+        top: 0.15rem;
+        & > img {
           width: 1.16rem;
           height: 1.16rem;
         }
-        .list-name{
-          width: .56rem;
-          font-size: .28rem;
+        .list-name {
+          width: 1rem;
+          font-size: 0.28rem;
           position: absolute;
           left: 1.42rem;
-          top: .5rem;
+          top: 0.5rem;
         }
-        .atte{
-           position: absolute;
-           top: .55rem;
-           left: 6.2rem;
-           width: 1rem;
-           //background: #f3f3f3;
-           font-size: .24rem;
-           color: #222222;
+        .atte {
+          position: absolute;
+          top: 0.55rem;
+          left: 6.2rem;
+          width: 1rem;
+          //background: #f3f3f3;
+          font-size: 0.24rem;
+          color: #222222;
         }
       }
     }
