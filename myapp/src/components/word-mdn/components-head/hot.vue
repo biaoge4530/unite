@@ -153,10 +153,11 @@ img {
 // 整体部分
 .wrapper {
   width:100%;
-  height: 8.23rem;
+  height:8.23rem;
   overflow:hidden; 
   .content{
      width: 90%;
+     height: auto;
     .hot {
     width: 90%;
     height: 100%;
@@ -175,7 +176,7 @@ img {
         height: 0.8rem;
         border-radius: 50%;
         background: #cccccc;
-        margin-left: 0.62rem;
+        margin-left: 0.4rem;
         & > img {
           width: 0.8rem;
           height: 0.8rem;
