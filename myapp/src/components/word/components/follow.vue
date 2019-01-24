@@ -27,9 +27,6 @@
                         </div>
                     </div>
                     <div class="opr">
-                        <i class="star">
-                            <span>99+</span>
-                        </i>
                         <i class="heart">
                             <span>99+</span>
                         </i>
@@ -74,9 +71,6 @@
                         </div>
                     </div>
                     <div class="opr">
-                        <i class="star">
-                            <span>99+</span>
-                        </i>
                         <i class="heart">
                             <span>99+</span>
                         </i>
@@ -121,9 +115,6 @@
                         </div>
                     </div>
                     <div class="opr">
-                        <i class="star">
-                            <span>99+</span>
-                        </i>
                         <i class="heart">
                             <span>99+</span>
                         </i>
