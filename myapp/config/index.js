@@ -10,6 +10,7 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
+<<<<<<< HEAD
       "api/":{
         target:"http://39.96.74.48:8080/lha1",
         changeOrigin:true,
@@ -17,6 +18,15 @@ module.exports = {
           "^/api":""
         }
       }
+=======
+      // "/api":{
+      //   target:"http://39.96.74.48:8080",
+      //   changeOrigin:true,
+      //   pathRewrite:{
+      //     "^/api":""
+      //   }
+      // }
+>>>>>>> mdn
     },
 
     // Various Dev Server settings
