@@ -1,7 +1,7 @@
 <template>
   <div class="notebookdown">
     <!-- 导航 -->
-    <mt-header fixed title="昵称" class="notebookdown-nav">
+    <mt-header fixed :title="message" class="notebookdown-nav">
       <router-link to="word-mdn" slot="left">
         <mt-button>
           <p class="tu">
@@ -15,31 +15,31 @@
       <div class="content">
         <div class="warp">
           <div class="notebook-content">
-            <div class="notebook" v-for="(item,index) in nav">
-              <img :src="item.url">
-              <p class="notebook-page" :name="item.page">{{item.page}}</p>
-              <p class="notebook-num" :num="item.num">{{item.num}}</p>
+            <div class="notebook">
+              <img :src="nav.url">
+              <p class="notebook-page" >{{nav.page}}</p>
+              <p class="notebook-num">{{nav.num}}</p>
             </div>
           </div>
           <!-- 类别 -->
-          <div class="genre" v-for="(item,index) in nav">{{item.genre}}</div>
+          <div class="genre">{{nav.genre}}</div>
         </div>
         <!-- 好友 -->
-        <div class="firend">
+        <div class="firend" >
           <div class="firend_head">
-            <img src="static/img/word-mdn/touxiang_sy@3x.png">
-            <p class="firend_name">昵称</p>
+            <img :src="nav.head">
+            <p class="firend_name">{{nav.name}}</p>
             <p class="firend_atte" @click>+关注</p>
           </div>
         </div>
         <!-- 评论 -->
         <p class="All">全部评论</p>
-        <div class="all_comment">
+        <div class="all_comment" v-for="(item,index) in replies">
           <div class="comment">
-            <img src="static/img/word-mdn/touxiang_sy@3x.png">
-            <p class="comment_name">昵 称</p>
-            <p class="comment_time">1小时前</p>
-            <p class="content">感觉很小清新</p>
+            <img :src="item.head">
+            <p class="comment_name">{{item.name}}</p>
+            <p class="comment_time">{{item.time}}</p>
+            <p class="content">{{item.comment}}</p>
           </div>
         </div>
       </div>
@@ -72,32 +72,27 @@ import axios from "axios";
 export default {
   data() {
     return {
-      nav: [
-        {
-          url: "../../../../static/img/word-mdn/tu1@2x.png",
-          page: "/手账篇数/",
-          num: "12",
-          genre: "手账名称",
-             
-        }
-      ]
+      message:"",
+      nav:{},
+      replies:[]
     };
   },
   components: {
     "Header-com": Header
   },
-  // created(){
-  //   axios({
-  //     methods: "post",  
-  //     url:"https://www.easy-mock.com/mock/5c370dd7f93efc493ce9c7a5/example/note",
-  //     headers:{"Content-type":"application/json"},
-  //   })
-  //   .then((data)=>{
-  //     console.log(data.data.down)
-  //     this.nav=data.data.down;
-  //   })
-  //    timeout:3000
-  // },
+  created() {
+    axios({
+      methods: "get",
+      url:"https://www.easy-mock.com/mock/5c370dd7f93efc493ce9c7a5/example/note",
+      headers: { "Content-type": "application/json" }
+    }).then(data => {
+      //console.log(data.data.down.replies);
+      this.replies = data.data.down.replies;
+      this.nav = data.data.down;
+      this.message = data.data.down.name;
+    });
+    timeout: 3000;
+  },
   mounted() {
     let wrapper = document.querySelector(".wrapper");
     this.scroll = new BScroll(this.$refs.homeWrapper, {
@@ -187,7 +182,7 @@ export default {
           line-height: 0.66rem;
           position: absolute;
           top: 6.57rem;
-          left: 3.2rem;
+          left: 3.5rem;
         }
       }
       // 好友
@@ -243,13 +238,13 @@ export default {
             position: absolute;
             left: 1.52rem;
             top: 0.2rem;
-            width: 0.65rem;
+            width: 1rem;
           }
           .comment_time {
             font-size: 0.18rem;
             color: #9a9b9b;
             position: absolute;
-            left: 2.25rem;
+            left: 2.4rem;
             top: 0.23rem;
             width: 0.7rem;
           }
@@ -272,7 +267,7 @@ export default {
     border-top: 0.01rem solid #d9d9d9;
     height: 0.98rem;
     width: 100%;
-    //background: #ffccee;
+    background: #ffffff;
     position: fixed;
     top: 12.34rem;
     .more {

@@ -27,9 +27,9 @@
             </div>
             <!-- 点赞图标 -->
             <ul class="giv_a_like">
-              <li><i class="iconfont" @click="handleClick()">&#xe601;</i></li>
-              <li><i class="iconfont">&#xe617;</i></li>
-              <li><i class="iconfont">&#xe61e;</i></li>  
+              <li class="start" @click="handleStart()"><img :src="starimg"><span>99<sup>+</sup></span></li>
+              <li class="love" @click="handleLove()"><img :src="loveimg"><span>99<sup>+</sup></span></li>
+              <li class="comment"><img src="static/img/word-mdn/icon_sy_pl@2x.png"><span>99<sup>+</sup></span></li>  
             </ul>
           </div>
           <!-- 评论 -->
@@ -55,7 +55,10 @@ import axios from "axios";
 export default {
   data() {
     return {
-      val: []
+      val: [],
+      starimg:"static/img/word-mdn/空星星.png",
+      loveimg:"static/img/word-mdn/空心.png",
+      flag:false
     };
   },
   components: {
@@ -63,7 +66,7 @@ export default {
   },
   created() {
     axios({
-         method:"post",
+         method:"get",
          url:"https://www.easy-mock.com/mock/5c370dd7f93efc493ce9c7a5/example/hot",
          headers:{"Content-type":"application/json"},
          
@@ -77,6 +80,16 @@ export default {
     //  handleClick(){
     //   this.val.icon1=""
     //  },
+    // 点击星星
+    handleStart(){
+     this.flag=!this.flag
+      this.starimg = (this.flag ?"static/img/word-mdn/实星星.png":"static/img/word-mdn/空星星.png");  
+    },
+    // 点击爱心
+    handleLove(){
+      this.flag=!this.flag
+      this.loveimg = (this.flag ?"static/img/word-mdn/实爱心.png":"static/img/word-mdn/空心.png");  
+    }
   },
   mounted() {
     let wrapper = document.querySelector(".wrapper");
@@ -164,8 +177,8 @@ img {
         }
         // 阅读量
         .hot-right-read {
-          height: 0.6rem;
-          line-height: 0.3rem;
+          height: .6rem;
+          line-height: .3rem;
           display: flex;
           justify-content: space-between;
           .read {
@@ -175,12 +188,28 @@ img {
           }
           // 点赞
           .giv_a_like {
-            width: 2.64rem;
+            width: 2rem;
+            height:.6rem ;
             display: flex;
-            justify-content: space-around;
+            justify-content: space-between;
             align-items: center;
-            & > li i {
-              font-size: 0.34rem;
+            //background: plum;
+            li{ 
+              margin-top:.1rem;
+              width: 1rem;
+              height:.6rem;
+              position: relative; 
+              & > img{
+                  width: .32rem;
+                  height: .32rem;
+                  margin:.1rem 0 0 .1rem;
+              }
+              &>span{
+                position: absolute;
+                left:.43rem;
+                top:0rem;
+                font-size: .15rem
+              }
             }
           }
         }
