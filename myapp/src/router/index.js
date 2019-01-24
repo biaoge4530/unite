@@ -14,6 +14,8 @@ import RestPassword from "@/components/register/components/restPassword"
 import BandPhone from "@/components/register/components/bandPhone"
 import Word_search from '@/components/word_search'
 import Word_notice from '@/components/word_notice'
+import word_comments from "@/components/word-mdn/components-head/word_comments"
+import word_commentsOn from "@/components/word-mdn/components-head/word_commentsOn"
 import Collect from '@/components/collect'
 import New from '@/components/collect/new'
 import Attention from '@/components/word-mdn/components-head/mdn-attention'
@@ -69,6 +71,16 @@ const router = new Router({
       meta: {
         showFooter: false,
       }
+    },
+    {
+      path: "/word_comments",
+      name: "word_comments",
+      component: word_comments,
+    },
+    {
+      path: "/word_commentsOn",
+      name: "word_commentsOn",
+      component: word_commentsOn,
     },
     {
       path: '/word-mdn',

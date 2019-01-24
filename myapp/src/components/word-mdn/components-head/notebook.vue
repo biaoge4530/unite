@@ -11,8 +11,8 @@
             <div class="notebook" v-for="(item,index) in notebook">
               <div class="notebook-img" id="notebook-img">
                 <img :src="item.url">
-                <p class="notebook-page" id="notebook-page" :name="item.page">{{item.page}}</p>
-                <p class="notebook-num" id="notebook-nums" :num="item.num">{{item.num}}</p>
+                <p class="notebook-page" id="notebook-page" :name="item.haName">{{item.page}}</p>
+                <p class="notebook-num" id="notebook-nums" :num="item.haId">{{item.num}}</p>
               </div>
               <!-- 类别 -->
               <div class="genre">{{item.genre}}</div>
@@ -26,50 +26,24 @@
 </template>
 <script>
 import BScroll from "better-scroll";
+import axios from "axios"
 export default {
   data() {
     return {
-      notebook: [
-        {
-          url: "../../../../static/img/word-mdn/tu1@2x.png",
-          page: "/手账篇数/",
-          num: "12",
-          genre: "论.喜"
-        },
-        {
-          url: "../../../../static/img/word-mdn/tu1@2x.png",
-          page: "/手账篇数/",
-          num: "11",
-          genre: "生活"
-        },
-        {
-          url: "../../../../static/img/word-mdn/tu1@2x.png",
-          page: "/手账篇数/",
-          num: "12",
-          genre: "论.喜"
-        },
-        {
-          url: "../../../../static/img/word-mdn/tu1@2x.png",
-          page: "/手账篇数/",
-          num: "11",
-          genre: "生活"
-        },
-        {
-          url: "../../../../static/img/word-mdn/tu1@2x.png",
-          page: "/手账篇数/",
-          num: "12",
-          genre: "论.喜"
-        },
-        {
-          url: "../../../../static/img/word-mdn/tu1@2x.png",
-          page: "/手账篇数/",
-          num: "11",
-          genre: "生活"
-        },
-        
-        
-      ]
+      notebook: []
     };
+  },
+  created() {
+       axios({
+         method:"post",
+         url:"https://www.easy-mock.com/mock/5c370dd7f93efc493ce9c7a5/example/notebook",
+         headers:{"Content-type":"application/json"},
+    })
+        .then((data)=>{
+          this.notebook=data.data.notebook;
+    })
+           timeout:3000
+    
   },
   mounted() {
     let wrapper = document.querySelector(".wrapper");

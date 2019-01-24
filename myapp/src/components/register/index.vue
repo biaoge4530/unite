@@ -54,11 +54,11 @@ export default {
   name: "reight",
   created() {
     /* axios({
+       url:"http://39.96.74.48:8080/lha1/updatePassword",
         method:"post",
-        url:"http://localhost:3000/data",
+
         data:{
           phoneNumber:"15535264455",
-          password:"11111"
         }
       })
       .then((data)=>{
