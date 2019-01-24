@@ -20,7 +20,7 @@ module.exports = {
     },
 
     // Various Dev Server settings
-    host: 'localhost', // can be overwritten by process.env.HOST李昆朋测试地址1192.168.43.131  //测试地址2：172.20.10.2
+    host: 'localhost', // can be overwritten by process.env.HOST李昆朋测试地址1192.168.43.131
     port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
     autoOpenBrowser: false,
     errorOverlay: true,

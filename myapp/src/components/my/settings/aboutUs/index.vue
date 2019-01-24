@@ -1,14 +1,11 @@
 <template>
-  <div class="body">
+  <div>
     <div class="head">
-      <img src="../../../../../static/img/wyc/lt.png" alt @click="handleGet()">
+      <i><</i>
       关于我们
-      <i></i>
     </div>
     <div class="logo">
-      <div class="shell">
-        <img src="../../../../../static/img/my/settings/aboutUs/logo.png" alt>
-      </div>
+      <img src="../../../../../static/img/my/settings/aboutUs/gywm_logo@3x.png" alt>
     </div>
     <p>联系方式</p>
     <ul>
@@ -45,106 +42,71 @@
 </template>
 
 <script>
-export default {
-  methods: {
-    handleGet() {
-      this.$router.back();
-    }
-  }
-};
+export default {};
 </script>
 
 <style  lang="scss">
-.body {
-  height: 100%;
+.head {
+  width: 100%;
+  height: 0.88rem;
+  font-size: 0.34rem;
+  text-align: center;
+  line-height: 0.88rem;
+}
+.logo {
+  width: 100%;
+  height: 3.74rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: #fff;
-
-  .head {
-    width: 100%;
-    height: 0.88rem;
-    font-size: 0.33rem;
-    line-height: 0.88rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0.24rem;
-
-    img {
-      width: 0.23rem;
-      height: 0.39rem;
-      display: block;
-    }
+  img {
+    width: 2.16rem;
+    height: 2.16rem;
+    display: block;
+    margin: 0 auto;
   }
-  .logo {
-    width: 100%;
-    height: 3.74rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #fff;
-    .shell {
-      width: 2.16rem;
-      height: 2.16rem;
-      display: block;
-      margin: 0 auto;
-      box-shadow: 0 0.02rem 0.08rem 0 #76d1be;
-      border-radius: 0.1rem;
+}
+p {
+  text-align: center;
+  line-height: 1.11rem;
+  background: #fff;
+}
+li {
+  width: 100%;
+  height: 0.91rem;
+  background: #fff;
+  padding-left: 0.28rem;
+  padding-top: 0.2rem;
+  display: flex;
+  img {margin-right:.33rem;
+    float: left;
+    width: 0.5rem;
+    height: 0.5rem;
 
-      img {
-        width: 2.16rem;
-        height: 2.16rem;
-        align-items: center;
-      }
-    }
   }
-  p {
-    text-align: center;
-    line-height: 1.11rem;
-    background: #fff;
-    font-size: 0.33rem;
+  a {
+    float: left;
+    height: 100%;
+    margin-left: 0.27rem;
+    border-bottom: 0.01rem solid #f1f1f1;
+    flex: 1;
+    padding-right: 0.24rem;
   }
-
-  li {
-    width: 100%;
-    height: 0.91rem;
-    background: #fff;
-    padding-left: 0.28rem;
-    padding-top: 0.2rem;
-    display: flex;
-
-    img {
-      margin-right: 0.33rem;
-      float: left;
-      width: 0.5rem;
-      height: 0.5rem;
-    }
-    a {
-      float: left;
-      height: 100%;
-      margin-left: 0.27rem;
-      border-bottom: 0.01rem solid #f1f1f1;
-      flex: 1;
-      padding-right: 0.24rem;
-    }
-    &:last-child a {
-      border: none;
-    }
-    h4 {
-      height: 100%;
-      width: 1.29rem;
-      line-height: 0.53rem;
-      float: left;
-    }
-    i {
-      float: right;
-      line-height: 0.53rem;
-      color: #76d1be;
-    }
-    span {
-      display: inline;
-      float: right;
-      line-height: 0.53rem;
-    }
-  }
+  h4 {
+          height: 100%;
+          width: 1.29rem;
+          line-height: 0.53rem;
+          float: left;
+        }
+        i {
+          float: right;
+          line-height: 0.53rem;
+        }
+        span {
+          display: inline;
+          float: right;
+          line-height: 0.53rem;
+        }
 }
 </style>
