@@ -93,9 +93,10 @@ export default {
   },
   created() {
     /* axios({
-        method:"get", //查询
-        url:"http://localhost:3000/data",
+        method:"post",
+        url:"http://39.96.74.48:8080/lha1",
         data:{
+          v_tel:"111",
           phoneNumber:"15535264455",
           password:"11111",
           headphoto:"https://img.alicdn.com/tfs/TB1gXwUlwHqK1RjSZFkXXX.WFXa-210-260.jpg",

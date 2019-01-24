@@ -44,13 +44,14 @@ export default {
     }
   },
   methods: {
+    //如果本地localStorge数据不存在跳转到登录页面
     handleTz() {
       if (localStorage.phoneData) {
-        this.$router.push("/word");
+        this.$router.push("/basics");
       } else {
         this.$router.push("/login");
       }
-    }
+    },
   }
 };
 </script>
