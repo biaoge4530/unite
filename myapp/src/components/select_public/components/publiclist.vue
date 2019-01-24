@@ -1,24 +1,12 @@
 <template>
 	<div class="stateList">
 		<ul>
-			<li>
+			<li v-for="(item,index) in isPublic"
+				@click="handleSel(index)"
+				:class="activeIndex==index?'active':''">
 				<div class="state">
-					<h2>公开</h2>
-					<p>所有人可见</p>
-				</div>
-				<span></span>
-			</li>
-			<li>
-				<div class="state">
-					<h2>关注可见</h2>
-					<p>关注后可见</p>
-				</div>
-				<span></span>
-			</li>
-			<li>
-				<div class="state">
-					<h2>私密</h2>
-					<p>仅自己可见</p>
+					<h2>{{item.state}}</h2>
+					<p>{{item.des}}</p>
 				</div>
 				<span></span>
 			</li>
@@ -28,6 +16,30 @@
 
 <script>
 	export default {
+		data(){
+			return{
+				isPublic:[
+					{
+						state:"公开",
+						des:"所有人可见"
+					},
+					{
+						state:"关注可见",
+						des:"关注后可见"
+					},
+					{
+						state:"私密",
+						des:"仅自己可见"
+					}
+				],
+				activeIndex:0
+			}
+		},
+		methods:{
+			handleSel(index){
+				this.activeIndex = index;
+			}
+		}
 		
 	}
 </script>
@@ -56,6 +68,13 @@
 					p{
 						font-size: .24rem;
 						color: #989999;
+					}
+				}
+			}
+			.active{
+				.state{
+					h2{
+						color: #53E0C5;
 					}
 				}
 				span{

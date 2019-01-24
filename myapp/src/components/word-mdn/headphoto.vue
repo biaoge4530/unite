@@ -8,7 +8,7 @@
 <script>
 import Top from "./components-head/top"
 import Nav from "./components-head/nav"
-import Notebook from "./components-head/notebook"
+// import Notebook from "./components-head/notebook"
 
 
 export default {

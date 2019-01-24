@@ -9,9 +9,6 @@ import Register from '@/components/register'
 import Edit_home from '@/components/edit_home'
 import WordMdn from '@/components/word-mdn/headphoto'
 import Fans from '@/components/word-mdn/components-head/mdn-fans'
-import Like from '@/components/word-mdn/components-head/like'
-import Hot from '@/components/word-mdn/components-head/hot'
-import Notebook from '@/components/word-mdn/components-head/notebook'
 import Verify from "@/components/register/components/verify"
 import RestPassword from "@/components/register/components/restPassword"
 import BandPhone from "@/components/register/components/bandPhone"
@@ -239,6 +236,22 @@ const router = new Router({
       path: '/basics',
       name: 'basics',
       component: Basics,
+    },
+    {
+      path: '/new',
+      name: 'new',
+      component: New,
+      meta:{
+        //tab栏隐藏
+        showFooter: false,
+        //路由守卫
+        requireAuth:true
+      }
+    },
+    {
+      path: '/collect',
+      name: 'collect',
+      component: Collect,
       meta:{
         //tab栏隐藏
         showFooter: false,

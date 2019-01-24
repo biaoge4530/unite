@@ -3,9 +3,7 @@
     <!-- 导航 -->
     <mt-header fixed title="昵称" class="notebookdown-nav">
       <router-link to="word-mdn" slot="left">
-        <mt-button class="back">
-          <img src="static/img/word-mdn/fanhui.png">
-        </mt-button>
+        <mt-button><p class="tu"><img src="static/img/word-mdn/fanhui.png"></p></mt-button>
       </router-link>
     </mt-header>
     <!--手账内容 -->
@@ -101,11 +99,14 @@ export default {
     margin: 0 auto;
     background: #ffffff;
     color: #787878;
-    .back {
-      margin-left: 0.24rem;
-      & > img {
-        width: 0.21rem;
-        height: 0.35rem;
+      .tu{
+        margin-left: 0.24rem;
+        width: 0.17rem;
+        height: 0.28rem;
+        &>img{
+          width: 0.17rem;
+        height: 0.28rem;
+        
       }
     }
   }

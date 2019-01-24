@@ -1,11 +1,11 @@
 <template>
-  <div class="background" @click="editOption(-1)">
+  <div class="background" >
     <div class="bgbox">
       <ul class="head">
         <li></li>
         <li class="my">我的</li>
         <li class="more">更多</li>
-        <li>
+        <li @click="editOption(-1)">
           <img src="static/img/edit/toTop.png" alt>
         </li>
       </ul>

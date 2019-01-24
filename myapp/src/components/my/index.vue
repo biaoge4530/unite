@@ -13,15 +13,16 @@ import Follower from "./components/follower";
 import Stick from "./components/stick";
 import Vuex from "vuex";
 export default {
-    components:{
-      "Banner-com":Banner,
-      "Follower-com":Follower,
-      "Stick-com":Stick,
-    }
-}
+  components: {
+    "Banner-com": Banner,
+    "Follower-com": Follower,
+    "Stick-com": Stick
+  }
+};
 </script>
 
 
 <style>
+
 
 </style>
