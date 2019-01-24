@@ -35,7 +35,7 @@ export default {
   },
   created() {
        axios({
-         method:"post",
+         method:"get",
          url:"https://www.easy-mock.com/mock/5c370dd7f93efc493ce9c7a5/example/notebook",
          headers:{"Content-type":"application/json"},
     })

@@ -42,7 +42,7 @@ export default {
   created() {
     //粉丝接口
     axios({
-      method:"post",
+      method:"get",
       url:"https://www.easy-mock.com/mock/5c370dd7f93efc493ce9c7a5/example/fans",
       headers:{"Content-type":"application/json"},
     })

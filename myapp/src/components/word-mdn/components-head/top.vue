@@ -62,7 +62,7 @@ export default {
   },
   // created() {
   //    axios({
-  //        method:"post",
+  //        method:"get",
   //        url:"api/lha1/world/getDongtai",
   //        headers:{"Content-type":"application/json"},
   //        data:{
