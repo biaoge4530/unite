@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="personal">
     <div class="head">个人资料</div>
     <div class="logo">
       <img src="../../../../static/img/my/basics/grzl_tx@3x.png" alt>
@@ -31,8 +31,16 @@
 </template>
 
 <script>
-export default {};
+export default {
+    
+};
 </script>
 
 <style>
+    .personal{
+      height: 100%;
+      width: 100%;
+      background: red;
+      
+    }
 </style>
