@@ -20,8 +20,7 @@
           v-model="phoneNumber"
           maxlength="11"
           placeholder="请输入手机号"
-          @blur="phoneBlur"
-        >
+        />
       </div>
 
       <div>

@@ -28,8 +28,15 @@
     <div class="inputNumber" slot="name3">
       <div>
         <img src="../../../static/img/wyc/phone.png">
+       <input type="text"
+          placeholder="请输入手机号码"
+          v-model="phoneNumber"
+          maxlength="11"
+          autocomplete="value"
+          autofocus="autofocus"
+          pattern="^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$" oninvalid="setCustomValidity('请输入11位手机号');" required="required"
 
-        <input type="text" placeholder="请输入手机号码" v-model="phoneNumber" maxlength="11">
+       />
       </div>
       <div class="inputPassword" id="inputPassword">
         <img src="../../../static/img/wyc/encrypt.png">
@@ -41,7 +48,8 @@
         </div>
       </div>
       <div id="btn">
-        <button @click="headlePush()">登录</button>
+        <!-- <button @click="headlePush()">登录</button> -->
+        <mt-button type="primary" @click="headlePush()">登录</mt-button>
       </div>
       <div id="Authentication">
         <li>
@@ -82,7 +90,8 @@
 </template>
 <script>
 import Vue from "vue";
-import { Toast } from "mint-ui";
+import { Toast, Button } from "mint-ui";
+Vue.component(Button.name, Button);
 import axios from "axios";
 import "mint-ui/lib/style.css";
 import Vuex from "vuex";
@@ -92,9 +101,9 @@ export default {
     phoneNumber: localStorage
   },
   created() {
-    /* axios({
+    /*  axios({
         method:"post",
-        url:"http://39.96.74.48:8080/lha1",
+        url:"http://39.96.74.48:8080/lha1/login/code",
         data:{
           v_tel:"111",
           phoneNumber:"15535264455",
@@ -159,6 +168,7 @@ export default {
             duration: 800
           });
           this.phonePassword = "";
+          //console.log(data.data[0])
           //将存入localStorage中
           localStorage.phoneData = JSON.stringify(data.data[0]);
           this.$router.push("/my");
