@@ -10,7 +10,7 @@
 		</ul>
 		<ul class="big">
 			 <li v-for="(item,index) in simgList" @click="addSimg(index)">
-				<img :src="item | srcs" alt>
+				<img :src="item.imgUrl" alt>
 			</li>
 		</ul>
 	</div>
@@ -20,21 +20,22 @@
 import BScroll from "better-scroll";
 import Vuex from "vuex"
 export default {
-  filters: {
-    srcs(val) {
-      return "static/img/edit/simg/" + val;
-    }
-  },
   methods:{
 		...Vuex.mapMutations({
 			addSimg:"edit/addSimg",
-		})
+		}),
+		...Vuex.mapActions({
+		   getSimg:"edit/getSimg"
+	   }),
 	},
 	computed:{
 		...Vuex.mapState({
 			simgList:state=>state.edit.simgList,
 		})
 	},
+   created(){
+    this.getSimg()
+  },
 };
 </script>
 

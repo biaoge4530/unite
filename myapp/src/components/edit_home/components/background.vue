@@ -12,7 +12,7 @@
       <div class="wrapper" ref="homeWrapper">
         <ul class="bgs content">
           <li @click="addbgImg(index)" v-for="(item,index) in bgList" :key="index">
-            <img :src="item | srcs" alt>
+            <img :src="item.imgUrl">
           </li>
         </ul>
       </div>
@@ -26,24 +26,27 @@ import Vuex from "vuex"
 export default {
   data() {
     return {
-      bgList: [
-        "bgImg1.png",
-        "bgImg2.png",
-        "bgImg3.png",
-        "bgImg4.png",
-        "bgImg5.png",
-        "bgImg6.png",
-        "bgImg7.png",
-        "bgImg8.png",
-        "bgImg9.png"
-      ]
+      // bgList: [
+      //   "bgImg1.png",
+      //   "bgImg2.png",
+      //   "bgImg3.png",
+      //   "bgImg4.png",
+      //   "bgImg5.png",
+      //   "bgImg6.png",
+      //   "bgImg7.png",
+      //   "bgImg8.png",
+      //   "bgImg9.png"
+      // ]
     };
   },
  	methods:{
 		...Vuex.mapMutations({
       addbgImg:"edit/addbgImg",
-      editOption:"edit/editOption"
-		})
+      editOption:"edit/editOption",
+    }),
+     ...Vuex.mapActions({
+        getbgImg:"edit/getbgImg"
+    })
 	},
   mounted() {
     this.scroll = new BScroll(this.$refs.homeWrapper, {
@@ -51,13 +54,15 @@ export default {
       pullUpLoad: true,
       click:true
     });
-    // console.log(this.scroll);
   },
-  filters: {
-    srcs(val) {
-      return "static/img/edit/bgImgs/" + val;
-    }
+  created(){
+    this.getbgImg()
   },
+  computed:{
+     ...Vuex.mapState({
+          bgList:state=>state.edit.bgList,
+      }),
+   },
 };
 </script>
 

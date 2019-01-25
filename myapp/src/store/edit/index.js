@@ -5,28 +5,8 @@ let state = {
 	pList:[],
 	addSimgbig:[],
 	style: [],
-	simgList:[
-        "big1.png",
-        "big2.png",
-        "big3.png",
-        "big4.png",
-        "big5.png",
-        "big6.png",
-        "big7.png",
-        "big8.png",
-        "big9.png"
-	],
-	bgList: [
-		"bgImg1.png",
-		"bgImg2.png",
-		"bgImg3.png",
-		"bgImg4.png",
-		"bgImg5.png",
-		"bgImg6.png",
-		"bgImg7.png",
-		"bgImg8.png",
-		"bgImg9.png"
-	] 
+	simgList:[],
+	bgList: [] 
 }
 let mutations = {
 	//选择操作
@@ -45,14 +25,39 @@ let mutations = {
 	//添加贴图
 	addSimg(state,params){
 		state.addSimgbig.push(state.simgList[params])
+		console.log(state.addSimgbig)
 	},
 	//保存样式
 	setStyle(state,params){
 		state.style = params
 	},
+	//获取背景图片列表
+	getbgImg(state,params){
+		state.bgList=params.data
+	},
+	getSimg(state,params){
+		state.simgList=params.data
+	}
 }
 let actions = {
-	
+	//获取背景图片
+	getbgImg({commit}){
+		axios({
+			method:"get",
+			url:"https://www.easy-mock.com/mock/5c467cdc9c8153210b4a25d0/example/query",
+		}).then((data)=>{
+			commit("getbgImg",data.data);
+		})
+	},
+	//获取贴图列表getSimg
+	getSimg({commit}){
+		axios({
+			method:"get",
+			url:"https://www.easy-mock.com/mock/5c467cdc9c8153210b4a25d0/example/getSimg",
+		}).then((data)=>{
+			commit("getSimg",data.data);
+		})
+	}
 }
 let getters = {
 	
