@@ -1,7 +1,7 @@
 <template>
 	<div class="header">
 		<div class="back">
-			<span></span>
+			<span @click="handleBack()"></span>
 		</div>
 		<div class="title">
 			发布动态
@@ -12,7 +12,11 @@
 
 <script>
 	export default {
-		
+		methods:{
+			handleBack(){
+				this.$router.back();
+			}
+		}
 	}
 </script>
 
