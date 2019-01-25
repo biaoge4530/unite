@@ -29,7 +29,7 @@
             <ul class="giv_a_like">
               <li class="start" @click="handleStart()"><img :src="starimg"><span>99<sup>+</sup></span></li>
               <li class="love" @click="handleLove()"><img :src="loveimg"><span>99<sup>+</sup></span></li>
-              <li class="comment"><img src="static/img/word-mdn/icon_sy_pl@2x.png"><span>99<sup>+</sup></span></li>  
+              <li class="comment" @click="handleComment()"><img src="static/img/word-mdn/icon_sy_pl@2x.png"><span>99<sup>+</sup></span></li>  
             </ul>
           </div>
           <!-- 评论 -->
@@ -47,6 +47,10 @@
       </div>
       <div></div>
     </div>
+     <div class="shade" v-show="show" >
+      <textarea class="inPut" placeholder="#说你想说的"></textarea/>
+      <div class="issue" @click="handleIssue()">发布</div>
+    </div>
   </div>
 </template>
 <script>
@@ -58,7 +62,8 @@ export default {
       val: [],
       starimg:"static/img/word-mdn/空星星.png",
       loveimg:"static/img/word-mdn/空心.png",
-      flag:false
+      flag:false,
+      show:false,
     };
   },
   components: {
@@ -89,6 +94,12 @@ export default {
     handleLove(){
       this.flag=!this.flag
       this.loveimg = (this.flag ?"static/img/word-mdn/实爱心.png":"static/img/word-mdn/空心.png");  
+    },
+    handleComment(){
+      this.show=true;
+    },
+    handleIssue(){
+      this.show=false;
     }
   },
   mounted() {
@@ -119,6 +130,33 @@ img {
   width: 100%;
   height: 8.23rem;
   overflow: hidden;
+  .shade{
+    position: fixed;
+    top:80%;
+    width: 100%;
+    height:20%;
+    background: #eeeeee;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content:space-around;
+    .inPut{
+      width: 82%;
+      height:82%;
+      font-size:.2rem;
+      // margin: 3% 0 0 3%;
+      border-radius: .1rem;
+      outline: none;
+    }
+    .issue{
+      width: 15%;
+      height: .45rem;
+      font-size: .32rem;
+      text-align: center;
+      background: #3FB59D;
+      border-radius: .1rem;
+    }
+  }
   .content {
     width: 90%;
     height: auto;
