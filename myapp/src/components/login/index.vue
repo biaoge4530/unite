@@ -12,9 +12,9 @@
           </li>
         </ul>
         <!-- 头像 -->
-        <div id="headPhoto">
+        <div id="headimg">
           <router-link to>
-            <img :src="headPhoto">
+            <img :src="headimg">
           </router-link>
         </div>
       </div>
@@ -28,19 +28,21 @@
     <div class="inputNumber" slot="name3">
       <div>
         <img src="../../../static/img/wyc/phone.png">
-       <input type="text"
+        <input
+          type="text"
           placeholder="请输入手机号码"
-          v-model="phoneNumber"
+          v-model="phone"
           maxlength="11"
           autocomplete="value"
           autofocus="autofocus"
-          pattern="^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$" oninvalid="setCustomValidity('请输入11位手机号');" required="required"
-
-       />
+          pattern="^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$"
+          oninvalid="setCustomValidity('请输入11位手机号');"
+          required="required"
+        >
       </div>
       <div class="inputPassword" id="inputPassword">
         <img src="../../../static/img/wyc/encrypt.png">
-        <input :type="pwdType" placeholder="请输入密码" v-model="phonePassword">
+        <input :type="pwdType" placeholder="请输入密码" v-model="password">
         <!-- v-model="password" -->
         <div class="eye">
           <!-- 密码显示隐藏图标 -->
@@ -98,35 +100,24 @@ import Vuex from "vuex";
 export default {
   state: {
     //
-    phoneNumber: localStorage
+    phone: localStorage
   },
-  created() {
-    /*  axios({
-        method:"post",
-        url:"http://39.96.74.48:8080/lha1/login/code",
-        data:{
-          v_tel:"111",
-          phoneNumber:"15535264455",
-          password:"11111",
-          headphoto:"https://img.alicdn.com/tfs/TB1gXwUlwHqK1RjSZFkXXX.WFXa-210-260.jpg",
-          uNickname:"一只小蜜蜂",
-          likes:"400w",
-          loves:"756"
-        }
-      })
-      .then((data)=>{
-       console.log(data);
+  /* created() {
+    axios({
+      method: "get",
+      url: "/api/pwdLogin",
+    }).then(data => {
+      console.log(data);
+    });
 
-      }) */
-    /*  this.headlePush(); */
-  },
+  }, */
   data() {
     return {
-      phoneNumber: "",
-      phonePassword: "",
+      phone: "",
+      password: "",
       pwdType: "password",
       uNickname: "",
-      headPhoto: "../../../static/img/wyc/head.png",
+      headimg: "../../../static/img/wyc/head.png",
       openEye: require("../../../static/img/wyc/show.png")
     };
   },
@@ -144,20 +135,20 @@ export default {
       axios({
         //查询
         method: "get",
-        url: "http://localhost:3000/data?phoneNumber=" + this.phoneNumber,
-        data: {
-          phoneNumber: this.phoneNumber,
-          phonePassword: this.phonePassword,
-          headPhoto: this.headPhoto
+        url: "/api/pwdLogin",
+        params: {
+          phone: this.phone,
+          password: this.password,
+          headimg: this.headimg
         }
       }).then(data => {
-        /*  console.log(data.data[0].phoneNumber) */
-        if (data.data.length == 0) {
+        /*  console.log(data.data[0].phone) */
+        if ( code == -3) {
           Toast({
             message: "用户名不存在",
             duration: 800
           });
-        } else if (this.phonePassword !== data.data[0].phonePassword) {
+        } else if (code == -1) {
           Toast({
             message: "密码错误",
             duration: 800
@@ -167,7 +158,7 @@ export default {
             message: "登录成功",
             duration: 800
           });
-          this.phonePassword = "";
+          this.password = "";
           //console.log(data.data[0])
           //将存入localStorage中
           localStorage.phoneData = JSON.stringify(data.data[0]);
@@ -241,7 +232,7 @@ export default {
   margin-left: 37%;
   margin-top: 28%;
 }
-#headPhoto img {
+#headimg img {
   width: 1.8rem;
   height: 1.8rem;
 }
