@@ -1,18 +1,18 @@
 <template>
-  <div class="background" @click="editOption(-1)">
+  <div class="background" >
     <div class="bgbox">
       <ul class="head">
         <li></li>
         <li class="my">我的</li>
         <li class="more">更多</li>
-        <li>
+        <li @click="editOption(-1)">
           <img src="static/img/edit/toTop.png" alt>
         </li>
       </ul>
       <div class="wrapper" ref="homeWrapper">
         <ul class="bgs content">
           <li @click="addbgImg(index)" v-for="(item,index) in bgList" :key="index">
-            <img :src="item | srcs" alt>
+            <img :src="item.imgUrl">
           </li>
         </ul>
       </div>
@@ -26,24 +26,27 @@ import Vuex from "vuex"
 export default {
   data() {
     return {
-      bgList: [
-        "bgImg1.png",
-        "bgImg2.png",
-        "bgImg3.png",
-        "bgImg4.png",
-        "bgImg5.png",
-        "bgImg6.png",
-        "bgImg7.png",
-        "bgImg8.png",
-        "bgImg9.png"
-      ]
+      // bgList: [
+      //   "bgImg1.png",
+      //   "bgImg2.png",
+      //   "bgImg3.png",
+      //   "bgImg4.png",
+      //   "bgImg5.png",
+      //   "bgImg6.png",
+      //   "bgImg7.png",
+      //   "bgImg8.png",
+      //   "bgImg9.png"
+      // ]
     };
   },
  	methods:{
 		...Vuex.mapMutations({
       addbgImg:"edit/addbgImg",
-      editOption:"edit/editOption"
-		})
+      editOption:"edit/editOption",
+    }),
+     ...Vuex.mapActions({
+        getbgImg:"edit/getbgImg"
+    })
 	},
   mounted() {
     this.scroll = new BScroll(this.$refs.homeWrapper, {
@@ -51,13 +54,15 @@ export default {
       pullUpLoad: true,
       click:true
     });
-    // console.log(this.scroll);
   },
-  filters: {
-    srcs(val) {
-      return "static/img/edit/bgImgs/" + val;
-    }
+  created(){
+    this.getbgImg()
   },
+  computed:{
+     ...Vuex.mapState({
+          bgList:state=>state.edit.bgList,
+      }),
+   },
 };
 </script>
 
@@ -106,7 +111,7 @@ export default {
       flex-wrap: wrap;
       margin-top: 0.37rem;
       padding: 0 0.24rem;
-      li {
+      li img{
         width: 2.18rem;
         height: 3.84rem;
         margin-bottom: 0.24rem;
