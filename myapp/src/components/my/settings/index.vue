@@ -154,4 +154,68 @@ div {
     left: 0.42rem;
   }
 }
+.float {
+  display: none;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 2;
+  .notice {
+    width: 5rem;
+    height: 6.8rem;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -2.5rem;
+    margin-top: -3.4rem;
+    background: #fff;
+    border-radius: 20px;
+    opacity: 1;
+    z-index: 4;
+    .bell {
+      display: block;
+      position: absolute;
+      left: -50%;
+      margin-left: 3.3rem;
+      margin-top: -1.51rem;
+      width: 3.3rem;
+      height: 3.3rem;
+    }
+    .cancel {
+      width: 0.38rem;
+      height: 0.38rem;
+      position: absolute;
+      left: 88%;
+      top: 3%;
+    }
+    p {
+      display: block;
+      width: 384px;
+      height:129px;
+      font-size: 30px;
+      font-family: PingFang-SC-Regular;
+      font-weight: bold;
+      color: rgba(152, 153, 153, 1);
+      line-height: .45rem;
+      text-align: center;
+      margin:3.5rem .58rem auto .58rem;
+
+    }
+.Btn{
+  width: 3.64rem;
+  height:.82rem;
+  margin: .4rem .68rem;
+  background-image: -webkit-linear-gradient(0deg,#53e099,#53e0c5);
+ text-align: center;
+font-size:.34rem;
+font-family:PingFang-SC-Regular;
+font-weight:bold;
+color:rgba(255,255,255,1);
+line-height:.83rem
+}
+  }
+}
 </style>

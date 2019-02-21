@@ -28,7 +28,8 @@ import ClearCache from "../components/my/settings/clearCache"
 import MaterialSubmitted from "../components/my/settings/materialSubmitted"
 import AboutUs from "../components/my/settings/aboutUs"
 import Settings from "../components/my/settings"
-
+import Basics from "../components/my/basics/basics.vue"
+import store from "../store"
 
 Vue.use(Router)
 
@@ -151,7 +152,7 @@ const router = new Router({
         //tab栏隐藏
         showFooter: false,
         //路由守卫
-        requireAuth: true
+        requireAuth: false
       }
     },
     {
@@ -160,25 +161,25 @@ const router = new Router({
       component: Login,
       meta: {
         showFooter: false,
-        requireAuth: true
+        requireAuth: false
       }
     },
     {
-      path: '/verify',
+      path: '/verify',/* 验证码登录 */
       name: 'verify',
       component: Verify,
       meta: {
         showFooter: false,
-        requireAuth: true
+        requireAuth: false
       }
     },
     {
-      path: '/restPassword',
+      path: '/restPassword',/* 忘记密码 */
       name: 'restPassword',
       component: RestPassword,
       meta: {
         showFooter: false,
-        requireAuth: true
+        requireAuth: false
       }
     },
     {
@@ -257,6 +258,17 @@ const router = new Router({
       }
     },
     {
+      path: '/basics',
+      name: 'basics',
+      component: Basics,
+      meta:{
+        //tab栏隐藏
+        showFooter: false,
+        //路由守卫
+        requireAuth:true
+      }
+    },
+    {
       path: '/new',
       name: 'new',
       component: New,
@@ -280,6 +292,21 @@ const router = new Router({
     },
   ]
 })
-
+router.beforeEach( (to,from,next)=>{
+  const token = store.state.Token
+  if(to.meta.requireAuth){   //判断该路由是否需要登录权限
+    if(token){ //通过vuex state获取当前的token是否存在
+      next()
+    }else{
+      //该页面需要登录
+      next({
+        path:'/login'
+        //query:{redirect:to.fullPath} //将跳转的路由path作为参数，登录成功后跳转到该路由
+      })
+    }
+  }else{
+    next()
+  }
+} )
 
 export default router;

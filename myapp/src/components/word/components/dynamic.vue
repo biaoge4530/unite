@@ -167,7 +167,7 @@
 			.person{
 				padding: .3rem .24rem 0;
 				background: #fff;
-				border-bottom: .06rem solid #ccc;
+				border-bottom: .02rem solid #eeeeee;
 				.headPart{
 					width: 100%;
 					height: .8rem;

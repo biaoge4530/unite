@@ -3,20 +3,27 @@
 // see http://vuejs-templates.github.io/webpack for documentation.
 
 const path = require('path')
-//https://www.easy-mock.com/mock/5c35a554a7a7577b357b45a8/example/query
+
 module.exports = {
   dev: {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-      "api/":{
-        target:"http://39.96.74.48:8080/lha1",
+      "/api":{
+        target:"http://10.9.30.219:8080/",
         changeOrigin:true,
         pathRewrite:{
           "^/api":""
         }
       }
+      // "/api":{
+      //   target:"http://39.96.74.48:8080",
+      //   changeOrigin:true,
+      //   pathRewrite:{
+      //     "^/api":""
+      //   }
+      // }
     },
 
     // Various Dev Server settings
