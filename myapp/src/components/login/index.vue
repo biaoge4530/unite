@@ -91,6 +91,7 @@
   </div>
 </template>
 <script>
+import {setCookie} from "../../utils/Auth.js";
 import Vue from "vue";
 import { Toast, Button } from "mint-ui";
 Vue.component(Button.name, Button);
@@ -102,15 +103,7 @@ export default {
     //
     phone: localStorage
   },
-  /* created() {
-    axios({
-      method: "get",
-      url: "/api/pwdLogin",
-    }).then(data => {
-      console.log(data);
-    });
 
-  }, */
   data() {
     return {
       phone: "",
@@ -132,8 +125,7 @@ export default {
       headleUserPush: "headleUserPush"
     }),
     headlePush() {
-      axios({
-        //查询
+       axios({
         method: "get",
         url: "/api/pwdLogin",
         params: {
@@ -142,27 +134,31 @@ export default {
           headimg: this.headimg
         }
       }).then(data => {
-        /*  console.log(data.data[0].phone) */
-        if ( code == -3) {
-          Toast({
-            message: "用户名不存在",
-            duration: 800
-          });
-        } else if (code == -1) {
-          Toast({
-            message: "密码错误",
-            duration: 800
-          });
-        } else {
+         console.log(data)
+        if ( data.data.code == 0) {
           Toast({
             message: "登录成功",
             duration: 800
           });
           this.password = "";
-          //console.log(data.data[0])
-          //将存入localStorage中
-          localStorage.phoneData = JSON.stringify(data.data[0]);
+          this.$store.commit("setToken",data)
           this.$router.push("/my");
+
+        } else if (data.data.code == -2) {
+          Toast({
+            message: "密码错误",
+            duration: 800
+          });
+        }else if(data.datacode == -3){
+          Toast({
+            message: "账号不存在",
+            duration: 800
+          });
+        } else {
+          Toast({
+            message: "登录失败,请重新登录",
+            duration: 800
+          });
         }
       });
     },

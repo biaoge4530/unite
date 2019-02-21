@@ -27,14 +27,14 @@ export default {
       loves: "-- "
     };
   },
-  created() {
+  /* created() {
     if (localStorage.phoneData) {
       let str = JSON.parse(localStorage.phoneData);
       this.notlogin = str.uNickname;
       this.likes = str.likes;
       this.loves = str.loves;
     }
-  },
+  }, */
   methods: {}
 };
 </script>

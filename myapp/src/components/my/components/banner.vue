@@ -37,12 +37,12 @@ export default {
       HeadPortrait: "../../../../static/img/wyc/head.png"
     };
   },
-  created() {
+  /* created() {
     if (localStorage.phoneData) {
       let str = JSON.parse(localStorage.phoneData);
       this.HeadPortrait = str.headphoto;
     }
-  },
+  }, */
   methods: {
     //如果本地localStorge数据不存在跳转到登录页面
     handleTz() {

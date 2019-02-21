@@ -14,12 +14,19 @@
     <div class="registerPhone">
       <div>
         <img src="../../../static/img/wyc/phone_2.png">
-        <input type="text" name="phone" v-model="phone" maxlength="11" placeholder="请输入手机号">
+        <input
+          type="text"
+          name="phone"
+          v-model="phone"
+          maxlength="11"
+          placeholder="请输入手机号"
+          @blur="phoneBlur"
+        >
       </div>
 
       <div>
         <img src="../../../static/img/wyc/encrypt_2.png">
-        <input type="text" v-model="phoneyzm" placeholder="请输入验证码" maxlength="6">
+        <input type="text" name="phoneyzm" v-model="phoneyzm" placeholder="请输入验证码" maxlength="6">
         <div class="obtainCode">
           <span v-show="show" @click="handleCode()">获取验证码</span>
           <span v-show="!show" class="count">{{count}}s 后重新获取</span>
@@ -45,18 +52,20 @@ import axios from "axios";
 import "mint-ui/lib/style.css";
 export default {
   name: "reight",
-  /* created() {
-    axios({
-      method: "get",
-      url: "/api/Register"
-    })
-      .then(data => {
-        console.log(data);
+  created() {
+    /* axios({
+       url:"http://39.96.74.48:8080/lha1/updatePassword",
+        method:"post",
+
+        data:{
+          phone:"15535264455",
+        }
       })
-      .catch(err => {
-        console.log(err);
-      });
-  }, */
+      .then((data)=>{
+       console.log(data);
+
+      }) */
+  },
   data() {
     return {
       show: true,
@@ -71,8 +80,11 @@ export default {
   methods: {
     handleCode() {
       axios({
-        method: "get",
-        url: "/api/GetCode?phone=" + this.phone
+         method: "post",
+        url: "/api/GetCode?phone=" + this.phone,
+        data: {
+          phone: this.phone
+        }
       }).then(data => {
         console.log(data);
       });
@@ -158,7 +170,7 @@ export default {
 
       //提交
       if (flag && flagPwd === true) {
-        //jsonserover测试
+
         axios({
           //查询
           method: "post",
@@ -169,34 +181,23 @@ export default {
             code: this.phoneyzm
           }
         }).then(data => {
-          Toast({
-            message: "注册成功",
-            duration: 800
-          });
-          this.$router.push("/login");
-
-          console.log(data);
-          /* if (data.data.length == 0) {
-            axios({
-              method: "post",
-              url: "/api/Register",
-              data: {
-                phone: this.phone,
-                password: this.password,
-                code:this.phoneyzm
-              }
-            }).then(data => {
+          console.log(data.code);
+          if (data.data.code == 0) {
               Toast({
                 message: "注册成功",
                 duration: 800
               });
-              this.$router.push("/login");
-            });
+              this.$router.push("/login")
+          }else if(data.data.code == -2){
+                Toast({
+                message: "用户已注册",
+                duration: 800
+              });
           } else {
             Toast({
               message: "用户名已存在"
             });
-          } */
+          }
         });
       } else {
         Toast({

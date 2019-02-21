@@ -19,7 +19,8 @@ server.interceptors.request.use((config)=>{
     }
     config.headers["Content-type"] = "application/x-www-form-urlencoded";
     //每次请求的时候都需要携带Token
-    config.headers["X-Token"] = getCookie();
+    //config.headers["X-Token"] = getCookie();!getCookie()?"":"getCookie().split("&")[0]"
+    config.headers["X-Token"] = getCookie()?"":getCookie().split("&")[0]
     return config;
 },(err)=>{
     return Promise.reject(err)
