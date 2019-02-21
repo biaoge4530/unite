@@ -19,23 +19,37 @@
 </template>
 
 <script>
+import store from "../../../store";
+import axios from "../../../axios_xml/request.js";
 export default {
   data() {
     return {
       notlogin: "未登录",
       likes: "--",
-      loves: "-- "
+      loves: "-- ",
+      phone: ""
     };
   },
-  /* created() {
-    if (localStorage.phoneData) {
-      let str = JSON.parse(localStorage.phoneData);
-      this.notlogin = str.uNickname;
-      this.likes = str.likes;
-      this.loves = str.loves;
+  /* created(){
+    if(store.state){
+      let str = store.state;
+      this.notlogin = str.useName;
     }
   }, */
-  methods: {}
+  created() {
+    let phone = store.state.useId;
+    if (!phone == "") {
+      axios({
+        method: "get",
+        url: "/api/getuser?useId=" + phone
+      }).then(data => {
+        let follower = data.user;
+        this.notlogin = follower.uNickname;
+        this.likes = follower.uLikenum;
+        this.loves = follower.gz;
+      });
+    }
+  }
 };
 </script>
 

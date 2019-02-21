@@ -10,7 +10,7 @@
 		</ul>
 		<ul class="big">
 			 <li v-for="(item,index) in simgList" @click="addSimg(index)">
-				<img :src="item.imgUrl" alt>
+				<img :src="item.url" alt>
 			</li>
 		</ul>
 	</div>
@@ -60,6 +60,7 @@ export default {
 		flex-wrap: wrap;
 		li{
 			margin: .13rem .12rem;
+      width: 18%;
 			img{
 				height: 1.2rem;
 				width: 1.2rem;

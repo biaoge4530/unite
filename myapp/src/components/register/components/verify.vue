@@ -85,7 +85,7 @@ export default {
     return {
       show: true,
       count: "",
-      pwdType: "password",
+      pwdType: "text",
       phone: "",
       code: "",
       headimg: "../../../../static/img/wyc/head.png"

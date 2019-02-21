@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "../../axios_xml/request";
 let state = {
 	footerIndex : -1 ,
 	imgIndex:-1,
@@ -6,14 +6,14 @@ let state = {
 	addSimgbig:[],
 	style: [],
 	simgList:[],
-	bgList: [] 
+	bgList: []
 }
 let mutations = {
 	//选择操作
 	editOption(state,params){
 		if(state.footerIndex==params){
 			state.footerIndex= -1
-		}else{			
+		}else{
 			state.footerIndex = params
 		}
 	},
@@ -25,7 +25,6 @@ let mutations = {
 	//添加贴图
 	addSimg(state,params){
 		state.addSimgbig.push(state.simgList[params])
-		console.log(state.addSimgbig)
 	},
 	//保存样式
 	setStyle(state,params){
@@ -33,10 +32,11 @@ let mutations = {
 	},
 	//获取背景图片列表
 	getbgImg(state,params){
-		state.bgList=params.data
+    console.log(params)
+		state.bgList=params
 	},
 	getSimg(state,params){
-		state.simgList=params.data
+    state.simgList=params
 	}
 }
 let actions = {
@@ -44,23 +44,23 @@ let actions = {
 	getbgImg({commit}){
 		axios({
 			method:"get",
-			url:"https://www.easy-mock.com/mock/5c467cdc9c8153210b4a25d0/example/query",
+			url:"/api/beijing",
 		}).then((data)=>{
-			commit("getbgImg",data.data);
+      commit("getbgImg",data.picture);
 		})
 	},
 	//获取贴图列表getSimg
 	getSimg({commit}){
 		axios({
 			method:"get",
-			url:"https://www.easy-mock.com/mock/5c467cdc9c8153210b4a25d0/example/getSimg",
+			url:"/api/mubanpicture",
 		}).then((data)=>{
-			commit("getSimg",data.data);
+      commit("getSimg",data.pictrue);
 		})
 	}
 }
 let getters = {
-	
+
 }
 export default{
 	namespaced: true,

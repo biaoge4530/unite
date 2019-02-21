@@ -1,12 +1,12 @@
 <template>
   <div class="canvas">
     <div class="bgImg">
-      <img :src="bgList[imgIndex].imgUrl" alt>
+      <img :src="bgList?bgList[imgIndex].url:''" alt>
     </div>
     <ul class="bigImgBox">
       <li v-for="(item,index) in addSimgbig">
         <img
-          :src="item.imgUrl"
+          :src="item?item.url:''"
           @mousedown="down(index)"
           @touchstart="down(index)"
           @mousemove="move(index)"

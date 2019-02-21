@@ -36,7 +36,7 @@
       <div>
         <img src="../../../static/img/wyc/yz.png">
         <!-- <input type="text" placeholder="请输入密码" v-model="password"/> -->
-        <input type="text" placeholder="请输入密码" v-model="password" minlength="8" maxlength="16">
+        <input type="password" placeholder="请输入密码" v-model="password" minlength="8" maxlength="16">
       </div>
     </div>
 
@@ -48,7 +48,7 @@
 <script>
 import Vue from "vue";
 import { Toast } from "mint-ui";
-import axios from "axios";
+import axios from "../../axios_xml/request.js";
 import "mint-ui/lib/style.css";
 export default {
   name: "reight",
@@ -187,10 +187,16 @@ export default {
                 message: "注册成功",
                 duration: 800
               });
-              this.$router.push("/login")
+              this.$router.push("/login");
+
           }else if(data.data.code == -2){
                 Toast({
                 message: "用户已注册",
+                duration: 800
+              });
+          }else if(data.data.code == -3){
+                Toast({
+                message: "验证码错误",
                 duration: 800
               });
           } else {

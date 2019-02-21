@@ -16,11 +16,17 @@ const store = new Vuex.Store({
     useName: !getCookie()?"":getCookie().split("&")[2],
   },
   mutations: {
+
     setToken(state, data) {
       state.Token= data.data.token.split("&")[0]
       state.useId=data.data.token.split("&")[1]
       state.useName= data.data.token.split("&")[2]
+      console.log(state,132)
+    },
+    handImg(state,data){
+      console.log(state,data,321)
     }
+
   },
   modules: {
     Word,

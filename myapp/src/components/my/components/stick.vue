@@ -41,8 +41,25 @@
 <script>
 import Swiper from "swiper";
 import Vuex from "vuex";
-
+import axios from "../../../axios_xml/request.js";
+import store from "../../../store";
 export default {
+  data() {
+    return {
+      follower: "",
+    };
+  },
+  created() {
+    let phone = store.state.useId;
+    if (!phone == "") {
+      axios({
+        method: "get",
+        url: "/api/getuser?useId=" + phone
+      }).then(data => {
+        this.follower = data.picture;
+      });
+    }
+  },
   computed: {
     ...Vuex.mapState({
       data: state => state.My.data

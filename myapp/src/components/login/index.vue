@@ -100,10 +100,8 @@ import "mint-ui/lib/style.css";
 import Vuex from "vuex";
 export default {
   state: {
-    //
     phone: localStorage
   },
-
   data() {
     return {
       phone: "",
@@ -121,12 +119,11 @@ export default {
   },
   methods: {
     ...Vuex.mapActions({
-      /* 1.15 */
       headleUserPush: "headleUserPush"
     }),
     headlePush() {
        axios({
-        method: "get",
+        method: "post",
         url: "/api/pwdLogin",
         params: {
           phone: this.phone,
@@ -142,6 +139,7 @@ export default {
           });
           this.password = "";
           this.$store.commit("setToken",data)
+          this.$store.commit("handImg",data)
           this.$router.push("/my");
 
         } else if (data.data.code == -2) {

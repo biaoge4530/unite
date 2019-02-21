@@ -29,29 +29,38 @@
 
 <script>
 import Vue from "vue";
-import axios from "axios";
+import axios from "../../../axios_xml/request.js";
 import Vuex from "vuex";
+import store from "../../../store";
+import { getCookie } from "../../../utils/Auth";
 export default {
   data() {
     return {
       HeadPortrait: "../../../../static/img/wyc/head.png"
+      /* ../../../../static/img/wyc/head.png */
     };
   },
-  /* created() {
-    if (localStorage.phoneData) {
-      let str = JSON.parse(localStorage.phoneData);
-      this.HeadPortrait = str.headphoto;
+  created() {
+    let phone = store.state.useId;
+    if (!phone == "") {
+      axios({
+        method: "get",
+        url: "/api/getuser?useId=" + phone
+      }).then(data => {
+        let handImg = data.user.uHeadimg;
+        this.HeadPortrait = handImg;
+      });
     }
-  }, */
+  },
   methods: {
     //如果本地localStorge数据不存在跳转到登录页面
     handleTz() {
-      if (localStorage.phoneData) {
+      if (!this.HeadPortrait == "") {
         this.$router.push("/basics");
       } else {
         this.$router.push("/login");
       }
-    },
+    }
   }
 };
 </script>
@@ -77,13 +86,13 @@ export default {
     height: 0.84rem;
     display: flex;
     align-items: center;
-    li:nth-child(1) img{
-      width: .46rem;
-      height: .44rem;
+    li:nth-child(1) img {
+      width: 0.46rem;
+      height: 0.44rem;
     }
-    li:nth-child(2) img{
-      width: .46rem;
-      height: .44rem;
+    li:nth-child(2) img {
+      width: 0.46rem;
+      height: 0.44rem;
     }
   }
 }
