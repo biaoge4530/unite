@@ -47,6 +47,6 @@
   .back {
     bottom: 0.9rem;
     left: 3.15rem;
-  }
+  } 
 }
 </style>

@@ -5,7 +5,7 @@
         <!-- 内容区左边的头像 -->
         <div class="hot-left">
           <div class="hot-left-head" id="hot-left-head" >
-            <img :src="(item.uhead)">
+            <img :src="item.uhead">
           </div>
         </div>
         <!-- 内容区右边的详情 -->
@@ -16,7 +16,7 @@
           <p class="hot-right-content" id="hot-right-content">{{item.content}}</p>
           <!-- 动态里好友手账图片 -->
           <div class="hot-right-img">
-            <img :src="(item.url)">
+            <img :src="item.url">
           </div>
           <!-- 阅读量 -->
           <div class="hot-right-read">
@@ -48,7 +48,7 @@
       <div></div>
     </div>
      <div class="shade" v-show="show" >
-      <textarea class="inPut" placeholder="#说你想说的"></textarea/>
+      <textarea class="inPut" placeholder="#说你想说的" v-model="placeholder"></textarea/>
       <div class="issue" @click="handleIssue()">发布</div>
     </div>
   </div>
@@ -64,6 +64,7 @@ export default {
       loveimg:"static/img/word-mdn/空心.png",
       flag:false,
       show:false,
+      placeholder:""
     };
   },
   components: {
@@ -72,22 +73,23 @@ export default {
   created() {
     axios({
          method:"get",
-         url:"https://www.easy-mock.com/mock/5c370dd7f93efc493ce9c7a5/example/hot",
-         headers:{"Content-type":"application/json"},
-         
+        //  url:"https://www.easy-mock.com/mock/5c370dd7f93efc493ce9c7a5/example/hot",
+        url:"/api/GetCode",
+        // headers:{"Content-type":"application/json"},
+        //  data:{
+           
+        //  }
     })
         .then((data)=>{
-          this.val=data.data.hot;
+          this.val=data;
+          console.log(data)
     })
            timeout:3000
   },
   methods: {
-    //  handleClick(){
-    //   this.val.icon1=""
-    //  },
     // 点击星星
     handleStart(){
-     this.flag=!this.flag
+      this.flag=!this.flag
       this.starimg = (this.flag ?"static/img/word-mdn/实星星.png":"static/img/word-mdn/空星星.png");  
     },
     // 点击爱心
@@ -100,6 +102,7 @@ export default {
     },
     handleIssue(){
       this.show=false;
+      this.placeholder=""
     }
   },
   mounted() {
