@@ -1,48 +1,48 @@
 <template>
   <div class="wrapper" ref="homeWrapper">
-    <div class="content">
-      <div class="hot"  v-for="(item,index) in val">
+    <div class="content"  >
+      <div class="hot"  v-for="(item,index) in dongtai" >
         <!-- 内容区左边的头像 -->
         <div class="hot-left">
           <div class="hot-left-head" id="hot-left-head" >
-            <img :src="item.uhead">
+            <img :src="item.dongtai.touxiang">
           </div>
         </div>
         <!-- 内容区右边的详情 -->
         <div class="hot-right">
           <!-- 昵称 -->
-          <p class="hot-right-petName" id="hot-right-petName">{{item.uname}}</p>
+          <p class="hot-right-petName" id="hot-right-petName">{{item.dongtai.uname}}</p>
           <!-- 个签 -->
-          <p class="hot-right-content" id="hot-right-content">{{item.content}}</p>
+          <p class="hot-right-content" id="hot-right-content">{{item.dongtai.dtText}}</p>
           <!-- 动态里好友手账图片 -->
           <div class="hot-right-img">
-            <img :src="item.url">
+            <img :src="item.dongtai.dongtaitu">
           </div>
           <!-- 阅读量 -->
           <div class="hot-right-read">
             <div class="read">
-              阅读量:<span>{{item.read}}</span><br>
+              阅读量:<span>{{item.dongtai.dtPinglunnum}}</span><br>
               <!-- 时间 -->
-              <span class="time">{{item.time}}</span>
+              <span class="time">{{item.dongtai.dtTime}}</span>
             </div>
             <!-- 点赞图标 -->
             <ul class="giv_a_like">
-              <li class="start" @click="handleStart()"><img :src="starimg"><span>99<sup>+</sup></span></li>
-              <li class="love" @click="handleLove()"><img :src="loveimg"><span>99<sup>+</sup></span></li>
-              <li class="comment" @click="handleComment()"><img src="static/img/word-mdn/icon_sy_pl@2x.png"><span>99<sup>+</sup></span></li>  
+              <!-- <li class="start" @click="handleStart()"><img :src="starimg"><span>{{item.dtLikenum}}<sup>+</sup></span></li> -->
+              <li class="love" @click="handleLove()"><img :src="loveimg"><span>{{item.dongtai.dtLikenum}}<sup>+</sup></span></li>
+              <li class="comment" @click="handleComment()"><img src="static/img/word-mdn/icon_sy_pl@2x.png"><span>{{item.dongtai.dtLooknum}}<sup>+</sup></span></li>  
             </ul>
           </div>
           <!-- 评论 -->
-          <div class="hot-right-img-comment">
-            <span>{{item.comment_name1}}:</span>
-            <span>{{item.comment}}</span>
+          <div class="hot-right-img-comment" v-for="(items,index) in item.dongtai.pl">
+            <span>{{items.upname}}:</span>
+            <span>{{items.pltext}}</span>
           </div>
           <div class="hot-right-img-comment">
             <span>{{item.comment_name2}}:</span>
             <span>{{item.comment2}}</span>
           </div>
           <!-- 多少条记录 -->
-          <div class="look-comment" id="look-comment">共<span>{{item.look_comment}}</span>条记录><br></div> 
+          <div class="look-comment" id="look-comment">共<span>{{item.dongtai.dtPinglunnum}}</span>条记录><br></div> 
         </div>
       </div>
       <div></div>
@@ -56,15 +56,19 @@
 <script>
 import BScroll from "better-scroll";
 import axios from "axios";
+import Vuex from "vuex";
 export default {
   data() {
     return {
-      val: [],
+      dongtai: [],
       starimg:"static/img/word-mdn/空星星.png",
       loveimg:"static/img/word-mdn/空心.png",
       flag:false,
       show:false,
-      placeholder:""
+      placeholder:"",
+      id:"1",
+      user:"",
+      pinglun:""
     };
   },
   components: {
@@ -74,19 +78,21 @@ export default {
     axios({
          method:"get",
         //  url:"https://www.easy-mock.com/mock/5c370dd7f93efc493ce9c7a5/example/hot",
-        url:"/api/GetCode",
-        // headers:{"Content-type":"application/json"},
-        //  data:{
-           
-        //  }
+         url:"/api/world/uiddongtai?uid="+this.id,
+        //  headers:{"Content-type":"application/json"},
+       
     })
         .then((data)=>{
-          this.val=data;
-          console.log(data)
+          this.dongtai=data.data.uiddongtai;  
+          this.addImg(this.dongtai)
+          console.log( this.dongtai)
     })
            timeout:3000
   },
   methods: {
+      ...Vuex.mapMutations({
+        addImg:"Wordmdn/addImg"
+       }),
     // 点击星星
     handleStart(){
       this.flag=!this.flag
@@ -104,6 +110,7 @@ export default {
       this.show=false;
       this.placeholder=""
     }
+   
   },
   mounted() {
     let wrapper = document.querySelector(".wrapper");
@@ -229,7 +236,7 @@ img {
           }
           // 点赞
           .giv_a_like {
-            width: 2rem;
+            width: 1.5rem;
             height:.6rem ;
             display: flex;
             justify-content: space-between;
