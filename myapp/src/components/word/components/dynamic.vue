@@ -19,32 +19,32 @@
 				<div class="headPart">
 					<div class="headPic">
 						<router-link to="/word-mdn">
-							<img :src="item.uhead" alt>
+							<img :src="item.dongtaiPic.dpicUrl" alt>
 						</router-link>
 						
-						<p>{{item.uname}}</p>
+						<p>{{item.dongtai.uname}}</p>
 					</div>
 				</div>
 				
 				<div class="infos">
 					<div class="content">
 						<p class="contentText">
-							{{item.content}}
+							{{item.dongtai.dtText}}
 						</p>
 						<div class="contentPic">
-							<img :src="item.url" alt="">
+							<img :src="item.dongtaiPic.dpicUrl" alt="">
 						</div>
 					</div>
 					<div class="readOpr">
 						<div class="readTime">
-							<div class="read">阅读量：<span>{{item.read}}</span></div>
+							<div class="read">阅读量：<span>{{item.dongtai.dtLooknum}}</span></div>
 							<div class="time">
 								{{item.time}}
 							</div>
 						</div>
 						<div class="opr">
 							<i class="heart">
-								<span>99+</span>
+								<span>{{item.dongtai.dtLikenum}}</span>
 							</i>
 							<i class="reply">
 								<span>999+</span>
@@ -56,7 +56,7 @@
 							<li><a href="#">{{item.comment_name1}}:</a>{{item.comment}}</li>
 							<li><a href="#">{{item.comment_name2}}:</a>{{item.comment2}}</li>
 						</ul>
-						<p class="totalComment">共<span>{{item.look_comment}}</span>条评论&gt;</p>
+						<p class="totalComment">共<span>{{item.dongtai.dtPinglunnum}}</span>条评论&gt;</p>
 					</div>
 				</div>
 			</div>
@@ -97,13 +97,13 @@
 		created() {
 			axios({
 				method:"get",
-				url:"https://www.easy-mock.com/mock/5c370dd7f93efc493ce9c7a5/example/hot",
-				headers:{"Content-type":"application/json"}
+				url:"/api/world/getDongtai",
+				/* headers:{"Content-type":"application/json"} */
 			}).then((data)=>{
-				this.value = data.data.hot;
-				console.log(data);
+				this.value = data.data.uiddongtai;
+				console.log(data.data.uiddongtai);
 			})
-		},
+		}
 	};
 </script>
 
@@ -134,7 +134,7 @@
 			.person{
 				padding: .3rem .24rem 0;
 				background: #fff;
-				border-bottom: .06rem solid #ccc;
+				border-bottom: .01rem solid #ccc;
 				.headPart{
 					width: 100%;
 					height: .8rem;
