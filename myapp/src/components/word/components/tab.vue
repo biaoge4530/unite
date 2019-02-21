@@ -91,7 +91,7 @@
 					position: absolute;
 					width: .8rem;
 					height: .05rem;
-					background: #40B59E;
+					background: rgb(213, 219, 218);
 					bottom: 0;
 					left: 50%;
 					margin-left: -0.4rem;
