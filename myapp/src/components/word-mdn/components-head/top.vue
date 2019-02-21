@@ -6,7 +6,7 @@
         <router-link to="/" slot="left">
           <mt-button><p class="tu"><img src="static/img/word-mdn/fanhui.png"></p></mt-button>
           <!-- <mt-button >返回</mt-button> -->
-        </router-link>       
+        </router-link>
        <mt-button slot="right" class="follow" @click="handleAtte()">{{nav}}</mt-button>
          <!-- 举报 -->
          <mt-button slot="right" class="ReportSize" @click="handleReport()" >
@@ -29,32 +29,32 @@
            <router-link :to="'/mdn-fans'">粉丝
            <span class="top-right-fans">222</span></router-link>
         </li>
-        <li @click="handleLike()">喜欢         
+        <li @click="handleLike()">喜欢
           <span class="top-right-like">111</span>
         </li>
       </ul>
     </div>
-    <mt-actionsheet 
-           :actions="[{name:'举报',method:handleFollow}]" 
-           v-model="sheetVisible" 
+    <mt-actionsheet
+           :actions="[{name:'举报',method:handleFollow}]"
+           v-model="sheetVisible"
            cancelText="取消"
            closeOnClickModal="true"
            >
     </mt-actionsheet>
    </mt-popup>
   </div>
-  
+
 </template>
 <script>
 import { Header , Actionsheet,MessageBox ,Popup  } from "mint-ui";
-import axios from "axios"
+import axios from "../../../axios_xml/request.js";
 import Vuex from "vuex"
 export default {
   computed: {
     ...Vuex.mapState({
       url:state=>state.Wordmdn.dongtai
     })
-    
+
   },
   data(){
     return{
@@ -74,12 +74,12 @@ export default {
   //   axios({
   //        method:"get",
   //        url:"/api/world/uiddongtai?uid="+this.id
-        
+
   //   })
   //       .then((data)=>{
   //         this.dongtai=data.data.uiddongtai;
   //         console.log(this.dongtai)
-          
+
   //   })
   //          timeout:3000
   // },
@@ -104,7 +104,7 @@ export default {
     handleAtte(){
       this.nav=="关注"?this.nav="已关注":this.nav="关注"
     },
- 
+
   }
 }
 </script>
@@ -145,7 +145,7 @@ export default {
       margin-right: .2rem;
       font-size: .30rem;
     }
-    
+
   }
 //  左边头像
   .top-left {
@@ -160,7 +160,7 @@ export default {
       border-radius: 50%;
       position: absolute;
       top:1.89rem;
-      left: 0.62rem; 
+      left: 0.62rem;
       &>img{
         width: 1.78rem;
         height: 1.78rem;
@@ -170,7 +170,7 @@ export default {
 
   }
   //
-  
+
   //头部的右边
   //昵称和个签
   .top-right {
@@ -211,16 +211,16 @@ export default {
         color: #3FB59D;
        }
       }
-    
+
       //粉丝
       .top-right-fans {
         margin-left: 0.15rem;
-       
+
       }
       //喜欢
       .top-right-like {
         margin-left: 0.15rem;
-       
+
       }
     }
   }
@@ -229,7 +229,7 @@ export default {
    background: palegoldenrod;
    width: 5.06rem;
    height: 4.2rem;
-   border: 1px solid #ffffff; 
+   border: 1px solid #ffffff;
  }
  .a{
         width: .6rem;

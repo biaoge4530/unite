@@ -29,7 +29,7 @@
             <ul class="giv_a_like">
               <!-- <li class="start" @click="handleStart()"><img :src="starimg"><span>{{item.dtLikenum}}<sup>+</sup></span></li> -->
               <li class="love" @click="handleLove()"><img :src="loveimg"><span>{{item.dongtai.dtLikenum}}<sup>+</sup></span></li>
-              <li class="comment" @click="handleComment()"><img src="static/img/word-mdn/icon_sy_pl@2x.png"><span>{{item.dongtai.dtLooknum}}<sup>+</sup></span></li>  
+              <li class="comment" @click="handleComment()"><img src="static/img/word-mdn/icon_sy_pl@2x.png"><span>{{item.dongtai.dtLooknum}}<sup>+</sup></span></li>
             </ul>
           </div>
           <!-- 评论 -->
@@ -42,7 +42,7 @@
             <span>{{item.comment2}}</span>
           </div>
           <!-- 多少条记录 -->
-          <div class="look-comment" id="look-comment">共<span>{{item.dongtai.dtPinglunnum}}</span>条记录><br></div> 
+          <div class="look-comment" id="look-comment">共<span>{{item.dongtai.dtPinglunnum}}</span>条记录><br></div>
         </div>
       </div>
       <div></div>
@@ -55,7 +55,7 @@
 </template>
 <script>
 import BScroll from "better-scroll";
-import axios from "axios";
+import axios from "../../../axios_xml/request.js";
 import Vuex from "vuex";
 export default {
   data() {
@@ -80,12 +80,11 @@ export default {
         //  url:"https://www.easy-mock.com/mock/5c370dd7f93efc493ce9c7a5/example/hot",
          url:"/api/world/uiddongtai?uid="+this.id,
         //  headers:{"Content-type":"application/json"},
-       
+
     })
         .then((data)=>{
-          this.dongtai=data.data.uiddongtai;  
+          this.dongtai=data.uiddongtai;
           this.addImg(this.dongtai)
-          console.log( this.dongtai)
     })
            timeout:3000
   },
@@ -96,12 +95,12 @@ export default {
     // 点击星星
     handleStart(){
       this.flag=!this.flag
-      this.starimg = (this.flag ?"static/img/word-mdn/实星星.png":"static/img/word-mdn/空星星.png");  
+      this.starimg = (this.flag ?"static/img/word-mdn/实星星.png":"static/img/word-mdn/空星星.png");
     },
     // 点击爱心
     handleLove(){
       this.flag=!this.flag
-      this.loveimg = (this.flag ?"static/img/word-mdn/实爱心.png":"static/img/word-mdn/空心.png");  
+      this.loveimg = (this.flag ?"static/img/word-mdn/实爱心.png":"static/img/word-mdn/空心.png");
     },
     handleComment(){
       this.show=true;
@@ -110,7 +109,7 @@ export default {
       this.show=false;
       this.placeholder=""
     }
-   
+
   },
   mounted() {
     let wrapper = document.querySelector(".wrapper");
@@ -242,11 +241,11 @@ img {
             justify-content: space-between;
             align-items: center;
             //background: plum;
-            li{ 
+            li{
               margin-top:.1rem;
               width: 1rem;
               height:.6rem;
-              position: relative; 
+              position: relative;
               & > img{
                   width: .32rem;
                   height: .32rem;

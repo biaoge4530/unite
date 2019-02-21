@@ -12,8 +12,8 @@
 				<div class="swiper-pagination banner-pagination"></div>
 			</div>
 		</div>
-		
-		
+
+
 		<div class="dynamic" v-for="(item,index) in value" :key="index">
 			<div class="person">
 				<div class="headPart">
@@ -21,11 +21,11 @@
 						<router-link to="/word-mdn">
 							<img :src="item.dongtai.touxiang" alt>
 						</router-link>
-						
+
 						<p>{{item.dongtai.uname}}</p>
 					</div>
 				</div>
-				
+
 				<div class="infos">
 					<div class="content">
 						<p class="contentText">
@@ -65,13 +65,13 @@
 			</div>
 		</div>
 	</div>
-	
+
 </template>
 
 <script>
 	import Swiper from "swiper";
 	import Vuex from "vuex";
-	import axios from "axios";
+	import axios from "../../../axios_xml/request.js";
 	export default{
 		data(){
 			return {
@@ -103,8 +103,7 @@
 				url:"/api/world/getDongtai",
 				/* headers:{"Content-type":"application/json"} */
 			}).then((data)=>{
-				this.value = data.data.uiddongtai;
-				console.log(data.data.uiddongtai);
+				this.value = data.uiddongtai;
 			})
 		}
 	};
@@ -174,7 +173,7 @@
 								height: 3.9rem;
 								margin-top: .2rem;
 							}
-							
+
 						}
 					}
 					.readOpr{
