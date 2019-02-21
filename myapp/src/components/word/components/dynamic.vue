@@ -19,7 +19,7 @@
 				<div class="headPart">
 					<div class="headPic">
 						<router-link to="/word-mdn">
-							<img :src="item.dongtaiPic.dpicUrl" alt>
+							<img :src="item.dongtai.touxiang" alt>
 						</router-link>
 						
 						<p>{{item.dongtai.uname}}</p>
@@ -32,14 +32,14 @@
 							{{item.dongtai.dtText}}
 						</p>
 						<div class="contentPic">
-							<img :src="item.dongtaiPic.dpicUrl" alt="">
+							<img :src="item.dongtai.dongtaitu" alt="">
 						</div>
 					</div>
 					<div class="readOpr">
 						<div class="readTime">
 							<div class="read">阅读量：<span>{{item.dongtai.dtLooknum}}</span></div>
 							<div class="time">
-								{{item.time}}
+								{{item.dongtai.dtTime}}
 							</div>
 						</div>
 						<div class="opr">
@@ -53,8 +53,11 @@
 					</div>
 					<div class="comment">
 						<ul>
-							<li><a href="#">{{item.comment_name1}}:</a>{{item.comment}}</li>
-							<li><a href="#">{{item.comment_name2}}:</a>{{item.comment2}}</li>
+							<li v-for="(items,indexs) in item.dongtai.pl">
+								<a href="#">{{items.upname}}:</a>
+								{{items.pltext}}
+							</li>
+							<!-- <li><a href="#">{{item.comment_name2}}:</a>{{item.comment2}}</li> -->
 						</ul>
 						<p class="totalComment">共<span>{{item.dongtai.dtPinglunnum}}</span>条评论&gt;</p>
 					</div>
