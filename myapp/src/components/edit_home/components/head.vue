@@ -29,7 +29,9 @@
           <span>草稿本</span>
         </li>
       </ul>
-      <button>保存</button>
+      <router-link :to="{name:'word'}" class="save">
+        <button>保存</button>
+      </router-link>
     </div>
   </div>
 </template>
@@ -102,13 +104,16 @@ export default {
   ul {
     height: 2.4rem;
   }
+  .save{
+    text-align: center;
+  }
   button {
     width: 3.6rem;
     height: 0.7rem;
     background: rgba(63, 181, 157, 1);
     border-radius: 0.1rem;
     align-self: center;
-    font-size:.36rem;
+    font-size: 0.36rem;
     font-family: PingFang-SC-Regular;
     font-weight: bold;
     color: rgba(255, 255, 255, 1);

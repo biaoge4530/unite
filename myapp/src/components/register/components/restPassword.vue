@@ -4,7 +4,7 @@
         <div>
           <ul>
             <li @click="handleGet()"><img src="../../../../static/img/wyc/lt.png"/></li>
-            <li @click="handRegister()">重置密码</li>
+            <li>重置密码</li>
           </ul>
         </div>
       </div>
@@ -164,7 +164,7 @@ export default {
               })
             }else{
               axios({
-                method:"delete", 
+                method:"delete",
                 url:"http://localhost:3000/data/"+data.data[0].id,
                 data:{
                    phonePassword:this.phonePassword

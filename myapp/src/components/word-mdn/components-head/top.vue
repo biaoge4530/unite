@@ -13,7 +13,7 @@
            <i class="iconfont">&#xe612;</i>
          </mt-button>
       </mt-header>
-    </mt-header>
+
     <!-- 头部的左半部分 -->
     <div class="top-left">
       <div class="top-left-head" id="head"></div>
@@ -45,6 +45,7 @@
 </template>
 <script>
 import { Header , Actionsheet,MessageBox ,Popup  } from "mint-ui";
+import axios from "axios"
 export default {
   data(){
     return{
@@ -59,6 +60,21 @@ export default {
     "MessageBox-com":MessageBox,
     "Popup-com":Popup
   },
+  // created() {
+  //    axios({
+  //        method:"get",
+  //        url:"api/lha1/world/getDongtai",
+  //        headers:{"Content-type":"application/json"},
+  //        data:{
+           
+  //        } 
+  //   })
+  //       .then((data)=>{
+  //         this
+  //         console.log(data.data.DongtaiPic)
+  //   })
+  //          timeout:3000
+  // },
   methods:{
     handleReport(){
       this.sheetVisible = true;
@@ -121,6 +137,7 @@ export default {
       margin-right: .2rem;
       font-size: .30rem;
     }
+    
   }
 //  左边头像
   .top-left {
@@ -201,6 +218,10 @@ export default {
    height: 4.2rem;
    border: 1px solid #ffffff; 
  }
+ .a{
+        width: .6rem;
+        height: .5rem;
+      }
 }
 </style>
 
