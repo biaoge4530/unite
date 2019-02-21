@@ -10,7 +10,7 @@
           </li>
           <li>
             <router-link to="/settings">
-              <img id="iten" src="../../../../static/img/wyc/wdl_sezhida@2x.png">
+              <img class="iten" src="../../../../static/img/wyc/wdl_sezhi@2x.png">
             </router-link>
           </li>
         </ul>
@@ -37,12 +37,12 @@ export default {
       HeadPortrait: "../../../../static/img/wyc/head.png"
     };
   },
-  created() {
+  /* created() {
     if (localStorage.phoneData) {
       let str = JSON.parse(localStorage.phoneData);
       this.HeadPortrait = str.headphoto;
     }
-  },
+  }, */
   methods: {
     //如果本地localStorge数据不存在跳转到登录页面
     handleTz() {
@@ -77,13 +77,17 @@ export default {
     height: 0.84rem;
     display: flex;
     align-items: center;
-    img:nth-child(1) {
-      width: 0.46rem;
-      height: 0.44rem;
+    li:nth-child(1) img{
+      width: .46rem;
+      height: .44rem;
+    }
+    li:nth-child(2) img{
+      width: .46rem;
+      height: .44rem;
     }
   }
 }
-#iten {
+.iten {
   width: 0.54rem;
   height: 0.54rem;
   margin-left: 0.24rem;

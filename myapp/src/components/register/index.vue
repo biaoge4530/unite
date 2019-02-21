@@ -16,8 +16,8 @@
         <img src="../../../static/img/wyc/phone_2.png">
         <input
           type="text"
-          name="phoneNumber"
-          v-model="phoneNumber"
+          name="phone"
+          v-model="phone"
           maxlength="11"
           placeholder="请输入手机号"
           @blur="phoneBlur"
@@ -26,7 +26,7 @@
 
       <div>
         <img src="../../../static/img/wyc/encrypt_2.png">
-        <input type="text" name="phoneyzm" placeholder="请输入验证码" maxlength="6">
+        <input type="text" name="phoneyzm" v-model="phoneyzm" placeholder="请输入验证码" maxlength="6">
         <div class="obtainCode">
           <span v-show="show" @click="handleCode()">获取验证码</span>
           <span v-show="!show" class="count">{{count}}s 后重新获取</span>
@@ -35,8 +35,8 @@
 
       <div>
         <img src="../../../static/img/wyc/yz.png">
-        <!-- <input type="text" placeholder="请输入密码" v-model="phonePassword"/> -->
-        <input type="text" placeholder="请输入密码" v-model="phonePassword" minlength="8" maxlength="16">
+        <!-- <input type="text" placeholder="请输入密码" v-model="password"/> -->
+        <input type="text" placeholder="请输入密码" v-model="password" minlength="8" maxlength="16">
       </div>
     </div>
 
@@ -58,7 +58,7 @@ export default {
         method:"post",
 
         data:{
-          phoneNumber:"15535264455",
+          phone:"15535264455",
         }
       })
       .then((data)=>{
@@ -72,13 +72,22 @@ export default {
       isReturn: true,
       count: "",
       time: null,
-      phoneNumber: "",
-      phonePassword: "",
+      phone: "",
+      password: "",
       phoneyzm: ""
     };
   },
   methods: {
     handleCode() {
+      axios({
+         method: "post",
+        url: "/api/GetCode?phone=" + this.phone,
+        data: {
+          phone: this.phone
+        }
+      }).then(data => {
+        console.log(data);
+      });
       //获取验证码
       const timeCount = 10; //倒计时
       if (!this.timer) {
@@ -91,7 +100,6 @@ export default {
             this.show = true;
             clearInterval(this.timer);
             this.timer = null;
-            alert("5d5gg5");
           }
         }, 1000);
       }
@@ -104,13 +112,13 @@ export default {
       //手机号失去焦点事件
       let flag = null;
       let reg = /^1(3|5|8|6|7|4)\d{9}$/;
-      if (this.phoneNumber === "") {
+      if (this.phone === "") {
         Toast({
           message: "手机号不能为空",
           duration: 800
         });
         (this.isReturn = true), (flag = false);
-      } else if (!reg.test(this.phoneNumber)) {
+      } else if (!reg.test(this.phone)) {
         Toast({
           message: "请输入正确的手机号",
           duration: 800
@@ -124,15 +132,15 @@ export default {
     handRegister() {
       let flag = null;
       let reg = /^1(3|5|8|6|7|4)\d{9}$/;
-      if (this.phoneNumber === "") {
+      if (this.phone === "") {
         Toast({
           message: "手机号不能为空",
           duration: 800
         });
         (this.isReturn = true), (flag = false);
-      } else if (!reg.test(this.phoneNumber)) {
+      } else if (!reg.test(this.phone)) {
         this.isReturn = true;
-        this.phoneNumber = "";
+        this.phone = "";
         flag = false;
       } else {
         flag = true;
@@ -141,20 +149,20 @@ export default {
       //验证密码
       let flagPwd = null;
       let regPwd = /^\w{6,}$/;
-      if (this.phonePassword === "") {
+      if (this.password === "") {
         Toast({
           message: "密码不能为空",
           duration: 800
         });
         this.isReturn = true;
         flagPwd = false;
-      } else if (!regPwd.test(this.phonePassword)) {
+      } else if (!regPwd.test(this.password)) {
         Toast({
           message: "密码错误",
           duration: 800
         });
         this.isReturn = true;
-        this.phonePassword = "";
+        this.password = "";
         flagPwd = false;
       } else {
         flagPwd = true;
@@ -162,32 +170,29 @@ export default {
 
       //提交
       if (flag && flagPwd === true) {
-        //jsonserover测试
+
         axios({
           //查询
-          method: "get",
-          url: "http://localhost:3000/data?phoneNumber=" + this.phoneNumber,
+          method: "post",
+          url: "/api/Register",
           data: {
-            phoneNumber: this.phoneNumber,
-            phonePassword: this.phonePassword
+            phone: this.phone,
+            password: this.password,
+            code: this.phoneyzm
           }
         }).then(data => {
-          console.log(data.data.length);
-          if (data.data.length == 0) {
-            axios({
-              method: "post",
-              url: "http://localhost:3000/data?phoneNumber=" + this.phoneNumber,
-              data: {
-                phoneNumber: this.phoneNumber,
-                phonePassword: this.phonePassword
-              }
-            }).then(data => {
+          console.log(data.code);
+          if (data.data.code == 0) {
               Toast({
                 message: "注册成功",
                 duration: 800
               });
-              this.$router.push("/login");
-            });
+              this.$router.push("/login")
+          }else if(data.data.code == -2){
+                Toast({
+                message: "用户已注册",
+                duration: 800
+              });
           } else {
             Toast({
               message: "用户名已存在"
