@@ -13,87 +13,38 @@
 			</div>
 		</div>
 		
-		<div class="dynamic">
+		
+		<div class="dynamic" v-for="(item,index) in value" :key="index">
 			<div class="person">
 				<div class="headPart">
 					<div class="headPic">
 						<router-link to="/word-mdn">
-							<img src="../../../../static/img/word/touxiang_sy@2x.png">
-						</router-link>
-						<p>昵称</p>
-					</div>
-				</div>
-				
-				<div class="infos">
-					<div class="content">
-						<p class="contentText">
-							内容：我是谁？我在哪？我是谁？我在哪？我是谁？我在哪？我是谁？我在哪？
-						</p>
-						<div class="contentPic">
-							<img src="../../../../static/img/word/tp_sy@2x.png" alt="">
-						</div>
-					</div>
-					<div class="readOpr">
-						<div class="readTime">
-							<div class="read">阅读量：<span>999+</span></div>
-							<div class="time">
-								<span>2018</span>年
-								<span>1</span>月
-								<span>1</span>日
-							</div>
-						</div>
-						<div class="opr">
-							<i class="heart">
-								<span>99+</span>
-							</i>
-							<i class="reply">
-								<span>999+</span>
-							</i>
-						</div>
-					</div>
-					<div class="comment">
-						<ul>
-							<li><a href="#">昵称:</a>今天天气好晴朗，处处好风光</li>
-							<li><a href="#">昵称:</a>怎么做的呀？</li>
-						</ul>
-						<router-link to="/word/word_notice">
-							<p class="totalComment">共<span>10</span>条评论&gt;</p>
+							<img :src="item.dongtai.touxiang" alt>
 						</router-link>
 						
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="dynamic">
-			<div class="person">
-				<div class="headPart">
-					<div class="headPic">
-						<img src="../../../../static/img/word/touxiang_sy@2x.png">
-						<p>昵称</p>
+						<p>{{item.dongtai.uname}}</p>
 					</div>
 				</div>
 				
 				<div class="infos">
 					<div class="content">
 						<p class="contentText">
-							内容：我是谁？我在哪？我是谁？我在哪？我是谁？我在哪？我是谁？我在哪？
+							{{item.dongtai.dtText}}
 						</p>
 						<div class="contentPic">
-							<img src="../../../../static/img/word/tp_sy@2x.png" alt="">
+							<img :src="item.dongtai.dongtaitu" alt="">
 						</div>
 					</div>
 					<div class="readOpr">
 						<div class="readTime">
-							<div class="read">阅读量：<span>999+</span></div>
+							<div class="read">阅读量：<span>{{item.dongtai.dtLooknum}}</span></div>
 							<div class="time">
-								<span>2018</span>年
-								<span>1</span>月
-								<span>1</span>日
+								{{item.dongtai.dtTime}}
 							</div>
 						</div>
 						<div class="opr">
 							<i class="heart">
-								<span>99+</span>
+								<span>{{item.dongtai.dtLikenum}}</span>
 							</i>
 							<i class="reply">
 								<span>999+</span>
@@ -102,10 +53,13 @@
 					</div>
 					<div class="comment">
 						<ul>
-							<li><a href="#">昵称:</a>今天天气好晴朗，处处好风光</li>
-							<li><a href="#">昵称:</a>怎么做的呀？</li>
+							<li v-for="(items,indexs) in item.dongtai.pl">
+								<a href="#">{{items.upname}}:</a>
+								{{items.pltext}}
+							</li>
+							<!-- <li><a href="#">{{item.comment_name2}}:</a>{{item.comment2}}</li> -->
 						</ul>
-						<p class="totalComment">共<span>10</span>条评论&gt;</p>
+						<p class="totalComment">共<span>{{item.dongtai.dtPinglunnum}}</span>条评论&gt;</p>
 					</div>
 				</div>
 			</div>
@@ -117,7 +71,13 @@
 <script>
 	import Swiper from "swiper";
 	import Vuex from "vuex";
+	import axios from "axios";
 	export default{
+		data(){
+			return {
+				value:[]
+			}
+		},
 		computed:{
 			...Vuex.mapState({
 				banners:state=>state.Word.banners,
@@ -136,6 +96,16 @@
 					},
 				})
 			},300)
+		},
+		created() {
+			axios({
+				method:"get",
+				url:"/api/world/getDongtai",
+				/* headers:{"Content-type":"application/json"} */
+			}).then((data)=>{
+				this.value = data.data.uiddongtai;
+				console.log(data.data.uiddongtai);
+			})
 		}
 	};
 </script>
@@ -167,7 +137,7 @@
 			.person{
 				padding: .3rem .24rem 0;
 				background: #fff;
-				border-bottom: .02rem solid #eeeeee;
+				border-bottom: .01rem solid #ccc;
 				.headPart{
 					width: 100%;
 					height: .8rem;

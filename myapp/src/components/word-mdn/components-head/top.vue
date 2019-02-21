@@ -16,7 +16,9 @@
 
     <!-- 头部的左半部分 -->
     <div class="top-left">
-      <div class="top-left-head" id="head"></div>
+      <div class="top-left-head" id="head" >
+         <img :src="url[0].dongtai.dongtaitu">
+      </div>
     </div>
     <!-- 头部的右边部分 -->
     <div class="top-right">
@@ -25,7 +27,7 @@
       <ul class="top-right-popularity">
         <li>
            <router-link :to="'/mdn-fans'">粉丝
-           <span class="top-right-fans">111</span></router-link>
+           <span class="top-right-fans">222</span></router-link>
         </li>
         <li @click="handleLike()">喜欢         
           <span class="top-right-like">111</span>
@@ -46,12 +48,20 @@
 <script>
 import { Header , Actionsheet,MessageBox ,Popup  } from "mint-ui";
 import axios from "axios"
+import Vuex from "vuex"
 export default {
+  computed: {
+    ...Vuex.mapState({
+      url:state=>state.Wordmdn.dongtai
+    })
+    
+  },
   data(){
     return{
       sheetVisible:false,
       flag:true,
-      nav:"关注"
+      nav:"关注",
+      dongtai: []
     }
   },
   components: {
@@ -61,17 +71,15 @@ export default {
     "Popup-com":Popup
   },
   // created() {
-  //    axios({
+  //   axios({
   //        method:"get",
-  //        url:"api/lha1/world/getDongtai",
-  //        headers:{"Content-type":"application/json"},
-  //        data:{
-           
-  //        } 
+  //        url:"/api/world/uiddongtai?uid="+this.id
+        
   //   })
   //       .then((data)=>{
-  //         this
-  //         console.log(data.data.DongtaiPic)
+  //         this.dongtai=data.data.uiddongtai;
+  //         console.log(this.dongtai)
+          
   //   })
   //          timeout:3000
   // },
@@ -152,9 +160,14 @@ export default {
       border-radius: 50%;
       position: absolute;
       top:1.89rem;
-      left: 0.62rem;
-     
+      left: 0.62rem; 
+      &>img{
+        width: 1.78rem;
+        height: 1.78rem;
+        border-radius: 50%;
+      }
     }
+
   }
   //
   

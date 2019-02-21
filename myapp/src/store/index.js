@@ -4,6 +4,7 @@ import Word from "./word";
 import edit from "./edit";
 import My from "./my"
 import Login from "./login"
+import Wordmdn from "./word-mdn";
 import { getCookie } from "../utils/Auth";
 
 Vue.use(Vuex);
@@ -32,8 +33,8 @@ const store = new Vuex.Store({
     Word,
     edit,
     My,
-    Login
+    Login,
+    Wordmdn
   }
 })
-console.log(store)
 export default store;
