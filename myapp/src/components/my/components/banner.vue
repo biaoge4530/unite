@@ -56,7 +56,7 @@ export default {
     //如果本地localStorge数据不存在跳转到登录页面
     handleTz() {
       if (!this.HeadPortrait == "") {
-        this.$router.push("/basics");
+        this.$router.push("/settings");
       } else {
         this.$router.push("/login");
       }

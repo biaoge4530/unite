@@ -78,7 +78,7 @@ export default {
 };
 </script>
 
-<style >
+<style  scoped lang="scss">
 .swiper-container > img {
   width: 2.18rem;
   height: 2.18rem;

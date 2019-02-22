@@ -30,12 +30,6 @@ export default {
       phone: ""
     };
   },
-  /* created(){
-    if(store.state){
-      let str = store.state;
-      this.notlogin = str.useName;
-    }
-  }, */
   created() {
     let phone = store.state.useId;
     if (!phone == "") {
